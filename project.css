@@ -290,6 +290,119 @@
   max-width: none;
 }
 
+/* ---- Defect context cards ---- */
+.defect-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.defect-card {
+  background: var(--bg-base);
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  transition: border-color var(--transition-base);
+}
+
+.defect-card--shallow { border-left: 3px solid #f87171; }
+.defect-card--deep    { border-left: 3px solid #fbbf24; }
+.defect-card--shallow:hover { border-color: #f87171; }
+.defect-card--deep:hover    { border-color: #fbbf24; }
+
+.defect-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.defect-card__icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  background: var(--bg-raised);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.defect-card__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+}
+
+.defect-card__badge {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  padding: 0.15rem 0.55rem;
+  margin-left: auto;
+}
+.defect-card__badge--under { color: #f87171; background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); }
+.defect-card__badge--over  { color: #fbbf24; background: rgba(251,191,36,0.1);  border: 1px solid rgba(251,191,36,0.3); }
+
+.defect-card > p {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--space-md);
+  max-width: none;
+}
+
+.defect-card__signals {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.defect-card__signals li {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  padding-left: 1rem;
+  position: relative;
+}
+.defect-card--shallow .defect-card__signals li::before { content: '·'; position: absolute; left: 0; color: #f87171; font-size: 1.2em; line-height: 1; }
+.defect-card--deep    .defect-card__signals li::before { content: '·'; position: absolute; left: 0; color: #fbbf24; font-size: 1.2em; line-height: 1; }
+
+/* ---- Detection split panels ---- */
+.detect-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+.detect-panel__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.detect-panel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.detect-panel__dot--shallow { background: #f87171; box-shadow: 0 0 8px rgba(248,113,113,0.5); }
+.detect-panel__dot--deep    { background: #fbbf24; box-shadow: 0 0 8px rgba(251,191,36,0.5); }
+
+@media (max-width: 768px) {
+  .defect-cards  { grid-template-columns: 1fr; }
+  .detect-split  { grid-template-columns: 1fr; }
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   .proj-grid {
