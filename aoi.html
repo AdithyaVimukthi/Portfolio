@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AOI Defect Detection — Adithya Vimukthi</title>
+  <meta name="description" content="Computer vision algorithm development for shallow dip and deep dip defect detection in latex glove manufacturing — YOLO, Python, Halcon, parallel processing." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo" aria-label="Back to portfolio">
+        <span class="nav__logo-mark">AV</span>
+        <span class="nav__logo-name">Adithya Vimukthi</span>
+      </a>
+      <a href="index.html#projects" class="btn btn--ghost" style="font-size:var(--fs-sm);padding:0.5rem 1.25rem;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Projects
+      </a>
+    </div>
+  </nav>
+
+  <main style="padding-top:var(--nav-height);">
+
+    <!-- HERO -->
+    <section class="proj-hero">
+      <div class="container">
+        <div class="proj-hero__meta reveal">
+          <span class="section__label">Computer Vision · Deep Learning · Industrial AOI</span>
+          <span class="proj-hero__year">2023</span>
+        </div>
+        <h1 class="proj-hero__title reveal">AOI Defect Detection<br />Algorithm Development</h1>
+        <p class="proj-hero__lead reveal">
+          Designing and implementing computer vision algorithms to detect shallow dip and deep dip
+          defects in latex-coated cloth gloves at Ansell — a hybrid pipeline combining YOLO-based
+          deep learning segmentation with classical image analysis for real-time production inspection.
+        </p>
+        <ul class="proj-hero__tags reveal" role="list">
+          <li>Python</li><li>OpenCV</li><li>YOLO</li><li>Halcon</li>
+          <li>NumPy</li><li>Parallel Processing</li><li>AOI</li><li>Computer Vision</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="proj-section section">
+      <div class="container proj-grid">
+        <div class="proj-content reveal">
+          <h2 class="proj-section__title">Project Overview</h2>
+          <p>
+            As part of the Automated Optical Inspection system at Ansell Lanka, I was responsible
+            for developing computer vision algorithms to detect two critical manufacturing defects —
+            <strong style="color:var(--text-primary)">shallow dip</strong> and
+            <strong style="color:var(--text-primary)">deep dip</strong> — occurring during the
+            latex dipping process of cloth gloves.
+          </p>
+          <p>
+            These defects directly impact coating quality, product durability, and compliance with
+            safety standards. The solution combines a YOLO deep learning model for region-of-interest
+            extraction with classical computer vision techniques for defect quantification —
+            implemented first in Halcon, then converted to Python for production integration.
+          </p>
+        </div>
+        <aside class="proj-sidebar reveal">
+          <div class="proj-stat-group">
+            <div class="proj-stat"><span class="proj-stat__val">2</span><span class="proj-stat__key">Defect Types</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">YOLO</span><span class="proj-stat__key">Segmentation</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">Hybrid</span><span class="proj-stat__key">CV + DL</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">2023</span><span class="proj-stat__key">Year</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- DEFECT CONTEXT -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Problem Context</h2>
+        <p class="proj-section__sub reveal">
+          Both defects arise from process variations during the latex bath dipping step — but manifest differently and require different detection strategies.
+        </p>
+        <div class="defect-cards reveal">
+
+          <div class="defect-card defect-card--shallow">
+            <div class="defect-card__header">
+              <span class="defect-card__icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                  <rect x="3" y="10" width="16" height="9" rx="2" stroke="#f87171" stroke-width="1.5"/>
+                  <rect x="3" y="3"  width="16" height="5" rx="1" fill="#f87171" fill-opacity="0.12" stroke="#f87171" stroke-width="1" stroke-dasharray="3 2"/>
+                </svg>
+              </span>
+              <h3 class="defect-card__title">Shallow Dip</h3>
+              <span class="defect-card__badge defect-card__badge--under">Under-coating</span>
+            </div>
+            <p>Insufficient latex coating — thin or missing regions on the glove surface. Caused by insufficient dipping depth, low viscosity, or fast withdrawal speed.</p>
+            <ul class="defect-card__signals">
+              <li>Low-intensity regions on coated surface</li>
+              <li>Reduced area of latex coverage</li>
+              <li>Patchy or uneven coating distribution</li>
+            </ul>
+          </div>
+
+          <div class="defect-card defect-card--deep">
+            <div class="defect-card__header">
+              <span class="defect-card__icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                  <rect x="3" y="3" width="16" height="9" rx="2" stroke="#fbbf24" stroke-width="1.5"/>
+                  <rect x="3" y="14" width="16" height="5" rx="1" fill="#fbbf24" fill-opacity="0.12" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3 2"/>
+                </svg>
+              </span>
+              <h3 class="defect-card__title">Deep Dip</h3>
+              <span class="defect-card__badge defect-card__badge--over">Over-coating</span>
+            </div>
+            <p>Excess latex coating beyond the acceptable boundary. Caused by excessive dip depth or slow withdrawal. Results in material waste and dimensional non-compliance.</p>
+            <ul class="defect-card__signals">
+              <li>Coating overflow beyond defined boundary</li>
+              <li>Excess coated area above threshold</li>
+              <li>Contour deviation from nominal dip line</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ALGORITHM PIPELINE DIAGRAM -->
+    <section class="proj-section section">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Algorithm Pipeline</h2>
+        <p class="proj-section__sub reveal">
+          Hybrid approach: deep learning handles region extraction, classical CV handles defect quantification. Each stage is separately optimised for robustness and speed.
+        </p>
+
+        <div class="diagram-wrap reveal">
+          <svg viewBox="0 0 860 320" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Algorithm pipeline diagram" role="img">
+            <defs>
+              <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff" opacity="0.7"/>
+              </marker>
+              <marker id="arrY" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#fbbf24" opacity="0.8"/>
+              </marker>
+              <marker id="arrR" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#f87171" opacity="0.8"/>
+              </marker>
+              <marker id="arrG" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#4ade80" opacity="0.8"/>
+              </marker>
+            </defs>
+
+            <!-- Stage 1: Input -->
+            <rect x="10" y="120" width="110" height="60" rx="6" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.5"/>
+            <text x="65" y="145" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">RAW IMAGE</text>
+            <text x="65" y="160" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">Camera frame</text>
+            <text x="65" y="173" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">from AOI system</text>
+            <line x1="120" y1="150" x2="145" y2="150" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arr)"/>
+
+            <!-- Stage 2: YOLO -->
+            <rect x="147" y="108" width="130" height="84" rx="6" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1.5" stroke-opacity="0.8"/>
+            <text x="212" y="130" font-family="Space Grotesk,sans-serif" font-size="10" fill="#00d4ff" text-anchor="middle" font-weight="700">YOLO</text>
+            <text x="212" y="145" font-family="Space Grotesk,sans-serif" font-size="9" fill="#f0f0f0" text-anchor="middle" font-weight="600">Detection /</text>
+            <text x="212" y="158" font-family="Space Grotesk,sans-serif" font-size="9" fill="#f0f0f0" text-anchor="middle" font-weight="600">Segmentation</text>
+            <text x="212" y="173" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">ROI extraction</text>
+            <text x="212" y="185" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Background removed</text>
+            <line x1="277" y1="150" x2="302" y2="150" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arr)"/>
+
+            <!-- Stage 3: Pre-processing -->
+            <rect x="304" y="108" width="130" height="84" rx="6" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+            <text x="369" y="130" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">PRE-PROCESSING</text>
+            <text x="369" y="148" font-family="Inter,sans-serif" font-size="8.5" fill="#a0a0a0" text-anchor="middle">Normalise &amp; enhance</text>
+            <text x="369" y="161" font-family="Inter,sans-serif" font-size="8.5" fill="#a0a0a0" text-anchor="middle">Denoise &amp; smooth</text>
+            <text x="369" y="174" font-family="Inter,sans-serif" font-size="8.5" fill="#a0a0a0" text-anchor="middle">Crop &amp; align ROI</text>
+            <line x1="434" y1="150" x2="459" y2="150" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arr)"/>
+
+            <!-- Stage 4: Split -->
+            <line x1="480" y1="150" x2="480" y2="90"  stroke="#f87171" stroke-width="1.1" stroke-opacity="0.7"/>
+            <line x1="480" y1="90"  x2="520" y2="90"  stroke="#f87171" stroke-width="1.1" stroke-opacity="0.7" marker-end="url(#arrR)"/>
+            <line x1="480" y1="150" x2="480" y2="210" stroke="#fbbf24" stroke-width="1.1" stroke-opacity="0.7"/>
+            <line x1="480" y1="210" x2="520" y2="210" stroke="#fbbf24" stroke-width="1.1" stroke-opacity="0.7" marker-end="url(#arrY)"/>
+            <circle cx="480" cy="150" r="5" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1.2"/>
+
+            <!-- Stage 4a: Shallow detection -->
+            <rect x="522" y="60" width="145" height="62" rx="6" fill="#1a1a1a" stroke="#f87171" stroke-width="1" stroke-opacity="0.6"/>
+            <text x="594" y="80" font-family="Space Grotesk,sans-serif" font-size="9" fill="#f87171" text-anchor="middle" font-weight="700">SHALLOW DIP</text>
+            <text x="594" y="94" font-family="Inter,sans-serif" font-size="8" fill="#a0a0a0" text-anchor="middle">Intensity thresholding</text>
+            <text x="594" y="106" font-family="Inter,sans-serif" font-size="8" fill="#a0a0a0" text-anchor="middle">Under-coating area metrics</text>
+            <text x="594" y="118" font-family="Inter,sans-serif" font-size="8" fill="#a0a0a0" text-anchor="middle">Surface distribution analysis</text>
+
+            <!-- Stage 4b: Deep detection -->
+            <rect x="522" y="178" width="145" height="62" rx="6" fill="#1a1a1a" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.6"/>
+            <text x="594" y="198" font-family="Space Grotesk,sans-serif" font-size="9" fill="#fbbf24" text-anchor="middle" font-weight="700">DEEP DIP</text>
+            <text x="594" y="212" font-family="Inter,sans-serif" font-size="8" fill="#a0a0a0" text-anchor="middle">Boundary contour analysis</text>
+            <text x="594" y="224" font-family="Inter,sans-serif" font-size="8" fill="#a0a0a0" text-anchor="middle">Overflow area measurement</text>
+            <text x="594" y="236" font-family="Inter,sans-serif" font-size="8" fill="#a0a0a0" text-anchor="middle">Dip boundary deviation</text>
+
+            <!-- Merge back -->
+            <line x1="667" y1="91"  x2="710" y2="91"  stroke="#f87171" stroke-width="1.1" stroke-opacity="0.6"/>
+            <line x1="710" y1="91"  x2="710" y2="150" stroke="#00d4ff" stroke-width="1.1" stroke-opacity="0.5"/>
+            <line x1="667" y1="209" x2="710" y2="209" stroke="#fbbf24" stroke-width="1.1" stroke-opacity="0.6"/>
+            <line x1="710" y1="209" x2="710" y2="150" stroke="#00d4ff" stroke-width="1.1" stroke-opacity="0.5"/>
+            <line x1="710" y1="150" x2="730" y2="150" stroke="#00d4ff" stroke-width="1.2" marker-end="url(#arr)"/>
+
+            <!-- Stage 5: Decision -->
+            <rect x="732" y="118" width="118" height="64" rx="6" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1.5" stroke-opacity="0.8"/>
+            <text x="791" y="141" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">DECISION</text>
+            <text x="791" y="156" font-family="Inter,sans-serif" font-size="8.5" fill="#a0a0a0" text-anchor="middle">Rule-based thresholds</text>
+            <text x="791" y="169" font-family="Inter,sans-serif" font-size="8.5" fill="#a0a0a0" text-anchor="middle">Pass / Fail label</text>
+
+            <!-- Pass / Fail outputs -->
+            <line x1="791" y1="182" x2="791" y2="210" stroke="#00d4ff" stroke-width="1.1" stroke-opacity="0.5"/>
+            <line x1="791" y1="210" x2="740" y2="210" stroke="#4ade80" stroke-width="1.1" marker-end="url(#arrG)"/>
+            <line x1="791" y1="210" x2="842" y2="210" stroke="#f87171" stroke-width="1.1" marker-end="url(#arrR)"/>
+
+            <rect x="700" y="212" width="38" height="22" rx="11" fill="#1a1a1a" stroke="#4ade80" stroke-width="1.2"/>
+            <text x="719" y="227" font-family="Space Grotesk,sans-serif" font-size="9" fill="#4ade80" text-anchor="middle" font-weight="700">PASS</text>
+
+            <rect x="844" y="212" width="38" height="22" rx="11" fill="#1a1a1a" stroke="#f87171" stroke-width="1.2"/>
+            <text x="863" y="227" font-family="Space Grotesk,sans-serif" font-size="9" fill="#f87171" text-anchor="middle" font-weight="700">FAIL</text>
+
+            <!-- Labels -->
+            <text x="65"  y="196" font-family="Inter,sans-serif" font-size="8" fill="#333" text-anchor="middle">Stage 1</text>
+            <text x="212" y="202" font-family="Inter,sans-serif" font-size="8" fill="#333" text-anchor="middle">Stage 2</text>
+            <text x="369" y="202" font-family="Inter,sans-serif" font-size="8" fill="#333" text-anchor="middle">Stage 3</text>
+            <text x="594" y="252" font-family="Inter,sans-serif" font-size="8" fill="#333" text-anchor="middle">Stage 4</text>
+            <text x="791" y="202" font-family="Inter,sans-serif" font-size="8" fill="#333" text-anchor="middle">Stage 5</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETECTION DETAIL DIAGRAMS -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Detection Approach Detail</h2>
+        <p class="proj-section__sub reveal">
+          Each defect type uses a separate analysis pipeline tuned to its distinct visual signature.
+        </p>
+
+        <div class="detect-split reveal">
+
+          <!-- Shallow Dip -->
+          <div class="detect-panel detect-panel--shallow">
+            <h3 class="detect-panel__title">
+              <span class="detect-panel__dot detect-panel__dot--shallow"></span>
+              Shallow Dip Detection
+            </h3>
+            <div class="diagram-wrap" style="background:var(--bg-base);">
+              <svg viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Shallow dip detection flow" role="img">
+                <defs>
+                  <marker id="aS" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                    <path d="M0,0 L0,5 L7,2.5 z" fill="#f87171" opacity="0.8"/>
+                  </marker>
+                </defs>
+
+                <rect x="80" y="10" width="200" height="36" rx="5" fill="#1a1a1a" stroke="#f87171" stroke-width="1" stroke-opacity="0.5"/>
+                <text x="180" y="27" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Cropped Glove ROI</text>
+                <text x="180" y="40" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Normalised intensity image</text>
+                <line x1="180" y1="46" x2="180" y2="62" stroke="#f87171" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aS)"/>
+
+                <rect x="80" y="64" width="200" height="36" rx="5" fill="#1a1a1a" stroke="#333"/>
+                <text x="180" y="80" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Intensity Thresholding</text>
+                <text x="180" y="94" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Isolate low-reflectance zones</text>
+                <line x1="180" y1="100" x2="180" y2="116" stroke="#f87171" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aS)"/>
+
+                <rect x="80" y="118" width="200" height="36" rx="5" fill="#1a1a1a" stroke="#333"/>
+                <text x="180" y="134" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Region Metrics</text>
+                <text x="180" y="148" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Area · distribution · coverage %</text>
+                <line x1="180" y1="154" x2="180" y2="170" stroke="#f87171" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aS)"/>
+
+                <rect x="80" y="172" width="200" height="36" rx="5" fill="#1a1a1a" stroke="#333"/>
+                <text x="180" y="188" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Rule-based Classifier</text>
+                <text x="180" y="202" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Compare metrics to thresholds</text>
+                <line x1="180" y1="208" x2="180" y2="224" stroke="#f87171" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aS)"/>
+
+                <rect x="100" y="226" width="70" height="26" rx="13" fill="#1a1a1a" stroke="#4ade80" stroke-width="1.2"/>
+                <text x="135" y="243" font-family="Space Grotesk,sans-serif" font-size="10" fill="#4ade80" text-anchor="middle" font-weight="700">PASS</text>
+
+                <rect x="190" y="226" width="70" height="26" rx="13" fill="#1a1a1a" stroke="#f87171" stroke-width="1.2"/>
+                <text x="225" y="243" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f87171" text-anchor="middle" font-weight="700">FAIL</text>
+
+                <line x1="180" y1="224" x2="135" y2="224" stroke="#4ade80" stroke-width="1"/>
+                <line x1="135" y1="224" x2="135" y2="226" stroke="#4ade80" stroke-width="1"/>
+                <line x1="180" y1="224" x2="225" y2="224" stroke="#f87171" stroke-width="1"/>
+                <line x1="225" y1="224" x2="225" y2="226" stroke="#f87171" stroke-width="1"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Deep Dip -->
+          <div class="detect-panel detect-panel--deep">
+            <h3 class="detect-panel__title">
+              <span class="detect-panel__dot detect-panel__dot--deep"></span>
+              Deep Dip Detection
+            </h3>
+            <div class="diagram-wrap" style="background:var(--bg-base);">
+              <svg viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Deep dip detection flow" role="img">
+                <defs>
+                  <marker id="aD" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                    <path d="M0,0 L0,5 L7,2.5 z" fill="#fbbf24" opacity="0.8"/>
+                  </marker>
+                </defs>
+
+                <rect x="80" y="10" width="200" height="36" rx="5" fill="#1a1a1a" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.5"/>
+                <text x="180" y="27" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Cropped Glove ROI</text>
+                <text x="180" y="40" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Normalised intensity image</text>
+                <line x1="180" y1="46" x2="180" y2="62" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aD)"/>
+
+                <rect x="80" y="64" width="200" height="36" rx="5" fill="#1a1a1a" stroke="#333"/>
+                <text x="180" y="80" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Edge &amp; Contour Detection</text>
+                <text x="180" y="94" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Locate coating boundary line</text>
+                <line x1="180" y1="100" x2="180" y2="116" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aD)"/>
+
+                <rect x="80" y="118" width="200" height="36" rx="5" fill="#1a1a1a" stroke="#333"/>
+                <text x="180" y="134" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Overflow Measurement</text>
+                <text x="180" y="148" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Excess area · boundary deviation</text>
+                <line x1="180" y1="154" x2="180" y2="170" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aD)"/>
+
+                <rect x="80" y="172" width="200" height="36" rx="5" fill="#1a1a1a" stroke="#333"/>
+                <text x="180" y="188" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Rule-based Classifier</text>
+                <text x="180" y="202" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Compare metrics to thresholds</text>
+                <line x1="180" y1="208" x2="180" y2="224" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aD)"/>
+
+                <rect x="100" y="226" width="70" height="26" rx="13" fill="#1a1a1a" stroke="#4ade80" stroke-width="1.2"/>
+                <text x="135" y="243" font-family="Space Grotesk,sans-serif" font-size="10" fill="#4ade80" text-anchor="middle" font-weight="700">PASS</text>
+
+                <rect x="190" y="226" width="70" height="26" rx="13" fill="#1a1a1a" stroke="#f87171" stroke-width="1.2"/>
+                <text x="225" y="243" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f87171" text-anchor="middle" font-weight="700">FAIL</text>
+
+                <line x1="180" y1="224" x2="135" y2="224" stroke="#4ade80" stroke-width="1"/>
+                <line x1="135" y1="224" x2="135" y2="226" stroke="#4ade80" stroke-width="1"/>
+                <line x1="180" y1="224" x2="225" y2="224" stroke="#f87171" stroke-width="1"/>
+                <line x1="225" y1="224" x2="225" y2="226" stroke="#f87171" stroke-width="1"/>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PARALLEL PROCESSING -->
+    <section class="proj-section section">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Parallel Processing Architecture</h2>
+        <p class="proj-section__sub reveal">
+          Concurrent pipelines separate detection and analysis stages to meet real-time throughput requirements on the production line.
+        </p>
+
+        <div class="diagram-wrap reveal">
+          <svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Parallel processing architecture" role="img">
+            <defs>
+              <marker id="aP" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#00d4ff" opacity="0.7"/>
+              </marker>
+            </defs>
+
+            <!-- Input -->
+            <rect x="10" y="80" width="110" height="40" rx="5" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.5"/>
+            <text x="65" y="97" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Image Input</text>
+            <text x="65" y="111" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Camera frame queue</text>
+
+            <!-- Fork -->
+            <line x1="120" y1="100" x2="150" y2="100" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.5"/>
+            <line x1="150" y1="100" x2="150" y2="55"  stroke="#00d4ff" stroke-width="1" stroke-opacity="0.4"/>
+            <line x1="150" y1="100" x2="150" y2="145" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.4"/>
+
+            <!-- Thread 1: Detection -->
+            <line x1="150" y1="55" x2="180" y2="55" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" marker-end="url(#aP)"/>
+            <rect x="182" y="35" width="160" height="40" rx="5" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
+            <text x="262" y="52" font-family="Space Grotesk,sans-serif" font-size="9" fill="#00d4ff" text-anchor="middle" font-weight="700">Thread A — YOLO</text>
+            <text x="262" y="65" font-family="Inter,sans-serif" font-size="8" fill="#a0a0a0" text-anchor="middle">Object detection / segmentation</text>
+            <line x1="342" y1="55" x2="390" y2="55" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" marker-end="url(#aP)"/>
+
+            <!-- Thread 2: Analysis -->
+            <line x1="150" y1="145" x2="180" y2="145" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" marker-end="url(#aP)"/>
+            <rect x="182" y="125" width="160" height="40" rx="5" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
+            <text x="262" y="142" font-family="Space Grotesk,sans-serif" font-size="9" fill="#00d4ff" text-anchor="middle" font-weight="700">Thread B — CV Analysis</text>
+            <text x="262" y="155" font-family="Inter,sans-serif" font-size="8" fill="#a0a0a0" text-anchor="middle">Pre-process + feature extraction</text>
+            <line x1="342" y1="145" x2="390" y2="145" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" marker-end="url(#aP)"/>
+
+            <!-- Synchronise -->
+            <rect x="392" y="60" width="120" height="80" rx="6" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1.3" stroke-opacity="0.7"/>
+            <text x="452" y="94" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">SYNCHRONISE</text>
+            <text x="452" y="108" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Merge results</text>
+            <text x="452" y="120" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Shared queue</text>
+            <line x1="512" y1="100" x2="540" y2="100" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.5" marker-end="url(#aP)"/>
+
+            <!-- Decision -->
+            <rect x="542" y="70" width="110" height="60" rx="5" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1.3" stroke-opacity="0.7"/>
+            <text x="597" y="94" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">DECISION</text>
+            <text x="597" y="108" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Classification</text>
+            <text x="597" y="120" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Pass / Fail output</text>
+            <line x1="652" y1="100" x2="680" y2="100" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.5" marker-end="url(#aP)"/>
+
+            <!-- Output -->
+            <rect x="682" y="75" width="70" height="50" rx="5" fill="#111" stroke="#00d4ff" stroke-width="1.5" stroke-opacity="0.8"/>
+            <text x="717" y="97" font-family="Space Grotesk,sans-serif" font-size="9" fill="#00d4ff" text-anchor="middle" font-weight="700">RESULT</text>
+            <text x="717" y="110" font-family="Inter,sans-serif" font-size="8" fill="#a0a0a0" text-anchor="middle">Label +</text>
+            <text x="717" y="122" font-family="Inter,sans-serif" font-size="8" fill="#a0a0a0" text-anchor="middle">Defect type</text>
+
+            <!-- Timing label -->
+            <text x="380" y="185" font-family="Inter,sans-serif" font-size="9" fill="#333" text-anchor="middle">Reduced latency — real-time inspection throughput</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL DETAILS -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Technical Deep Dive</h2>
+        <div class="proj-details-grid">
+
+          <div class="proj-detail-card reveal">
+            <div class="proj-detail-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect x="2" y="2" width="6" height="6" stroke="var(--accent)" stroke-width="1.4"/>
+                <rect x="12" y="2" width="6" height="6" stroke="var(--accent)" stroke-width="1.4"/>
+                <rect x="2" y="12" width="6" height="6" stroke="var(--accent)" stroke-width="1.4"/>
+                <rect x="12" y="12" width="6" height="6" stroke="var(--accent)" stroke-width="1.4"/>
+                <line x1="8" y1="5" x2="12" y2="5" stroke="var(--accent)" stroke-width="1.4"/>
+                <line x1="5" y1="8" x2="5" y2="12" stroke="var(--accent)" stroke-width="1.4"/>
+                <line x1="15" y1="8" x2="15" y2="12" stroke="var(--accent)" stroke-width="1.4"/>
+                <line x1="8" y1="15" x2="12" y2="15" stroke="var(--accent)" stroke-width="1.4"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">YOLO Integration</h3>
+            <ul class="proj-detail-card__list">
+              <li>YOLO model detects and localises gloves in each frame</li>
+              <li>Segmentation isolates inspection region from background</li>
+              <li>Robustness to lighting variation and conveyor movement</li>
+              <li>Eliminates false detections from non-glove objects</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card reveal">
+            <div class="proj-detail-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <polyline points="2,14 5,8 9,11 13,5 18,8" stroke="var(--accent)" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Halcon → Python Migration</h3>
+            <ul class="proj-detail-card__list">
+              <li>Prototype algorithms developed in Halcon (MVTec)</li>
+              <li>Logic translated to Python using OpenCV and NumPy</li>
+              <li>Validated pixel-level equivalence between implementations</li>
+              <li>Python version integrated into the broader AOI pipeline</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card reveal">
+            <div class="proj-detail-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="3" stroke="var(--accent)" stroke-width="1.4"/>
+                <line x1="10" y1="0" x2="10" y2="7" stroke="var(--accent)" stroke-width="1.4"/>
+                <line x1="10" y1="13" x2="10" y2="20" stroke="var(--accent)" stroke-width="1.4"/>
+                <line x1="0" y1="10" x2="7" y2="10" stroke="var(--accent)" stroke-width="1.4"/>
+                <line x1="13" y1="10" x2="20" y2="10" stroke="var(--accent)" stroke-width="1.4"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Feature Engineering</h3>
+            <ul class="proj-detail-card__list">
+              <li>Shallow: intensity thresholding and under-coated area metrics</li>
+              <li>Deep: contour analysis and overflow boundary deviation</li>
+              <li>Separate tunable threshold parameters per defect class</li>
+              <li>Region-based metrics normalised against glove dimensions</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card reveal">
+            <div class="proj-detail-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect x="2" y="4" width="7" height="12" rx="2" stroke="var(--accent)" stroke-width="1.4"/>
+                <rect x="11" y="4" width="7" height="12" rx="2" stroke="var(--accent)" stroke-width="1.4"/>
+                <line x1="9" y1="10" x2="11" y2="10" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="1.5 1.5"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Parallel Processing</h3>
+            <ul class="proj-detail-card__list">
+              <li>Concurrent threads for YOLO and CV analysis stages</li>
+              <li>Shared result queue for synchronisation before decision</li>
+              <li>Reduced per-frame latency to meet production throughput</li>
+              <li>Decoupled stages allow independent optimisation</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="proj-section section">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Results &amp; Impact</h2>
+        <div class="proj-results reveal">
+          <div class="proj-result">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 13l4 4L19 7" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Reliable detection of both shallow and deep dip defect classes in production conditions</p>
+          </div>
+          <div class="proj-result">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 13l4 4L19 7" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Improved inspection consistency over manual visual checks — eliminated operator subjectivity</p>
+          </div>
+          <div class="proj-result">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 13l4 4L19 7" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Parallel processing reduced per-frame latency to meet real-time production line throughput</p>
+          </div>
+          <div class="proj-result">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 13l4 4L19 7" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Hybrid CV + DL architecture contributed to a scalable, maintainable AOI pipeline</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACK -->
+    <section class="section" style="padding-block:var(--space-3xl);">
+      <div class="container" style="text-align:center;">
+        <a href="index.html#projects" class="btn btn--ghost">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to All Projects
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">&copy; 2026 Adithya Vimukthi.</p>
+        <a href="#" class="footer__back-top" aria-label="Back to top">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 13V3M3 8l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Back to top</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.reveal').forEach(el => {
+      const io = new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) { el.classList.add('reveal--visible'); io.disconnect(); }
+      }, { threshold: 0.1 });
+      io.observe(el);
+    });
+  </script>
+</body>
+</html>
