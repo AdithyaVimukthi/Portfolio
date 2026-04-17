@@ -1,610 +1,676 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adithya Vimukthi — Robotics Engineer</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adithya Vimukthi — Robotics & AI Engineer</title>
+  <meta name="description" content="Adithya Vimukthi — Mechatronics Engineer and Master's student in Advanced Robotics & AI at QUT. Specialising in robot control, computer vision, and intelligent automation." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Navigation -->
-  <nav id="navbar">
-    <div class="nav-container">
-      <a href="#hero" class="nav-logo">AV<span class="accent">.</span></a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#demos">Demos</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner container">
+      <a href="#hero" class="nav__logo" aria-label="Adithya Vimukthi — home">
+        <span class="nav__logo-mark">AV</span>
+        <span class="nav__logo-name">Adithya Vimukthi</span>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#about"        class="nav__link">About</a></li>
+        <li><a href="#experience"   class="nav__link">Experience</a></li>
+        <li><a href="#skills"       class="nav__link">Skills</a></li>
+        <li><a href="#projects"     class="nav__link">Projects</a></li>
+        <li><a href="#publications" class="nav__link">Publications</a></li>
+        <li><a href="#contact"      class="nav__link">Contact</a></li>
       </ul>
-      <button class="nav-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
+
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
+        <span class="nav__hamburger-bar"></span>
       </button>
+    </div>
+
+    <div class="nav__mobile" id="mobile-menu" aria-hidden="true">
+      <ul class="nav__mobile-links" role="list">
+        <li><a href="#about"        class="nav__mobile-link" data-mobile-link>About</a></li>
+        <li><a href="#experience"   class="nav__mobile-link" data-mobile-link>Experience</a></li>
+        <li><a href="#skills"       class="nav__mobile-link" data-mobile-link>Skills</a></li>
+        <li><a href="#projects"     class="nav__mobile-link" data-mobile-link>Projects</a></li>
+        <li><a href="#publications" class="nav__mobile-link" data-mobile-link>Publications</a></li>
+        <li><a href="#contact"      class="nav__mobile-link" data-mobile-link>Contact</a></li>
+      </ul>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="hero">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-particles" id="particles"></div>
-    <div class="container hero-content">
-      <p class="hero-subtitle">Robotics Engineer &middot; Systems Builder</p>
-      <h1 class="hero-title">
-        I design, build, and<br>
-        <span class="accent">integrate robotic</span><br>
-        <span class="accent">systems</span>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero" aria-label="Introduction">
+    <div class="hero__grid" aria-hidden="true"></div>
+
+    <div class="hero__orb-wrapper" aria-hidden="true">
+      <div class="hero__orb">
+        <div class="hero__orb-ring hero__orb-ring--1"></div>
+        <div class="hero__orb-ring hero__orb-ring--2"></div>
+        <div class="hero__orb-ring hero__orb-ring--3"></div>
+        <div class="hero__orb-core"></div>
+      </div>
+    </div>
+
+    <div class="hero__content container">
+      <p class="hero__eyebrow reveal">MSc Advanced Robotics &amp; AI &nbsp;·&nbsp; Queensland University of Technology</p>
+      <h1 class="hero__heading reveal">
+        Mechatronics<br />&amp; Robotics<br />Engineer
       </h1>
-      <p class="hero-desc">
-        Mechatronics engineer specializing in robotics, automation, and control systems. From mechanical design and PCB layout to firmware and ROS — I take machines from concept to working prototype.
+      <p class="hero__tagline reveal">
+        Building intelligent robotic systems — from real-time teleoperation<br class="break-lg" />
+        and computer vision to embedded control and industrial automation.
       </p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      <div class="hero__ctas reveal">
+        <a href="#projects" class="btn btn--primary">View Projects</a>
+        <a href="#contact"  class="btn btn--ghost">Get In Touch</a>
       </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-number" data-count="8">0</span>+
-          <span class="stat-label">Robots Built</span>
+    </div>
+
+    <div class="hero__scroll-hint" aria-hidden="true">
+      <span class="hero__scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section class="about section" id="about" aria-label="About Adithya Vimukthi">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">01 / About</span>
+        <h2 class="section__title">Who I Am</h2>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__bio reveal">
+          <p>
+            I'm Adithya Vimukthi, a Mechatronics Engineer currently pursuing a Master's in Advanced
+            Robotics and Artificial Intelligence at Queensland University of Technology (QUT), Brisbane.
+          </p>
+          <p>
+            My work sits at the intersection of robotics, computer vision, and intelligent control — from
+            developing real-time motion tracking systems for human-robot interaction to designing embedded
+            automation solutions for industrial environments. I have hands-on experience across the full
+            stack: kinematics, control theory (LQR, MPC), ROS, Python/C++, and embedded hardware.
+          </p>
+          <p>
+            I have contributed to published research on teleoperation, worked as an engineering trainee
+            in manufacturing automation, and built systems that bridge academic research with real-world
+            constraints.
+          </p>
+          <a href="Adithya Resume.pdf" class="btn btn--outline" style="margin-top:1.5rem;" download>Download CV</a>
         </div>
-        <div class="stat">
-          <span class="stat-number" data-count="3">0</span>+
-          <span class="stat-label">Years Experience</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number" data-count="5">0</span>
-          <span class="stat-label">Disciplines</span>
+
+        <div class="about__stats reveal">
+          <div class="stat-card">
+            <span class="stat-card__number" data-count="3">3</span>
+            <span class="stat-card__unit">+</span>
+            <p class="stat-card__label">Years Engineering Experience</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number" data-count="8">8</span>
+            <span class="stat-card__unit">+</span>
+            <p class="stat-card__label">Robotics Projects</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number" data-count="1">1</span>
+            <span class="stat-card__unit"></span>
+            <p class="stat-card__label">Peer-Reviewed Publication</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number" data-count="2">2</span>
+            <span class="stat-card__unit"></span>
+            <p class="stat-card__label">Industry Roles</p>
+          </div>
         </div>
       </div>
     </div>
-    <a href="#about" class="scroll-indicator" aria-label="Scroll down">
-      <div class="mouse">
-        <div class="wheel"></div>
-      </div>
-    </a>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="section">
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section class="experience section section--alt" id="experience" aria-label="Experience and Education">
     <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-grid">
-        <div class="about-image-wrapper">
-          <div class="about-image">
-            <div class="about-image-placeholder">
-              <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Robot arm sketch -->
-                <circle cx="100" cy="160" r="8" stroke="var(--accent)" stroke-width="2" fill="none"/>
-                <line x1="100" y1="152" x2="130" y2="100" stroke="var(--accent)" stroke-width="2"/>
-                <circle cx="130" cy="100" r="6" stroke="var(--accent)" stroke-width="2" fill="none"/>
-                <line x1="130" y1="94" x2="70" y2="50" stroke="var(--accent)" stroke-width="2"/>
-                <circle cx="70" cy="50" r="6" stroke="var(--accent)" stroke-width="2" fill="none"/>
-                <!-- Gripper -->
-                <line x1="70" y1="44" x2="55" y2="30" stroke="var(--accent)" stroke-width="2"/>
-                <line x1="70" y1="44" x2="85" y2="30" stroke="var(--accent)" stroke-width="2"/>
-                <!-- Base -->
-                <rect x="80" y="160" width="40" height="8" rx="2" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
-                <!-- Decorative circle -->
-                <circle cx="100" cy="100" r="95" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 4" fill="none" opacity="0.3"/>
+      <div class="section__header reveal">
+        <span class="section__label">02 / Experience</span>
+        <h2 class="section__title">Education &amp; Work</h2>
+      </div>
+
+      <div class="experience__columns">
+
+        <!-- Education -->
+        <div class="exp-column reveal">
+          <h3 class="exp-column__title">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 1L1 5l7 4 7-4-7-4z" stroke="var(--accent)" stroke-width="1.3" stroke-linejoin="round"/>
+              <path d="M3 7v5a5 5 0 0010 0V7" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            Education
+          </h3>
+          <div class="exp-timeline">
+
+            <div class="exp-item">
+              <div class="exp-item__dot"></div>
+              <div class="exp-item__content">
+                <span class="exp-item__date">Feb 2025 — Present</span>
+                <h4 class="exp-item__role">Master of Advanced Robotics &amp; AI</h4>
+                <p class="exp-item__org">Queensland University of Technology (QUT)</p>
+                <p class="exp-item__location">Brisbane, Australia</p>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-item__dot"></div>
+              <div class="exp-item__content">
+                <span class="exp-item__date">Sep 2019 — Nov 2023</span>
+                <h4 class="exp-item__role">BSc Mechatronics Engineering</h4>
+                <p class="exp-item__org">Sri Lanka Technological Campus</p>
+                <p class="exp-item__location">Second Class Upper Division</p>
+                <ul class="exp-item__bullets">
+                  <li>Real-time upper body motion tracking for robotic teleoperation (BSc thesis)</li>
+                  <li>Robot manipulator on Raspberry Pi 4 mirroring human arm movements</li>
+                  <li>Published research at MERCon 2023</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Work -->
+        <div class="exp-column reveal">
+          <h3 class="exp-column__title">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <rect x="1" y="5" width="14" height="9" rx="1" stroke="var(--accent)" stroke-width="1.3"/>
+              <path d="M5 5V4a2 2 0 014 0v1" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            Work
+          </h3>
+          <div class="exp-timeline">
+
+            <div class="exp-item">
+              <div class="exp-item__dot"></div>
+              <div class="exp-item__content">
+                <span class="exp-item__date">Mar 2024 — Nov 2024</span>
+                <h4 class="exp-item__role">Engineering Trainee</h4>
+                <p class="exp-item__org">Twinery, Innovation by MAS</p>
+                <ul class="exp-item__bullets">
+                  <li>Designed and built full automation solution with HMI for 4-mode overlock machine</li>
+                  <li>Planned, designed, and tested electronic circuits and mechanical prototypes</li>
+                  <li>CAD modelling in SolidWorks; CNC laser cutting and fabrication</li>
+                  <li>Supported IoT-based remote monitoring and control projects</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-item__dot"></div>
+              <div class="exp-item__content">
+                <span class="exp-item__date">Feb 2023 — Aug 2023</span>
+                <h4 class="exp-item__role">Engineering Trainee</h4>
+                <p class="exp-item__org">Ansell Lanka (Pvt) Ltd</p>
+                <ul class="exp-item__bullets">
+                  <li>Developed machine vision systems for automated product inspection</li>
+                  <li>Programmed PLC-based automation for production and material handling</li>
+                  <li>Implemented AOI algorithms for real-time surface defect detection</li>
+                  <li>Supported semi-automation of irradiator material handling equipment</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section class="skills section" id="skills" aria-label="Skills">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">03 / Skills</span>
+        <h2 class="section__title">Technical Stack</h2>
+      </div>
+
+      <div class="skills__grid">
+
+        <!-- Robotics & Control -->
+        <div class="skill-category reveal">
+          <div class="skill-category__header">
+            <span class="skill-category__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="3" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="10" y1="0" x2="10" y2="7" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="10" y1="13" x2="10" y2="20" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="0" y1="10" x2="7" y2="10" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="13" y1="10" x2="20" y2="10" stroke="var(--accent)" stroke-width="1.5"/>
               </svg>
-              <span>Your Photo</span>
-            </div>
+            </span>
+            <h3 class="skill-category__title">Robotics &amp; Control</h3>
           </div>
-          <div class="about-decoration"></div>
-        </div>
-        <div class="about-content">
-          <p class="about-lead">
-            I'm Adithya Vimukthi — a mechatronics engineer from Sri Lanka, now based in Australia, building robots that work in the real world.
-          </p>
-          <p>
-            My expertise spans the full robotics stack: mechanical design, electronics, embedded firmware, and control software. I don't just simulate robots — I design the chassis, fabricate the parts, lay out the PCBs, write the firmware, and tune the controllers until the machine does what it's supposed to.
-          </p>
-          <p>
-            My long-term vision: building robot-operated industries — fully automated ecosystems where intelligent machines handle production from end to end.
-          </p>
-          <div class="about-highlights">
-            <div class="highlight">
-              <span class="highlight-icon">&#9881;</span>
-              <div>
-                <strong>Full-Stack Robotics</strong>
-                <span>Mechanical design, fabrication, electronics, firmware, control</span>
-              </div>
-            </div>
-            <div class="highlight">
-              <span class="highlight-icon">&#9889;</span>
-              <div>
-                <strong>Systems Integrator</strong>
-                <span>From CNC machines to robot arms — I build complete working systems</span>
-              </div>
-            </div>
-            <div class="highlight">
-              <span class="highlight-icon">&#127759;</span>
-              <div>
-                <strong>International Builder</strong>
-                <span>Sri Lanka &rarr; Australia, building robots across continents</span>
-              </div>
-            </div>
-          </div>
-          <a href="#contact" class="btn btn-primary">Let's Connect</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="section section-alt">
-    <div class="container">
-      <h2 class="section-title">Technical Skills</h2>
-      <p class="section-subtitle">I design and build complete robotic systems — from the mechanical frame to the control loop.</p>
-      <div class="skills-grid">
-        <div class="skill-category">
-          <h3 class="skill-category-title">
-            <span class="skill-icon">&#129518;</span> Robotics &amp; Control
-          </h3>
-          <div class="skill-tags">
-            <span class="skill-tag">ROS / ROS2</span>
-            <span class="skill-tag">Robot Kinematics</span>
-            <span class="skill-tag">PID Control</span>
-            <span class="skill-tag">Motion Planning</span>
-            <span class="skill-tag">State Machines</span>
-            <span class="skill-tag">Sensor Fusion</span>
-            <span class="skill-tag">SLAM</span>
-            <span class="skill-tag">Path Planning</span>
-            <span class="skill-tag">Gazebo Simulation</span>
-          </div>
-        </div>
-        <div class="skill-category">
-          <h3 class="skill-category-title">
-            <span class="skill-icon">&#128293;</span> Mechanical &amp; Fabrication
-          </h3>
-          <div class="skill-tags">
-            <span class="skill-tag">CAD / SolidWorks</span>
-            <span class="skill-tag">CNC Machining</span>
-            <span class="skill-tag">3D Printing (FDM)</span>
-            <span class="skill-tag">Sheet Metal</span>
-            <span class="skill-tag">Laser Cutting</span>
-            <span class="skill-tag">Assembly &amp; Fit</span>
-            <span class="skill-tag">Tolerance Analysis</span>
-            <span class="skill-tag">Rapid Prototyping</span>
-          </div>
-        </div>
-        <div class="skill-category">
-          <h3 class="skill-category-title">
-            <span class="skill-icon">&#9889;</span> Electronics &amp; Embedded
-          </h3>
-          <div class="skill-tags">
-            <span class="skill-tag">PCB Design</span>
-            <span class="skill-tag">Embedded C/C++</span>
-            <span class="skill-tag">STM32</span>
-            <span class="skill-tag">Arduino</span>
-            <span class="skill-tag">Raspberry Pi</span>
-            <span class="skill-tag">Motor Drivers</span>
-            <span class="skill-tag">Sensor Integration</span>
-            <span class="skill-tag">PLC Programming</span>
-          </div>
-        </div>
-        <div class="skill-category">
-          <h3 class="skill-category-title">
-            <span class="skill-icon">&#128187;</span> Software &amp; AI
-          </h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">C++</span>
-            <span class="skill-tag">Computer Vision</span>
-            <span class="skill-tag">OpenCV</span>
-            <span class="skill-tag">Reinforcement Learning</span>
-            <span class="skill-tag">Linux</span>
-            <span class="skill-tag">Git</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience & Education Section -->
-  <section id="experience" class="section">
-    <div class="container">
-      <h2 class="section-title">Experience & Education</h2>
-      <div class="exp-edu-grid">
-
-        <!-- LEFT: Experience -->
-        <div class="exp-column">
-          <h3 class="column-heading">Experience</h3>
-
-          <div class="exp-card">
-            <span class="exp-date">Nov 2023 &mdash; Mar 2024</span>
-            <h4 class="exp-title">Engineering Trainee</h4>
-            <p class="exp-org">Twinery &mdash; Innovation by MAS</p>
-            <ul class="exp-list">
-              <li>Developed complete automation solutions, including control systems and HMI interfaces for 4-mode overlock machine operation.</li>
-              <li>Planned, designed, and tested electronic circuits and mechanical prototypes for automation applications.</li>
-              <li>Created CAD models and mechanical designs using SolidWorks; operated CNC laser cutting machines.</li>
-              <li>Conducted debugging, system integration, and performance optimization of prototypes.</li>
-              <li>Supported IoT-based automation projects for remote monitoring and control.</li>
-            </ul>
-            <div class="exp-projects">
-              <span class="exp-projects-label">Key Projects:</span>
-              <ul>
-                <li><strong>Overlock Automation</strong> &mdash; Full automation with integrated HMI and 4 operational modes, from planning through circuit design, prototyping, testing, and debugging.</li>
-                <li><strong>3D Wire Bending</strong> &mdash; Designed bending mechanisms for bra cup wire shaping; analyzed and mitigated failures due to material constraints.</li>
-                <li><strong>Sticker Pasting</strong> &mdash; Assisted in mechanical design, assembly, and alignment of automated sticker-pasting units.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="exp-card">
-            <span class="exp-date">Aug 2022 &mdash; Feb 2023</span>
-            <h4 class="exp-title">Engineering Trainee</h4>
-            <p class="exp-org">Ansell Lanka (Pvt) Ltd</p>
-            <ul class="exp-list">
-              <li>Assisted in the development of machine vision systems for automated product inspection using image processing and ML techniques.</li>
-              <li>Programmed and integrated PLC-based automation systems for production and material handling.</li>
-              <li>Received formal training in Lean Process principles, CNC operation, and engineering services.</li>
-              <li>Conducted safety inspections and performance assessments for solar energy installations.</li>
-            </ul>
-            <div class="exp-projects">
-              <span class="exp-projects-label">Key Projects:</span>
-              <ul>
-                <li><strong>AOI for Defect Detection</strong> &mdash; Developed algorithms for an automated optical inspection system to identify surface defects using computer vision.</li>
-                <li><strong>Irradiator Material Handling Semi-Automation</strong> &mdash; Supported design and integration of semi-automated handling equipment, improving efficiency and operator safety.</li>
-                <li><strong>Solar Project Safety Inspections</strong> &mdash; On-site safety audits and inspection reports for solar panel and electrical systems.</li>
-              </ul>
-            </div>
-          </div>
+          <ul class="skill-tags" role="list">
+            <li class="skill-tag">Robot Kinematics</li>
+            <li class="skill-tag">LQR / MPC</li>
+            <li class="skill-tag">Motion Planning</li>
+            <li class="skill-tag">Visual Odometry</li>
+            <li class="skill-tag">ROS</li>
+            <li class="skill-tag">Teleoperation</li>
+            <li class="skill-tag">Servo Control</li>
+            <li class="skill-tag">Sensor Fusion</li>
+          </ul>
         </div>
 
-        <!-- RIGHT: Education -->
-        <div class="edu-column">
-          <h3 class="column-heading">Education</h3>
-
-          <div class="exp-card">
-            <span class="exp-date">Feb 2025 &mdash; Present</span>
-            <h4 class="exp-title">Master of Advanced Robotics and Artificial Intelligence</h4>
-            <p class="exp-org">Queensland University of Technology (QUT)</p>
-            <ul class="exp-list">
-              <li>Specializing in robotic manipulation, control systems, sensor fusion, and autonomous systems.</li>
-              <li>Research focus on making robots more reliable and capable in unstructured, real-world environments.</li>
-            </ul>
+        <!-- Computer Vision & AI -->
+        <div class="skill-category reveal">
+          <div class="skill-category__header">
+            <span class="skill-category__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="2" y="2" width="6" height="6" stroke="var(--accent)" stroke-width="1.5"/>
+                <rect x="12" y="2" width="6" height="6" stroke="var(--accent)" stroke-width="1.5"/>
+                <rect x="2" y="12" width="6" height="6" stroke="var(--accent)" stroke-width="1.5"/>
+                <rect x="12" y="12" width="6" height="6" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="8" y1="5" x2="12" y2="5" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="5" y1="8" x2="5" y2="12" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="15" y1="8" x2="15" y2="12" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="8" y1="15" x2="12" y2="15" stroke="var(--accent)" stroke-width="1.5"/>
+              </svg>
+            </span>
+            <h3 class="skill-category__title">Computer Vision &amp; AI</h3>
           </div>
+          <ul class="skill-tags" role="list">
+            <li class="skill-tag">OpenCV</li>
+            <li class="skill-tag">MediaPipe</li>
+            <li class="skill-tag">PyTorch</li>
+            <li class="skill-tag">Machine Learning</li>
+            <li class="skill-tag">Deep Learning</li>
+            <li class="skill-tag">NumPy</li>
+            <li class="skill-tag">Pose Estimation</li>
+            <li class="skill-tag">AOI Inspection</li>
+          </ul>
+        </div>
 
-          <div class="exp-card">
-            <span class="exp-date">Sep 2019 &mdash; Nov 2023</span>
-            <h4 class="exp-title">Bachelor of Science in Mechatronics Engineering</h4>
-            <p class="exp-org">Sri Lanka Technological Campus (SLTC)</p>
-            <div class="exp-award">Second Class Upper Division</div>
-            <ul class="exp-list">
-              <li>Foundation in mechanical design, electronics, control systems, and embedded programming.</li>
-              <li>Built multiple robots, automation rigs, and integrated systems across coursework and personal projects.</li>
-            </ul>
-            <div class="exp-projects">
-              <span class="exp-projects-label">Final Year Research:</span>
-              <ul>
-                <li><strong>Vision-Based Teleoperated Robotic Arm</strong> &mdash; Developed a real-time upper-body motion tracking system using Python, OpenCV, and MediaPipe to capture and compute human arm joint angles for robotic teleoperation.</li>
-                <li>Designed a robot manipulator control system on Raspberry Pi 4, enabling motors and a gripper to mimic human arm movements with high accuracy.</li>
-                <li>Implemented a two-part teleoperation framework for safe and precise robotic manipulation in environments inaccessible to humans.</li>
-              </ul>
-            </div>
+        <!-- Programming -->
+        <div class="skill-category reveal">
+          <div class="skill-category__header">
+            <span class="skill-category__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <polyline points="6,4 2,10 6,16" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+                <polyline points="14,4 18,10 14,16" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+                <line x1="12" y1="3" x2="8" y2="17" stroke="var(--accent)" stroke-width="1.5"/>
+              </svg>
+            </span>
+            <h3 class="skill-category__title">Programming</h3>
           </div>
+          <ul class="skill-tags" role="list">
+            <li class="skill-tag">Python</li>
+            <li class="skill-tag">C++</li>
+            <li class="skill-tag">MATLAB / Simulink</li>
+            <li class="skill-tag">Git</li>
+            <li class="skill-tag">Linux</li>
+            <li class="skill-tag">PLC Programming</li>
+          </ul>
+        </div>
+
+        <!-- Embedded & Hardware -->
+        <div class="skill-category reveal">
+          <div class="skill-category__header">
+            <span class="skill-category__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="4" y="6" width="12" height="8" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="7" y1="6" x2="7" y2="4" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="10" y1="6" x2="10" y2="4" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="13" y1="6" x2="13" y2="4" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="7" y1="14" x2="7" y2="16" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="10" y1="14" x2="10" y2="16" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="13" y1="14" x2="13" y2="16" stroke="var(--accent)" stroke-width="1.5"/>
+              </svg>
+            </span>
+            <h3 class="skill-category__title">Embedded &amp; Hardware</h3>
+          </div>
+          <ul class="skill-tags" role="list">
+            <li class="skill-tag">Raspberry Pi</li>
+            <li class="skill-tag">Arduino</li>
+            <li class="skill-tag">ESP32</li>
+            <li class="skill-tag">PCB Design</li>
+            <li class="skill-tag">Sensor Integration</li>
+            <li class="skill-tag">HMI Design</li>
+            <li class="skill-tag">SolidWorks / CAD</li>
+            <li class="skill-tag">3D Printing</li>
+          </ul>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="section section-alt">
+  <!-- ===================== PROJECTS ===================== -->
+  <section class="projects section section--alt" id="projects" aria-label="Projects">
     <div class="container">
-      <h2 class="section-title">Projects</h2>
-      <p class="section-subtitle">Real machines, real production — from industrial automation to vision-controlled robots.</p>
-      <div class="projects-grid">
-        <!-- Project 1: Highlighted — most complete robotics system -->
-        <article class="project-card project-featured">
-          <div class="project-image">
-            <div class="project-placeholder">
-              <span class="featured-badge">Featured</span>
-              <span>Project Image</span>
+      <div class="section__header reveal">
+        <span class="section__label">04 / Projects</span>
+        <h2 class="section__title">Selected Work</h2>
+        <p class="section__sub">Real machines, real production — from industrial automation to vision-controlled robots.</p>
+      </div>
+
+      <!-- Featured Projects -->
+      <div class="projects__featured">
+
+        <!-- Featured 1 -->
+        <article class="project-card project-card--featured reveal" tabindex="0">
+          <div class="project-card__image">
+            <div class="project-card__placeholder">
+              <span class="project-card__badge">Featured</span>
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" opacity="0.25">
+                <circle cx="20" cy="20" r="10" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="20" y1="0" x2="20" y2="10" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="20" y1="30" x2="20" y2="40" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="0" y1="20" x2="10" y2="20" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="30" y1="20" x2="40" y2="20" stroke="var(--accent)" stroke-width="1.5"/>
+              </svg>
+              <span class="project-card__img-label">Project Image</span>
             </div>
           </div>
-          <div class="project-content">
-            <div class="project-tags">
-              <span>Robotics</span>
-              <span>Autonomous</span>
-              <span>Manipulation</span>
+          <div class="project-card__body">
+            <div class="project-card__top">
+              <span class="project-card__year">2025</span>
+              <a href="#" class="project-card__link-icon" aria-label="View project" target="_blank" rel="noopener noreferrer">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <path d="M7 3H3a1 1 0 00-1 1v11a1 1 0 001 1h11a1 1 0 001-1v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M10 2h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="16" y1="2" x2="8" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </a>
             </div>
-            <h3 class="project-title">Autonomous Mobile Platform with 5-Axis Robotic Arm</h3>
-            <p class="project-desc">Integrated robotic system combining a mobile base with a 5-axis manipulator. Autonomous navigation paired with object manipulation — demonstrating coordination between mobility, perception, and robotic control. The most complete robotics system I've built.</p>
-            <div class="project-links">
-              <a href="#" class="project-link">View Details &rarr;</a>
-            </div>
+            <h3 class="project-card__title">Autonomous Mobile Platform with 5-Axis Robotic Arm</h3>
+            <p class="project-card__desc">
+              Integrated robotic system combining a mobile base with a 5-axis manipulator. Autonomous navigation paired with object manipulation — demonstrating coordination between mobility, perception, and robotic control. The most complete robotics system I've built.
+            </p>
+            <ul class="project-card__tags" role="list" aria-label="Technologies used">
+              <li>Robotics</li><li>Autonomous</li><li>Manipulation</li><li>ROS</li>
+            </ul>
           </div>
         </article>
 
-        <!-- Project 2: Highlighted — standout AI + robotics -->
-        <article class="project-card project-featured">
-          <div class="project-image">
-            <div class="project-placeholder">
-              <span class="featured-badge">Featured</span>
-              <span>Project Image</span>
+        <!-- Featured 2 -->
+        <article class="project-card project-card--featured reveal" tabindex="0">
+          <div class="project-card__image">
+            <div class="project-card__placeholder">
+              <span class="project-card__badge">Featured</span>
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true" opacity="0.25">
+                <rect x="4" y="12" width="24" height="16" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="10" y1="12" x2="10" y2="8" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="20" y1="12" x2="20" y2="8" stroke="var(--accent)" stroke-width="1.5"/>
+                <line x1="30" y1="12" x2="30" y2="4" stroke="var(--accent)" stroke-width="1.5"/>
+                <circle cx="32" cy="8" r="3" stroke="var(--accent)" stroke-width="1.5"/>
+              </svg>
+              <span class="project-card__img-label">Project Image</span>
             </div>
           </div>
-          <div class="project-content">
-            <div class="project-tags">
-              <span>Vision</span>
-              <span>Robotic Arm</span>
-              <span>HMI</span>
+          <div class="project-card__body">
+            <div class="project-card__top">
+              <span class="project-card__year">2023</span>
+              <a href="#" class="project-card__link-icon" aria-label="View project" target="_blank" rel="noopener noreferrer">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <path d="M7 3H3a1 1 0 00-1 1v11a1 1 0 001 1h11a1 1 0 001-1v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M10 2h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="16" y1="2" x2="8" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </a>
             </div>
-            <h3 class="project-title">Vision-Based Teleoperated Robotic Arm</h3>
-            <p class="project-desc">Bachelor's final year project — a robotic arm controlled solely through computer vision, no traditional input devices. Visual feedback detects and interprets user actions, enabling intuitive remote manipulation. Focused on human-machine interaction and real-time control.</p>
-            <div class="project-links">
-              <a href="#" class="project-link">View Details &rarr;</a>
-            </div>
+            <h3 class="project-card__title">Vision-Based Teleoperated Robotic Arm</h3>
+            <p class="project-card__desc">
+              Bachelor's final year project — a robotic arm controlled solely through computer vision, no traditional input devices. Visual feedback detects and interprets user gestures, enabling intuitive remote manipulation. Focused on human-machine interaction and real-time control. Published at MERCon 2023.
+            </p>
+            <ul class="project-card__tags" role="list" aria-label="Technologies used">
+              <li>Vision</li><li>Python</li><li>OpenCV</li><li>MediaPipe</li><li>Raspberry Pi</li>
+            </ul>
           </div>
         </article>
+
+      </div>
+
+      <!-- Regular Projects Grid -->
+      <div class="projects__grid projects__grid--4">
 
         <!-- Project 3 -->
-        <article class="project-card">
-          <div class="project-image">
-            <div class="project-placeholder">
-              <span>Project Image</span>
-            </div>
+        <article class="project-card reveal" tabindex="0">
+          <div class="project-card__top">
+            <span class="project-card__year">2024</span>
+            <a href="#" class="project-card__link-icon" aria-label="View project" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M7 3H3a1 1 0 00-1 1v11a1 1 0 001 1h11a1 1 0 001-1v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M10 2h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="16" y1="2" x2="8" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </a>
           </div>
-          <div class="project-content">
-            <div class="project-tags">
-              <span>Computer Vision</span>
-              <span>Mobile Robot</span>
-              <span>Tracking</span>
-            </div>
-            <h3 class="project-title">Vision-Based Follow Cart Robot</h3>
-            <p class="project-desc">Autonomous mobile robot that follows a user using computer vision. Designed to assist with daily tasks — carrying groceries, tools, or equipment. Implemented person tracking, navigation, and motion control for real-world usability.</p>
-            <div class="project-links">
-              <a href="#" class="project-link">View Details &rarr;</a>
-            </div>
-          </div>
+          <h3 class="project-card__title">Vision-Based Follow Cart Robot</h3>
+          <p class="project-card__desc">
+            Autonomous mobile robot that follows a user using computer vision. Implements person tracking, navigation, and motion control — designed to carry tools or equipment in real-world environments.
+          </p>
+          <ul class="project-card__tags" role="list" aria-label="Technologies used">
+            <li>Computer Vision</li><li>Mobile Robot</li><li>Tracking</li>
+          </ul>
         </article>
 
         <!-- Project 4 -->
-        <article class="project-card">
-          <div class="project-image">
-            <div class="project-placeholder">
-              <span>Project Image</span>
-            </div>
+        <article class="project-card reveal" tabindex="0">
+          <div class="project-card__top">
+            <span class="project-card__year">2023</span>
+            <a href="#" class="project-card__link-icon" aria-label="View project" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M7 3H3a1 1 0 00-1 1v11a1 1 0 001 1h11a1 1 0 001-1v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M10 2h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="16" y1="2" x2="8" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </a>
           </div>
-          <div class="project-content">
-            <div class="project-tags">
-              <span>AOI</span>
-              <span>Computer Vision</span>
-              <span>Quality</span>
-            </div>
-            <h3 class="project-title">AOI-Based Product Defect Detection System</h3>
-            <p class="project-desc">Automated Optical Inspection system for detecting product defects on the production line. Image processing, feature extraction, and classification to improve quality control and eliminate manual inspection errors.</p>
-            <div class="project-links">
-              <a href="#" class="project-link">View Details &rarr;</a>
-            </div>
-          </div>
+          <h3 class="project-card__title">AOI Product Defect Detection</h3>
+          <p class="project-card__desc">
+            Automated Optical Inspection system for detecting surface defects on a live production line using image processing and ML classification. Eliminated manual inspection errors.
+          </p>
+          <ul class="project-card__tags" role="list" aria-label="Technologies used">
+            <li>AOI</li><li>Computer Vision</li><li>Python</li><li>OpenCV</li>
+          </ul>
         </article>
 
         <!-- Project 5 -->
-        <article class="project-card">
-          <div class="project-image">
-            <div class="project-placeholder">
-              <span>Project Image</span>
-            </div>
+        <article class="project-card reveal" tabindex="0">
+          <div class="project-card__top">
+            <span class="project-card__year">2024</span>
+            <a href="#" class="project-card__link-icon" aria-label="View project" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M7 3H3a1 1 0 00-1 1v11a1 1 0 001 1h11a1 1 0 001-1v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M10 2h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="16" y1="2" x2="8" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </a>
           </div>
-          <div class="project-content">
-            <div class="project-tags">
-              <span>Automation</span>
-              <span>Mechanical</span>
-              <span>Control</span>
-            </div>
-            <h3 class="project-title">Overlock Automation System</h3>
-            <p class="project-desc">Automated system to optimize overlock sewing operations. Integrated mechanical components and control systems to improve production efficiency, reduce manual labor, and ensure consistent stitching quality.</p>
-            <div class="project-links">
-              <a href="#" class="project-link">View Details &rarr;</a>
-            </div>
-          </div>
+          <h3 class="project-card__title">Overlock Machine Automation</h3>
+          <p class="project-card__desc">
+            Full 4-mode automation solution for an industrial overlock machine — HMI interface, control system architecture, circuit design, mechanical prototyping, and end-to-end testing.
+          </p>
+          <ul class="project-card__tags" role="list" aria-label="Technologies used">
+            <li>Automation</li><li>HMI</li><li>Control Systems</li><li>SolidWorks</li>
+          </ul>
         </article>
 
         <!-- Project 6 -->
-        <article class="project-card">
-          <div class="project-image">
-            <div class="project-placeholder">
-              <span>Project Image</span>
-            </div>
+        <article class="project-card reveal" tabindex="0">
+          <div class="project-card__top">
+            <span class="project-card__year">2024</span>
+            <a href="#" class="project-card__link-icon" aria-label="View project" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M7 3H3a1 1 0 00-1 1v11a1 1 0 001 1h11a1 1 0 001-1v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M10 2h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="16" y1="2" x2="8" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </a>
           </div>
-          <div class="project-content">
-            <div class="project-tags">
-              <span>Automation</span>
-              <span>Sensors</span>
-              <span>Production</span>
-            </div>
-            <h3 class="project-title">Polybag Sticker Pasting Machine</h3>
-            <p class="project-desc">Fully automated machine for precise sticker application on polybags. Sensor-based detection and control logic for accurate positioning, high throughput, and reliable operation in a production environment.</p>
-            <div class="project-links">
-              <a href="#" class="project-link">View Details &rarr;</a>
-            </div>
-          </div>
+          <h3 class="project-card__title">Polybag Sticker Pasting Machine</h3>
+          <p class="project-card__desc">
+            Fully automated machine for precise sticker application on polybags. Sensor-based detection and control logic for accurate positioning and high throughput in a production environment.
+          </p>
+          <ul class="project-card__tags" role="list" aria-label="Technologies used">
+            <li>Automation</li><li>Sensors</li><li>Production</li><li>Mechanical</li>
+          </ul>
         </article>
-        </article>
+
       </div>
     </div>
   </section>
 
-  <!-- Interactive Demos Section -->
-  <section id="demos" class="section">
+  <!-- ===================== PUBLICATIONS ===================== -->
+  <section class="publications section" id="publications" aria-label="Publications and Certifications">
     <div class="container">
-      <h2 class="section-title">Interactive Demos</h2>
-      <p class="section-subtitle">Explore some of the concepts I work with — right here in your browser.</p>
-      <div class="demos-grid">
-        <div class="demo-card">
-          <h3>Robot Arm Kinematics</h3>
-          <p>Interactive 2-DOF robotic arm. Move your cursor to set the target — the arm solves inverse kinematics in real-time.</p>
-          <canvas id="kinematics-canvas" width="400" height="300"></canvas>
-        </div>
-        <div class="demo-card">
-          <h3>PID Controller Tuner</h3>
-          <p>Adjust P, I, D gains and watch how the motor tracks the target position. See overshoot, settling time, and steady-state error change live.</p>
-          <canvas id="pid-canvas" width="400" height="300"></canvas>
-          <div class="demo-controls">
-            <label class="demo-label">P <input type="range" id="pid-p" min="0" max="5" step="0.1" value="1.5"><span id="pid-p-val">1.5</span></label>
-            <label class="demo-label">I <input type="range" id="pid-i" min="0" max="1" step="0.01" value="0.01"><span id="pid-i-val">0.01</span></label>
-            <label class="demo-label">D <input type="range" id="pid-d" min="0" max="3" step="0.1" value="0.5"><span id="pid-d-val">0.5</span></label>
-            <button class="btn btn-sm" id="pid-reset">Reset</button>
+
+      <div class="section__header reveal">
+        <span class="section__label">05 / Publications</span>
+        <h2 class="section__title">Research</h2>
+      </div>
+
+      <div class="publications__list">
+        <article class="pub-card reveal">
+          <div class="pub-card__meta">
+            <span class="pub-card__venue">MERCon 2023</span>
+            <span class="pub-card__year">2023</span>
           </div>
+          <h3 class="pub-card__title">
+            Real-Time Upper Body Motion Tracking Using Computer Vision for Improved Human-Robot Interaction and Teleoperation
+          </h3>
+          <p class="pub-card__authors">
+            N. A. S. N. Nandasena,&nbsp;<strong>W. A. A. Vimukthi</strong>,&nbsp;H. M. K. K. M. B. Herath,&nbsp;R. Wijesinghe,&nbsp;S. L. P. Yasakethu
+          </p>
+          <p class="pub-card__conf">
+            2023 Moratuwa Engineering Research Conference (MERCon), Moratuwa, Sri Lanka
+          </p>
+          <ul class="pub-card__tags" role="list">
+            <li>Human-Robot Interaction</li>
+            <li>Computer Vision</li>
+            <li>Teleoperation</li>
+            <li>Motion Tracking</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- Certifications -->
+      <div class="section__header reveal" style="margin-top:var(--space-4xl);margin-bottom:var(--space-2xl);">
+        <span class="section__label">Certifications</span>
+        <h3 class="section__title" style="font-size:clamp(var(--fs-xl),3vw,var(--fs-2xl));">Continuous Learning</h3>
+      </div>
+
+      <div class="certs__grid reveal">
+        <div class="cert-item">
+          <span class="cert-item__name">Modern Robotics: Foundations of Robot Motion</span>
+          <span class="cert-item__org">Coursera</span>
+          <span class="cert-item__date">Mar 2022</span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-item__name">Modern Robotics: Robot Kinematics</span>
+          <span class="cert-item__org">Coursera</span>
+          <span class="cert-item__date">Apr 2022</span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-item__name">Neural Networks and Deep Learning</span>
+          <span class="cert-item__org">Coursera</span>
+          <span class="cert-item__date">Oct 2021</span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-item__name">Introduction to Hydraulics</span>
+          <span class="cert-item__org">Nikini Automation</span>
+          <span class="cert-item__date">2020</span>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="section section-alt">
+  <!-- ===================== CONTACT ===================== -->
+  <section class="contact section section--alt" id="contact" aria-label="Contact">
     <div class="container">
-      <h2 class="section-title">What People Say</h2>
-      <div class="testimonials-slider">
-        <div class="testimonial-card active">
-          <blockquote>
-            "Adithya has a rare ability to see the full picture — from the mechanical design down to the control layer. He doesn't just build parts; he builds working machines."
-          </blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">A</div>
-            <div>
-              <strong>Academic Supervisor</strong>
-              <span>Robotics Research Lab</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <blockquote>
-            "His integration skills set him apart. On the automation project, he handled everything from mechanical design to PLC programming — and it worked first time on the floor."
-          </blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">M</div>
-            <div>
-              <strong>Industry Manager</strong>
-              <span>Automation Division</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <blockquote>
-            "A builder at heart. He turns complex mechanical and control problems into working prototypes faster than anyone I've worked with. His robots just work."
-          </blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">P</div>
-            <div>
-              <strong>Senior Robotics Engineer</strong>
-              <span>Robotics Division</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-dots">
-          <button class="dot active" data-index="0" aria-label="Testimonial 1"></button>
-          <button class="dot" data-index="1" aria-label="Testimonial 2"></button>
-          <button class="dot" data-index="2" aria-label="Testimonial 3"></button>
-        </div>
+      <div class="section__header reveal">
+        <span class="section__label">06 / Contact</span>
+        <h2 class="section__title">Get In Touch</h2>
       </div>
-    </div>
-  </section>
 
-  <!-- Blog Section -->
-  <section id="blog" class="section">
-    <div class="container">
-      <h2 class="section-title">Blog & Writings</h2>
-      <p class="section-subtitle">Thoughts on robotics, control, and building machines that work in the real world.</p>
-      <div class="blog-grid">
-        <article class="blog-card">
-          <span class="blog-date">Mar 2026</span>
-          <h3>Why Your Robot Arm Doesn't Move the Way You Expect</h3>
-          <p>Kinematics look clean in textbooks, but real joints have backlash, compliance, and friction. Here's how I handle the gap between simulation and hardware.</p>
-          <a href="#" class="blog-link">Read More &rarr;</a>
-        </article>
-        <article class="blog-card">
-          <span class="blog-date">Feb 2026</span>
-          <h3>PID Tuning: The Art Most Engineers Get Wrong</h3>
-          <p>Most people just guess P, I, D values. Here's my systematic approach to tuning motor controllers — and why derivative gain is your best friend for robot arms.</p>
-          <a href="#" class="blog-link">Read More &rarr;</a>
-        </article>
-        <article class="blog-card">
-          <span class="blog-date">Jan 2026</span>
-          <h3>Building Automation Systems That Actually Work</h3>
-          <p>Most automation projects fail at the integration stage. Here's my approach to taking a machine from prototype to production without the classic pitfalls.</p>
-          <a href="#" class="blog-link">Read More &rarr;</a>
-        </article>
+      <p class="contact__intro reveal">
+        Open to research collaborations, graduate roles, and robotics engineering projects.<br class="break-lg" />
+        Based in Brisbane, Australia — feel free to reach out.
+      </p>
+
+      <div class="contact__socials reveal" aria-label="Social links">
+        <a href="mailto:adithyavimukthi23@gmail.com" class="social-link" aria-label="Email Adithya">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="2" y="4" width="16" height="13" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M2 7l8 5 8-5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span>Email</span>
+        </a>
+        <a href="https://www.linkedin.com/in/adithyavimukthi-a99v12w23" class="social-link" aria-label="Adithya on LinkedIn" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M11 17v-4.5a2.5 2.5 0 015 0V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="7" cy="7.5" r="1" fill="currentColor"/>
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://github.com/" class="social-link" aria-label="Adithya on GitHub" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.09.682-.218.682-.484 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.254-.447-1.27.098-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.836a9.56 9.56 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.547 1.376.203 2.392.1 2.646.64.698 1.028 1.59 1.028 2.682 0 3.842-2.337 4.687-4.565 4.935.359.308.678.917.678 1.848 0 1.335-.012 2.41-.012 2.737 0 .269.18.579.688.481C19.138 20.16 22 16.416 22 12c0-5.523-4.477-10-10-10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
       </div>
-    </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section section-alt">
-    <div class="container">
-      <h2 class="section-title">Get in Touch</h2>
-      <p class="section-subtitle">Interested in collaborating, hiring, or just chatting about robotics and automation? I'd love to hear from you.</p>
-      <div class="contact-grid">
-        <form class="contact-form" id="contact-form">
+      <form class="contact-form reveal" id="contactForm" novalidate aria-label="Contact form">
+        <div class="contact-form__row">
           <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required placeholder="Your name">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required autocomplete="name" />
           </div>
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="your@email.com">
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or idea..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-        </form>
-        <div class="contact-info">
-          <div class="contact-item">
-            <span class="contact-icon">&#128231;</span>
-            <div>
-              <strong>Email</strong>
-              <a href="mailto:adithya@example.com">adithya@example.com</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">&#128279;</span>
-            <div>
-              <strong>LinkedIn</strong>
-              <a href="#">linkedin.com/in/adithyavimukthi</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">&#128187;</span>
-            <div>
-              <strong>GitHub</strong>
-              <a href="#">github.com/adithyavimukthi</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">&#128205;</span>
-            <div>
-              <strong>Location</strong>
-              <span>Australia</span>
-            </div>
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required autocomplete="email" />
           </div>
         </div>
-      </div>
+        <div class="form-group">
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" name="message" class="form-input form-input--textarea" rows="5" placeholder="What are you working on?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary" id="submitBtn">
+          <span class="btn__text">Send Message</span>
+          <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" role="contentinfo">
     <div class="container">
-      <div class="footer-content">
-        <a href="#hero" class="nav-logo">AV<span class="accent">.</span></a>
-        <p>&copy; 2026 Adithya Vimukthi. Built with focus and precision.</p>
-        <div class="footer-links">
-          <a href="mailto:adithya@example.com">Email</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">GitHub</a>
-        </div>
+      <div class="footer__inner">
+        <p class="footer__copy">&copy; 2026 Adithya Vimukthi. Built with purpose.</p>
+        <a href="#hero" class="footer__back-top" aria-label="Back to top">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 13V3M3 8l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Back to top</span>
+        </a>
       </div>
     </div>
   </footer>
