@@ -54,17 +54,85 @@
   <section class="hero" id="hero" aria-label="Introduction">
     <div class="hero__grid" aria-hidden="true"></div>
 
+    <!-- Full-hero HUD corner brackets -->
+    <span class="hero__corner hero__corner--tl" aria-hidden="true"></span>
+    <span class="hero__corner hero__corner--tr" aria-hidden="true"></span>
+    <span class="hero__corner hero__corner--bl" aria-hidden="true"></span>
+    <span class="hero__corner hero__corner--br" aria-hidden="true"></span>
+
     <div class="hero__orb-wrapper" aria-hidden="true">
+
+      <!-- Orb HUD brackets -->
+      <span class="hero__bracket hero__bracket--tl"></span>
+      <span class="hero__bracket hero__bracket--tr"></span>
+      <span class="hero__bracket hero__bracket--bl"></span>
+      <span class="hero__bracket hero__bracket--br"></span>
+
+      <!-- Scan line sweep -->
+      <div class="hero__scan-line"></div>
+
+      <!-- HUD data readouts -->
+      <div class="hero__hud hero__hud--tl">
+        <span class="hero__hud-key">DOF</span>
+        <span class="hero__hud-val">6-AXIS</span>
+      </div>
+      <div class="hero__hud hero__hud--tr">
+        <span class="hero__hud-key">CTRL</span>
+        <span class="hero__hud-val">ROS 2</span>
+      </div>
+      <div class="hero__hud hero__hud--bl">
+        <span class="hero__hud-key">STATUS</span>
+        <span class="hero__hud-val">NOMINAL</span>
+      </div>
+      <div class="hero__hud hero__hud--br">
+        <span class="hero__hud-key">VISION</span>
+        <span class="hero__hud-val">ACTIVE</span>
+      </div>
+
       <div class="hero__orb">
         <div class="hero__orb-ring hero__orb-ring--1"></div>
         <div class="hero__orb-ring hero__orb-ring--2"></div>
         <div class="hero__orb-ring hero__orb-ring--3"></div>
+
+        <!-- Technical SVG overlay: axes, ticks, crosshair -->
+        <svg class="hero__orb-svg" viewBox="-260 -260 520 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Dashed crosshair axes -->
+          <line x1="-230" y1="0"    x2="230" y2="0"    stroke="rgba(0,212,255,0.13)" stroke-width="0.8" stroke-dasharray="6 12"/>
+          <line x1="0"    y1="-230" x2="0"   y2="230"  stroke="rgba(0,212,255,0.13)" stroke-width="0.8" stroke-dasharray="6 12"/>
+          <!-- Inner dashed ring (joint-range indicator) -->
+          <circle cx="0" cy="0" r="145" fill="none" stroke="rgba(0,212,255,0.07)" stroke-width="1" stroke-dasharray="10 10"/>
+          <!-- Cardinal tick marks on outer ring (r≈221) -->
+          <line x1="0"    y1="-221" x2="0"    y2="-203" stroke="rgba(0,212,255,0.4)"  stroke-width="1.2"/>
+          <line x1="0"    y1=" 203" x2="0"    y2=" 221" stroke="rgba(0,212,255,0.4)"  stroke-width="1.2"/>
+          <line x1="-221" y1="0"    x2="-203" y2="0"    stroke="rgba(0,212,255,0.4)"  stroke-width="1.2"/>
+          <line x1=" 203" y1="0"    x2=" 221" y2="0"    stroke="rgba(0,212,255,0.4)"  stroke-width="1.2"/>
+          <!-- Diagonal ticks at 45° (221·sin45≈156, 203·sin45≈143) -->
+          <line x1=" 143" y1="-143" x2=" 156" y2="-156" stroke="rgba(0,212,255,0.22)" stroke-width="0.8"/>
+          <line x1="-143" y1="-143" x2="-156" y2="-156" stroke="rgba(0,212,255,0.22)" stroke-width="0.8"/>
+          <line x1=" 143" y1=" 143" x2=" 156" y2=" 156" stroke="rgba(0,212,255,0.22)" stroke-width="0.8"/>
+          <line x1="-143" y1=" 143" x2="-156" y2=" 156" stroke="rgba(0,212,255,0.22)" stroke-width="0.8"/>
+          <!-- Degree labels -->
+          <text x="235"  y="4"    font-size="11" fill="rgba(0,212,255,0.45)" font-family="monospace" text-anchor="start">0°</text>
+          <text x="-248" y="4"    font-size="11" fill="rgba(0,212,255,0.45)" font-family="monospace" text-anchor="start">180°</text>
+          <text x="-6"   y="-227" font-size="11" fill="rgba(0,212,255,0.45)" font-family="monospace" text-anchor="end">90°</text>
+          <text x="-6"   y=" 246" font-size="11" fill="rgba(0,212,255,0.45)" font-family="monospace" text-anchor="end">270°</text>
+          <!-- Targeting crosshair around core (core radius ≈52 SVG units) -->
+          <circle cx="0" cy="0" r="58" fill="none" stroke="rgba(0,212,255,0.3)" stroke-width="0.8"/>
+          <line x1="-82" y1="0"  x2="-64" y2="0"  stroke="rgba(0,212,255,0.65)" stroke-width="1.2"/>
+          <line x1=" 64" y1="0"  x2=" 82" y2="0"  stroke="rgba(0,212,255,0.65)" stroke-width="1.2"/>
+          <line x1="0"   y1="-82" x2="0"  y2="-64" stroke="rgba(0,212,255,0.65)" stroke-width="1.2"/>
+          <line x1="0"   y1=" 64" x2="0"  y2=" 82" stroke="rgba(0,212,255,0.65)" stroke-width="1.2"/>
+        </svg>
+
         <div class="hero__orb-core"></div>
       </div>
     </div>
 
     <div class="hero__content container">
-      <p class="hero__eyebrow reveal">MSc Advanced Robotics &amp; AI &nbsp;·&nbsp; Queensland University of Technology</p>
+      <p class="hero__eyebrow reveal">
+        <span class="hero__status-dot" aria-hidden="true"></span>
+        MSc Advanced Robotics &amp; AI &nbsp;·&nbsp; Queensland University of Technology
+      </p>
       <h1 class="hero__heading reveal">
         Mechatronics<br />&amp; Robotics<br />Engineer
       </h1>

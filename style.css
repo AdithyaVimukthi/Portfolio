@@ -631,6 +631,134 @@ p {
   50%       { opacity: 1;   transform: scaleY(1);   transform-origin: top; }
 }
 
+/* --- Robotic HUD enhancements --- */
+
+/* Pulsing status dot in eyebrow */
+.hero__status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  flex-shrink: 0;
+  animation: status-blink 2.8s ease-in-out infinite;
+}
+
+@keyframes status-blink {
+  0%, 100% { opacity: 1;    box-shadow: 0 0 8px var(--accent); }
+  50%       { opacity: 0.25; box-shadow: none; }
+}
+
+/* Full-hero corner brackets */
+.hero__corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero__corner--tl { top: calc(var(--nav-height) + 1.5rem); left:  2rem; border-top:    1px solid rgba(0,212,255,0.28); border-left:   1px solid rgba(0,212,255,0.28); }
+.hero__corner--tr { top: calc(var(--nav-height) + 1.5rem); right: 2rem; border-top:    1px solid rgba(0,212,255,0.28); border-right:  1px solid rgba(0,212,255,0.28); }
+.hero__corner--bl { bottom: 4.5rem; left:  2rem; border-bottom: 1px solid rgba(0,212,255,0.28); border-left:   1px solid rgba(0,212,255,0.28); }
+.hero__corner--br { bottom: 4.5rem; right: 2rem; border-bottom: 1px solid rgba(0,212,255,0.28); border-right:  1px solid rgba(0,212,255,0.28); }
+
+/* Orb HUD corner brackets */
+.hero__bracket {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 3;
+}
+.hero__bracket--tl { top:  6px; left:  6px; border-top:    1px solid rgba(0,212,255,0.55); border-left:   1px solid rgba(0,212,255,0.55); }
+.hero__bracket--tr { top:  6px; right: 6px; border-top:    1px solid rgba(0,212,255,0.55); border-right:  1px solid rgba(0,212,255,0.55); }
+.hero__bracket--bl { bottom: 6px; left:  6px; border-bottom: 1px solid rgba(0,212,255,0.55); border-left:   1px solid rgba(0,212,255,0.55); }
+.hero__bracket--br { bottom: 6px; right: 6px; border-bottom: 1px solid rgba(0,212,255,0.55); border-right:  1px solid rgba(0,212,255,0.55); }
+
+/* Scan line that sweeps down the orb */
+.hero__scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right,
+    transparent 0%,
+    rgba(0,212,255,0.35) 25%,
+    rgba(0,212,255,0.65) 50%,
+    rgba(0,212,255,0.35) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+  animation: scan-sweep 5s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+@keyframes scan-sweep {
+  0%   { top: 4%;  opacity: 0;   }
+  6%   { opacity: 1; }
+  94%  { opacity: 0.5; }
+  100% { top: 96%; opacity: 0; }
+}
+
+/* HUD data readouts around the orb */
+.hero__hud {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  animation: hud-fadein 1s ease forwards;
+}
+.hero__hud--tl { top: 13%; left: 4%;  animation-delay: 0.4s; }
+.hero__hud--tr { top: 13%; right: 4%; align-items: flex-end; animation-delay: 0.6s; }
+.hero__hud--bl { bottom: 15%; left: 4%;  animation-delay: 0.8s; }
+.hero__hud--br { bottom: 15%; right: 4%; align-items: flex-end; animation-delay: 1.0s; }
+
+@keyframes hud-fadein {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 0.72; transform: translateY(0); }
+}
+
+.hero__hud-key {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 1;
+}
+.hero__hud-val {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+}
+
+/* SVG overlay inside orb */
+.hero__orb-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hide decorative HUD elements on small screens */
+@media (max-width: 600px) {
+  .hero__hud,
+  .hero__bracket,
+  .hero__scan-line,
+  .hero__corner { display: none; }
+}
+
 
 /* =============================================================
    7. ABOUT SECTION
