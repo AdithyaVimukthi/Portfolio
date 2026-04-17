@@ -12,6 +12,23 @@
 
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="project.css" />
+  <style>
+    /* Inline fallback — ensures layout works even if project.css is missing */
+    .defect-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg, 1.5rem);
+    }
+    .detect-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl, 2rem);
+    }
+    @media (max-width: 768px) {
+      .defect-cards,
+      .detect-split { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
