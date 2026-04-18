@@ -1,0 +1,75 @@
+Overlock Machine Automation System
+Project Overview
+The Overlock Machine Automation project involved retrofitting a conventional industrial overlock sewing machine with an embedded control system to enable semi/fully automated operation. The goal was to improve production efficiency, ensure repeatability in stitching quality, and reduce operator dependency in repetitive garment manufacturing tasks.
+System Architecture & Design
+The system was designed as a mechatronic integration of mechanical actuation, embedded control, and sensor feedback, structured into three main layers:
+Sensing Layer – Detects fabric position, machine state, and operation triggers
+Control Layer – Processes inputs and executes control logic
+Actuation Layer – Drives mechanical components to perform sewing actions
+Mechanical Integration
+Designed custom mounting brackets and linkages to interface actuators with the machine’s foot pedal mechanism and presser foot control
+Converted manual pedal actuation into electromechanical input using a servo/linear actuator
+Ensured minimal modification to the original machine to preserve reliability and serviceability
+Considered vibration, load distribution, and mechanical backlash during design
+Embedded Control System
+Developed firmware using ESP32 (Arduino framework) for real-time control
+Implemented a finite state machine (FSM) to manage operation stages:
+Idle
+Fabric detection
+Stitch initiation
+Continuous operation
+Stop/reset
+Designed timing-critical routines to synchronize actuator motion with machine speed
+Used interrupt-based or polling-based sensor reading (depending on latency requirements)
+Sensing & Feedback
+Integrated IR sensors / limit switches for:
+Fabric presence detection
+End-of-operation detection
+Safety and reset conditions
+Debounced sensor signals in software to ensure stable readings
+Implemented basic fault detection (e.g., no fabric detected → prevent actuation)
+Actuation System
+Controlled DC motor / servo motor to replicate foot pedal input:
+Speed control achieved via PWM signals
+Position/angle control for precise actuation
+Used relay modules / motor drivers to handle higher current loads
+Implemented solenoid actuators for auxiliary mechanical actions (e.g., thread cutting or presser foot lifting, if applicable)
+Electrical & Power Design
+Designed a low-voltage control circuit isolated from high-power machine components
+Used regulated power supply for microcontroller and sensors
+Ensured proper grounding and noise reduction to handle industrial electrical interference
+Integrated protection components (flyback diodes for inductive loads, fuses where necessary)
+Control Logic & Algorithm
+Event-driven control system based on sensor inputs
+Sequence example:
+Detect fabric insertion
+Activate motor (simulate pedal press)
+Maintain operation for predefined duration or until end condition
+Stop motor and reset system
+Adjustable parameters:
+Stitch duration
+Motor speed
+Sensor thresholds
+Testing & Optimization
+Conducted iterative testing to tune:
+Motor speed vs stitch quality
+Sensor placement for reliable detection
+Actuator response timing
+Reduced latency in control loop to ensure smooth operation
+Improved system robustness against false triggers and mechanical inconsistencies
+Key Engineering Challenges
+Synchronizing actuator motion with mechanical sewing dynamics
+Minimizing vibration-induced sensor noise
+Designing non-invasive mechanical coupling to an existing machine
+Ensuring safe operation under varying loads and fabric types
+Results & Impact
+Achieved consistent and repeatable stitching cycles
+Reduced manual effort and operator fatigue
+Increased throughput for repetitive sewing tasks
+Demonstrated a scalable approach for low-cost industrial automation retrofitting
+Technologies & Tools
+Microcontroller: ESP32 (Arduino IDE)
+Programming: C/C++ (Embedded)
+Mechanical Design: SOLIDWORKS (for brackets and mounts)
+Electronics: Motor drivers, relays, sensors, regulated power supplies
+Fabrication: CNC cutting / 3D printing (for custom parts)

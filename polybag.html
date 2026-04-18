@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polybag Sticker Pasting Machine Redesign — Adithya Vimukthi</title>
+  <meta name="description" content="Mechanical redesign of a polybag sticker pasting machine at MAS Holdings — adjustable guiding system, modular subassemblies, and SolidWorks parametric CAD for multi-size handling." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <style>
+    /* Self-contained layout fallbacks */
+    .proj-hero{padding-block:7.5rem 5rem;border-bottom:1px solid #222}
+    .proj-hero__meta{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+    .proj-hero__year{font-size:.75rem;font-weight:500;letter-spacing:.1em;color:#555}
+    .proj-hero__title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.25rem,6vw,4.5rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.7) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .proj-hero__lead{font-size:clamp(1rem,2vw,1.125rem);color:#a0a0a0;line-height:1.8;max-width:72ch;margin-bottom:1.5rem}
+    .proj-hero__tags{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+    .proj-hero__tags li{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#00d4ff;background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.2);border-radius:4px;padding:.25rem .75rem}
+    .proj-section__title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.75rem,3vw,2.25rem);font-weight:700;color:#f0f0f0;margin-bottom:1.5rem;letter-spacing:-.02em}
+    .proj-section__sub{font-size:.875rem;color:#555;margin-bottom:3rem;max-width:60ch}
+    .proj-grid{display:grid;grid-template-columns:1fr 260px;gap:clamp(2rem,5vw,5rem);align-items:start}
+    .proj-content p{font-size:1.125rem;color:#a0a0a0;line-height:1.8;margin-bottom:1.5rem;max-width:68ch}
+    .proj-sidebar{position:sticky;top:calc(70px + 2rem)}
+    .proj-stat-group{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+    .proj-stat{background:#1a1a1a;border:1px solid #222;border-radius:8px;padding:1rem;display:flex;flex-direction:column;gap:.25rem}
+    .proj-stat__val{font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:700;color:#00d4ff;line-height:1}
+    .proj-stat__key{font-size:.75rem;color:#555;letter-spacing:.04em}
+    .diagram-wrap{background:#111;border:1px solid #222;border-radius:12px;padding:2rem;overflow-x:auto}
+    .diagram{width:100%;height:auto;display:block}
+    .proj-details-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    .proj-detail-card{background:#111;border:1px solid #222;border-radius:12px;padding:2rem;transition:border-color .25s,transform .25s}
+    .proj-detail-card:hover{border-color:rgba(0,212,255,.3);transform:translateY(-3px)}
+    .proj-detail-card__icon{display:grid;place-items:center;width:40px;height:40px;background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.2);border-radius:8px;margin-bottom:1rem}
+    .proj-detail-card__title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:#f0f0f0;margin-bottom:1rem}
+    .proj-detail-card__list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+    .proj-detail-card__list li{font-size:.875rem;color:#a0a0a0;line-height:1.6;padding-left:1rem;position:relative}
+    .proj-detail-card__list li::before{content:'—';position:absolute;left:0;color:#00d4ff;font-size:.75rem;top:3px}
+    .proj-results{display:flex;flex-direction:column;gap:1rem;max-width:800px}
+    .proj-result{display:flex;align-items:flex-start;gap:1rem;background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:1.5rem}
+    .proj-result svg{flex-shrink:0;margin-top:2px}
+    .proj-result p{font-size:.875rem;color:#a0a0a0;line-height:1.8;max-width:none}
+    @media(max-width:768px){.proj-grid{grid-template-columns:1fr}.proj-sidebar{position:static}.proj-details-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo" aria-label="Back to portfolio">
+        <span class="nav__logo-mark">AV</span>
+        <span class="nav__logo-name">Adithya Vimukthi</span>
+      </a>
+      <a href="index.html#projects" class="btn btn--ghost" style="font-size:var(--fs-sm);padding:0.5rem 1.25rem;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Projects
+      </a>
+    </div>
+  </nav>
+
+  <main style="padding-top:var(--nav-height);">
+
+    <!-- HERO -->
+    <section class="proj-hero">
+      <div class="container">
+        <div class="proj-hero__meta reveal">
+          <span class="section__label">Mechanical Design · CAD · Industrial Automation · MAS Holdings</span>
+          <span class="proj-hero__year">2024</span>
+        </div>
+        <h1 class="proj-hero__title reveal">Polybag Sticker Pasting<br />Machine Redesign</h1>
+        <p class="proj-hero__lead reveal">
+          Redesigning an existing size-specific sticker pasting machine at MAS Holdings into a
+          flexible, reconfigurable system capable of handling multiple polybag sizes — eliminating
+          frequent changeover downtime through adjustable guide rails, modular subassemblies,
+          and SolidWorks parametric CAD.
+        </p>
+        <ul class="proj-hero__tags reveal" role="list">
+          <li>SolidWorks</li><li>Mechanical Design</li><li>Parametric CAD</li>
+          <li>Manufacturing</li><li>Industrial Automation</li><li>MAS Holdings</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="proj-section section">
+      <div class="container proj-grid">
+        <div class="proj-content reveal">
+          <h2 class="proj-section__title">Project Overview</h2>
+          <p>
+            The original sticker pasting machine at MAS Holdings was designed to handle only a
+            single polybag size, requiring a dedicated machine for each product dimension. This
+            caused frequent production changeovers, increased downtime, and higher operational
+            complexity as product ranges expanded.
+          </p>
+          <p>
+            The redesign objective was to develop a flexible, reconfigurable mechanical system
+            capable of handling multiple polybag sizes on a single machine without compromising
+            alignment accuracy, throughput, or reliability. The approach focused on quick
+            adjustability, repeatability, and ease of operation — ideally without requiring tools
+            for size changeovers.
+          </p>
+          <p>
+            The full redesign was performed in SolidWorks using parametric modelling and assembly
+            design, with interference detection and manufacturing feasibility checks throughout.
+          </p>
+        </div>
+        <aside class="proj-sidebar reveal">
+          <div class="proj-stat-group">
+            <div class="proj-stat"><span class="proj-stat__val">SW</span><span class="proj-stat__key">SolidWorks CAD</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">3</span><span class="proj-stat__key">Subassemblies</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">MAS</span><span class="proj-stat__key">MAS Holdings</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">2024</span><span class="proj-stat__key">Year</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- MACHINE PIPELINE -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Machine Process Flow</h2>
+        <p class="proj-section__sub reveal">
+          Three sequential subassemblies handle the full sticker-pasting operation, each
+          independently adjustable for different polybag sizes.
+        </p>
+        <div class="diagram-wrap reveal">
+          <svg viewBox="0 0 760 190" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Machine process flow" role="img">
+            <defs>
+              <marker id="aPB" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#00d4ff" opacity="0.7"/>
+              </marker>
+            </defs>
+
+            <!-- Input: Polybag -->
+            <rect x="10" y="70" width="100" height="50" rx="18" fill="rgba(0,212,255,0.06)" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
+            <text x="60" y="91" font-family="Space Grotesk,sans-serif" font-size="10" fill="#a0a0a0" text-anchor="middle" font-weight="600">Polybag</text>
+            <text x="60" y="107" font-family="Inter,sans-serif" font-size="8" fill="#444" text-anchor="middle">Input feed</text>
+            <line x1="110" y1="95" x2="138" y2="95" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" marker-end="url(#aPB)"/>
+
+            <!-- Stage 1: Feeding Mechanism -->
+            <rect x="140" y="30" width="160" height="130" rx="8" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1.2"/>
+            <text x="220" y="56" font-family="Space Grotesk,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="700">Feeding</text>
+            <text x="220" y="72" font-family="Space Grotesk,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="700">Mechanism</text>
+            <line x1="160" y1="86" x2="280" y2="86" stroke="#333" stroke-width="0.8"/>
+            <text x="220" y="103" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Belt / roller drive</text>
+            <text x="220" y="117" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Consistent feed rate</text>
+            <text x="220" y="131" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Size-independent</text>
+            <text x="220" y="148" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">Subassembly 01</text>
+            <line x1="300" y1="95" x2="328" y2="95" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" marker-end="url(#aPB)"/>
+
+            <!-- Stage 2: Alignment System -->
+            <rect x="330" y="30" width="160" height="130" rx="8" fill="#1a1a1a" stroke="#333"/>
+            <text x="410" y="56" font-family="Space Grotesk,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="700">Alignment</text>
+            <text x="410" y="72" font-family="Space Grotesk,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="700">System</text>
+            <line x1="350" y1="86" x2="470" y2="86" stroke="#333" stroke-width="0.8"/>
+            <text x="410" y="103" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Sliding guide rails</text>
+            <text x="410" y="117" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Lead screw width adj.</text>
+            <text x="410" y="131" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Parallel ± skew control</text>
+            <text x="410" y="148" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">Subassembly 02</text>
+            <line x1="490" y1="95" x2="518" y2="95" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" marker-end="url(#aPB)"/>
+
+            <!-- Stage 3: Sticker Dispensing -->
+            <rect x="520" y="30" width="160" height="130" rx="8" fill="#1a1a1a" stroke="#333"/>
+            <text x="600" y="56" font-family="Space Grotesk,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="700">Sticker</text>
+            <text x="600" y="72" font-family="Space Grotesk,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="700">Dispensing</text>
+            <line x1="540" y1="86" x2="660" y2="86" stroke="#333" stroke-width="0.8"/>
+            <text x="600" y="103" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Adjustable applicator</text>
+            <text x="600" y="117" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Consistent bag-edge ref.</text>
+            <text x="600" y="131" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Fine-tune mounts</text>
+            <text x="600" y="148" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">Subassembly 03</text>
+            <line x1="680" y1="95" x2="708" y2="95" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" marker-end="url(#aPB)"/>
+
+            <!-- Output -->
+            <rect x="710" y="70" width="40" height="50" rx="18" fill="rgba(74,222,128,0.06)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.6"/>
+            <text x="730" y="91" font-family="Space Grotesk,sans-serif" font-size="8" fill="#4ade80" text-anchor="middle" font-weight="700">OUT</text>
+            <text x="730" y="105" font-family="Inter,sans-serif" font-size="7" fill="#444" text-anchor="middle">✓ Tagged</text>
+
+            <!-- Adjustable bracket callout lines -->
+            <line x1="220" y1="30" x2="220" y2="14" stroke="rgba(0,212,255,0.3)" stroke-width="0.8" stroke-dasharray="3 3"/>
+            <text x="222" y="11" font-family="Inter,sans-serif" font-size="7" fill="rgba(0,212,255,0.5)">adjustable</text>
+            <line x1="410" y1="30" x2="410" y2="14" stroke="rgba(0,212,255,0.3)" stroke-width="0.8" stroke-dasharray="3 3"/>
+            <text x="412" y="11" font-family="Inter,sans-serif" font-size="7" fill="rgba(0,212,255,0.5)">adjustable</text>
+            <line x1="600" y1="30" x2="600" y2="14" stroke="rgba(0,212,255,0.3)" stroke-width="0.8" stroke-dasharray="3 3"/>
+            <text x="602" y="11" font-family="Inter,sans-serif" font-size="7" fill="rgba(0,212,255,0.5)">adjustable</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN APPROACH -->
+    <section class="proj-section section">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Design Approach</h2>
+        <p class="proj-section__sub reveal">Four mechanical design principles guided the redesign strategy.</p>
+        <div class="proj-details-grid reveal">
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="2" y="8" width="16" height="5" rx="1" stroke="#00d4ff" stroke-width="1.3"/>
+                <line x1="7" y1="4" x2="7" y2="8" stroke="#00d4ff" stroke-width="1.2"/>
+                <line x1="13" y1="4" x2="13" y2="8" stroke="#00d4ff" stroke-width="1.2"/>
+                <line x1="5" y1="4" x2="15" y2="4" stroke="#00d4ff" stroke-width="1.2"/>
+                <path d="M5 13v3M15 13v3" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.5"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Adjustable Guiding System</h3>
+            <ul class="proj-detail-card__list">
+              <li>Sliding guide rails for variable polybag widths</li>
+              <li>Lead screw / slot-based width adjustment</li>
+              <li>Parallel alignment maintained across all sizes</li>
+              <li>Prevents bag skewing during feeding</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="5" y="3" width="10" height="14" rx="2" stroke="#00d4ff" stroke-width="1.3"/>
+                <line x1="8" y1="7" x2="12" y2="7" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6"/>
+                <line x1="8" y1="10" x2="12" y2="10" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6"/>
+                <line x1="8" y1="13" x2="11" y2="13" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.4"/>
+                <circle cx="15" cy="6" r="3" stroke="#00d4ff" stroke-width="1.2"/>
+                <line x1="13.9" y1="4.9" x2="16.1" y2="7.1" stroke="#00d4ff" stroke-width="1"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Sticker Application Alignment</h3>
+            <ul class="proj-detail-card__list">
+              <li>Redesigned applicator maintains position across sizes</li>
+              <li>Accurate alignment relative to bag edges</li>
+              <li>Adjustable mounts for fine-tuning sticker position</li>
+              <li>Consistent placement validated via CAD assembly</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="2" y="2" width="7" height="7" rx="1.5" stroke="#00d4ff" stroke-width="1.3"/>
+                <rect x="11" y="2" width="7" height="7" rx="1.5" stroke="#00d4ff" stroke-width="1.3"/>
+                <rect x="2" y="11" width="7" height="7" rx="1.5" stroke="#00d4ff" stroke-width="1.3" stroke-opacity="0.5"/>
+                <rect x="11" y="11" width="7" height="7" rx="1.5" stroke="#00d4ff" stroke-width="1.3" stroke-opacity="0.5"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Modular Design Concept</h3>
+            <ul class="proj-detail-card__list">
+              <li>Feeding, alignment, and dispensing as separate modules</li>
+              <li>Each subassembly independently replaceable</li>
+              <li>Easier maintenance and future upgrades</li>
+              <li>Parametric CAD scaling for new bag dimensions</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="7" stroke="#00d4ff" stroke-width="1.3"/>
+                <path d="M7 10l2 2 4-4" stroke="#00d4ff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Ergonomics &amp; Changeover Speed</h3>
+            <ul class="proj-detail-card__list">
+              <li>Tool-free manual adjustments where possible</li>
+              <li>Reduced setup time between size changes</li>
+              <li>Improved operator usability and reduced error</li>
+              <li>Designed for factory floor constraints</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CAD & SIMULATION -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">CAD &amp; Simulation</h2>
+        <p class="proj-section__sub reveal">Full SolidWorks parametric workflow from concept to validated assembly.</p>
+        <div class="diagram-wrap reveal">
+          <svg viewBox="0 0 760 120" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="CAD workflow" role="img">
+            <defs>
+              <marker id="aCAD" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#00d4ff" opacity="0.6"/>
+              </marker>
+            </defs>
+            <rect x="10" y="30" width="130" height="60" rx="6" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1.1"/>
+            <text x="75" y="56" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Parametric Modelling</text>
+            <text x="75" y="70" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Scalable dimensions</text>
+            <text x="75" y="82" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">for all bag sizes</text>
+            <line x1="140" y1="60" x2="165" y2="60" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" marker-end="url(#aCAD)"/>
+
+            <rect x="167" y="30" width="130" height="60" rx="6" fill="#1a1a1a" stroke="#333"/>
+            <text x="232" y="56" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Assembly Design</text>
+            <text x="232" y="70" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Constraints · mates</text>
+            <text x="232" y="82" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">motion validation</text>
+            <line x1="297" y1="60" x2="322" y2="60" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" marker-end="url(#aCAD)"/>
+
+            <rect x="324" y="30" width="130" height="60" rx="6" fill="#1a1a1a" stroke="#333"/>
+            <text x="389" y="56" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Interference Check</text>
+            <text x="389" y="70" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Collision detection</text>
+            <text x="389" y="82" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">tolerance analysis</text>
+            <line x1="454" y1="60" x2="479" y2="60" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" marker-end="url(#aCAD)"/>
+
+            <rect x="481" y="30" width="130" height="60" rx="6" fill="#1a1a1a" stroke="#333"/>
+            <text x="546" y="56" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Manufacturability</text>
+            <text x="546" y="70" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Cost &amp; feasibility</text>
+            <text x="546" y="82" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">review</text>
+            <line x1="611" y1="60" x2="636" y2="60" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" marker-end="url(#aCAD)"/>
+
+            <rect x="638" y="22" width="112" height="76" rx="6" fill="rgba(0,212,255,0.07)" stroke="#00d4ff" stroke-width="1.1"/>
+            <text x="694" y="52" font-family="Space Grotesk,sans-serif" font-size="10" fill="#00d4ff" text-anchor="middle" font-weight="700">VALIDATED</text>
+            <text x="694" y="68" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Multi-size</text>
+            <text x="694" y="82" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">assembly design</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="proj-section section">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Results &amp; Impact</h2>
+        <p class="proj-section__sub reveal">Key outcomes from the redesign at MAS Holdings.</p>
+        <div class="proj-results reveal">
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#4ade80" stroke-width="1.2"/>
+              <path d="M6 10l3 3 5-5" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Successfully enabled multi-size polybag handling on a single machine — eliminating the need for separate dedicated machines per product size.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#4ade80" stroke-width="1.2"/>
+              <path d="M6 10l3 3 5-5" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Reduced downtime from size changeovers — adjustable guide system allows rapid re-configuration without tooling.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#4ade80" stroke-width="1.2"/>
+              <path d="M6 10l3 3 5-5" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Improved operational efficiency and machine utilisation across product lines through a cost-effective retrofit rather than new machine investment.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#4ade80" stroke-width="1.2"/>
+              <path d="M6 10l3 3 5-5" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Modular subassembly architecture enables future upgrades and easier maintenance — each of the three units can be independently serviced or replaced.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('reveal--visible'); obs.unobserve(e.target); }
+      }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

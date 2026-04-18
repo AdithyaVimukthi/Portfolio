@@ -1,0 +1,63 @@
+Polybag Sticker Pasting Machine Redesign for Multi-Size Handling – MAS
+Project Overview
+At MAS Holdings, I worked on redesigning an existing polybag sticker pasting machine to overcome a key production limitation: the original system was designed to handle only a single polybag size.
+The objective was to develop a flexible, reconfigurable mechanical system capable of handling multiple polybag sizes without compromising alignment accuracy, throughput, or reliability.
+Problem Statement
+Existing machines were size-specific, requiring separate setups for different polybag dimensions
+Frequent changeovers caused:
+Increased downtime
+Reduced productivity
+Higher operational complexity
+Manual adjustments were limited and not scalable for varying product sizes
+My Contribution
+Analyzed the existing machine design and identified constraints in guiding, positioning, and sticker application mechanisms
+Designed a mechanically adjustable system to accommodate multiple polybag sizes
+Performed full redesign using SolidWorks, including parametric modeling and assembly design
+Developed a solution focused on quick adjustability, repeatability, and ease of operation
+Mechanical Design Approach
+1. Adjustable Guiding System
+Designed sliding guide rails to accommodate varying polybag widths
+Incorporated lead screw / slot-based adjustment mechanisms for precise positioning
+Ensured parallel alignment to avoid skewing during feeding
+2. Sticker Application Alignment
+Redesigned the sticker placement mechanism to maintain:
+Consistent position across different bag sizes
+Accurate alignment relative to bag edges
+Introduced adjustable mounts for fine-tuning sticker position
+3. Modular Design Concept
+Broke down the machine into modular subassemblies:
+Feeding mechanism
+Alignment system
+Sticker dispensing unit
+Enabled easier maintenance and future upgrades
+4. Ergonomics & Changeover Optimization
+Designed for quick manual adjustments without requiring tools (where possible)
+Reduced setup time between size changes
+Improved operator usability and reduced error
+CAD & Simulation
+Used SolidWorks for:
+3D modeling of all redesigned components
+Assembly constraints and motion validation
+Interference detection and tolerance checks
+Applied parametric design principles to allow easy scaling of dimensions for different polybag sizes
+Engineering Considerations
+Maintained mechanical stability across adjustable ranges
+Ensured consistent feeding path regardless of bag size
+Accounted for:
+Friction and wear in sliding components
+Repeatability of adjustments
+Manufacturing feasibility and cost
+Key Challenges
+Designing a system that is both flexible and mechanically rigid
+Maintaining alignment accuracy across different configurations
+Avoiding complexity that could slow down operators
+Retrofitting improvements without fully replacing existing infrastructure
+Results & Impact
+Successfully enabled multi-size polybag handling on a single machine
+Reduced downtime caused by size changeovers
+Improved operational efficiency and machine utilization
+Provided a cost-effective alternative to purchasing multiple dedicated machines
+Technologies & Tools
+CAD Software: SolidWorks
+Design Approach: Parametric & modular mechanical design
+Focus Areas: Mechanism design, manufacturability, industrial automation

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Follow-Me Cart Robot — Adithya Vimukthi</title>
+  <meta name="description" content="Smart follow-me utility robot with dual-layer UWB + RGB-D tracking, scissor lift, voice control, NLP pipeline, and intelligent obstacle avoidance." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <style>
+    /* Self-contained layout fallbacks */
+    .proj-hero{padding-block:7.5rem 5rem;border-bottom:1px solid #222}
+    .proj-hero__meta{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+    .proj-hero__year{font-size:.75rem;font-weight:500;letter-spacing:.1em;color:#555}
+    .proj-hero__title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.25rem,6vw,4.5rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.7) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .proj-hero__lead{font-size:clamp(1rem,2vw,1.125rem);color:#a0a0a0;line-height:1.8;max-width:72ch;margin-bottom:1.5rem}
+    .proj-hero__tags{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+    .proj-hero__tags li{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#00d4ff;background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.2);border-radius:4px;padding:.25rem .75rem}
+    .proj-section__title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.75rem,3vw,2.25rem);font-weight:700;color:#f0f0f0;margin-bottom:1.5rem;letter-spacing:-.02em}
+    .proj-section__sub{font-size:.875rem;color:#555;margin-bottom:3rem;max-width:60ch}
+    .proj-grid{display:grid;grid-template-columns:1fr 260px;gap:clamp(2rem,5vw,5rem);align-items:start}
+    .proj-content p{font-size:1.125rem;color:#a0a0a0;line-height:1.8;margin-bottom:1.5rem;max-width:68ch}
+    .proj-sidebar{position:sticky;top:calc(70px + 2rem)}
+    .proj-stat-group{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+    .proj-stat{background:#1a1a1a;border:1px solid #222;border-radius:8px;padding:1rem;display:flex;flex-direction:column;gap:.25rem}
+    .proj-stat__val{font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:700;color:#00d4ff;line-height:1}
+    .proj-stat__key{font-size:.75rem;color:#555;letter-spacing:.04em}
+    .diagram-wrap{background:#111;border:1px solid #222;border-radius:12px;padding:2rem;overflow-x:auto}
+    .diagram{width:100%;height:auto;display:block}
+    .proj-details-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    .proj-detail-card{background:#111;border:1px solid #222;border-radius:12px;padding:2rem;transition:border-color .25s,transform .25s}
+    .proj-detail-card:hover{border-color:rgba(0,212,255,.3);transform:translateY(-3px)}
+    .proj-detail-card__icon{display:grid;place-items:center;width:40px;height:40px;background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.2);border-radius:8px;margin-bottom:1rem}
+    .proj-detail-card__title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:#f0f0f0;margin-bottom:1rem}
+    .proj-detail-card__list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+    .proj-detail-card__list li{font-size:.875rem;color:#a0a0a0;line-height:1.6;padding-left:1rem;position:relative}
+    .proj-detail-card__list li::before{content:'—';position:absolute;left:0;color:#00d4ff;font-size:.75rem;top:3px}
+    .proj-results{display:flex;flex-direction:column;gap:1rem;max-width:800px}
+    .proj-result{display:flex;align-items:flex-start;gap:1rem;background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:1.5rem}
+    .proj-result svg{flex-shrink:0;margin-top:2px}
+    .proj-result p{font-size:.875rem;color:#a0a0a0;line-height:1.8;max-width:none}
+    @media(max-width:768px){.proj-grid{grid-template-columns:1fr}.proj-sidebar{position:static}.proj-details-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo" aria-label="Back to portfolio">
+        <span class="nav__logo-mark">AV</span>
+        <span class="nav__logo-name">Adithya Vimukthi</span>
+      </a>
+      <a href="index.html#projects" class="btn btn--ghost" style="font-size:var(--fs-sm);padding:0.5rem 1.25rem;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Projects
+      </a>
+    </div>
+  </nav>
+
+  <main style="padding-top:var(--nav-height);">
+
+    <!-- HERO -->
+    <section class="proj-hero">
+      <div class="container">
+        <div class="proj-hero__meta reveal">
+          <span class="section__label">Mobile Robotics · Sensor Fusion · HRI</span>
+          <span class="proj-hero__year">2026 · Ongoing</span>
+        </div>
+        <h1 class="proj-hero__title reveal">Follow-Me<br />Assistant Robot</h1>
+        <p class="proj-hero__lead reveal">
+          A smart utility robot for domestic and retail environments — following its owner reliably
+          using a fail-over dual-layer tracking system that seamlessly switches between RGB-D visual
+          tracking and UWB radio localization when line of sight is lost.
+        </p>
+        <ul class="proj-hero__tags reveal" role="list">
+          <li>ROS</li><li>RGB-D</li><li>UWB</li><li>NLP</li><li>Python</li>
+          <li>CAN Bus</li><li>Scissor Lift</li><li>Embedded</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="proj-section section">
+      <div class="container proj-grid">
+        <div class="proj-content reveal">
+          <h2 class="proj-section__title">Project Overview</h2>
+          <p>
+            The Follow-Me Cart is a multi-disciplinary mechatronics project targeting heavy lifting
+            assistance and intuitive user interaction in real-world environments like supermarkets
+            and domestic spaces. The robot is designed to be more than a passive follower — it is
+            an interactive platform with ergonomic, navigational, and communication intelligence.
+          </p>
+          <p>
+            The key engineering challenge is reliability: ensuring the robot never loses its owner,
+            even in complex environments. This is solved by a dual-layer tracking architecture that
+            uses an RGB-D camera as the primary tracker and UWB radio ranging as a fail-over —
+            seamlessly switching when visual line-of-sight is broken (e.g., behind a store shelf).
+          </p>
+          <p>
+            Development is currently in the integration and testing phase, with active work on
+            balancing the center of gravity under scissor lift extension and optimising
+            voice-command latency.
+          </p>
+        </div>
+        <aside class="proj-sidebar reveal">
+          <div class="proj-stat-group">
+            <div class="proj-stat"><span class="proj-stat__val">UWB</span><span class="proj-stat__key">Fail-over Tracking</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">RGB-D</span><span class="proj-stat__key">Primary Tracking</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">Lift</span><span class="proj-stat__key">Scissor Actuator</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">2026</span><span class="proj-stat__key">Year</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- TRACKING ARCHITECTURE -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Dual-Layer Tracking Architecture</h2>
+        <p class="proj-section__sub reveal">
+          Primary visual tracking via RGB-D camera automatically falls over to UWB trilateration
+          when line of sight is broken — re-acquiring visual lock once the user is back in view.
+        </p>
+        <div class="diagram-wrap reveal">
+          <svg viewBox="0 0 760 210" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Dual-layer tracking architecture" role="img">
+            <defs>
+              <marker id="aFC" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#00d4ff" opacity="0.7"/>
+              </marker>
+              <marker id="aFCy" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#fbbf24" opacity="0.8"/>
+              </marker>
+              <marker id="aFCg" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#4ade80" opacity="0.8"/>
+              </marker>
+            </defs>
+
+            <!-- RGB-D Sensor (primary) -->
+            <rect x="10" y="15" width="155" height="65" rx="6" fill="#111" stroke="#00d4ff" stroke-width="1.3"/>
+            <text x="88" y="38" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">RGB-D Camera</text>
+            <text x="88" y="53" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Deep learning person ID</text>
+            <text x="88" y="66" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">3D obstacle mapping</text>
+            <rect x="20" y="6" width="52" height="14" rx="3" fill="rgba(0,212,255,0.15)" stroke="rgba(0,212,255,0.4)" stroke-width="0.8"/>
+            <text x="46" y="16" font-family="Inter,sans-serif" font-size="7" fill="#00d4ff" text-anchor="middle" letter-spacing="0.06em">PRIMARY</text>
+
+            <!-- UWB Sensor (failsafe) -->
+            <rect x="10" y="130" width="155" height="65" rx="6" fill="#111" stroke="#fbbf24" stroke-width="1.3"/>
+            <text x="88" y="153" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">UWB Module</text>
+            <text x="88" y="168" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Centimetre-level ranging</text>
+            <text x="88" y="181" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Tag on user · anchors on robot</text>
+            <rect x="20" y="121" width="54" height="14" rx="3" fill="rgba(251,191,36,0.12)" stroke="rgba(251,191,36,0.4)" stroke-width="0.8"/>
+            <text x="47" y="131" font-family="Inter,sans-serif" font-size="7" fill="#fbbf24" text-anchor="middle" letter-spacing="0.06em">FAILSAFE</text>
+
+            <!-- Failover decision label in the gap -->
+            <text x="88" y="115" font-family="Inter,sans-serif" font-size="9" fill="#444" text-anchor="middle">↕ failover switch</text>
+
+            <!-- Arrows to Tracking Arbitrator -->
+            <line x1="165" y1="47" x2="218" y2="70" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aFC)"/>
+            <line x1="165" y1="163" x2="218" y2="143" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aFCy)"/>
+
+            <!-- Tracking Arbitrator / LoS Monitor -->
+            <rect x="220" y="60" width="165" height="90" rx="6" fill="#1a1a1a" stroke="#333"/>
+            <text x="302" y="84" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Tracking Arbitrator</text>
+            <text x="302" y="100" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Line-of-sight monitor</text>
+            <text x="302" y="114" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.7">LoS active → Visual</text>
+            <text x="302" y="128" font-family="Inter,sans-serif" font-size="8" fill="#fbbf24" text-anchor="middle" opacity="0.7">LoS lost   → UWB</text>
+            <text x="302" y="142" font-family="Inter,sans-serif" font-size="8" fill="#4ade80" text-anchor="middle" opacity="0.7">Re-acquired → Visual</text>
+
+            <!-- Arrow to Navigation Controller -->
+            <line x1="385" y1="105" x2="428" y2="105" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aFC)"/>
+
+            <!-- Navigation Controller -->
+            <rect x="430" y="50" width="165" height="110" rx="6" fill="#1a1a1a" stroke="#333"/>
+            <text x="512" y="78" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Navigation Controller</text>
+            <text x="512" y="95" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Fused position estimate</text>
+            <text x="512" y="110" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Path planning</text>
+            <text x="512" y="125" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Obstacle avoidance</text>
+            <text x="512" y="140" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">Depth map integration</text>
+
+            <!-- Arrow to Drive -->
+            <line x1="595" y1="105" x2="638" y2="105" stroke="#4ade80" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aFCg)"/>
+
+            <!-- Drive System -->
+            <rect x="640" y="60" width="110" height="90" rx="6" fill="rgba(74,222,128,0.06)" stroke="rgba(74,222,128,0.3)" stroke-width="1.2"/>
+            <text x="695" y="96" font-family="Space Grotesk,sans-serif" font-size="10" fill="#4ade80" text-anchor="middle" font-weight="700">DRIVE</text>
+            <text x="695" y="113" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Motor controllers</text>
+            <text x="695" y="128" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">CAN Bus</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES -->
+    <section class="proj-section section">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Core Features</h2>
+        <p class="proj-section__sub reveal">Four integrated subsystems delivering the full follow-me experience.</p>
+        <div class="proj-details-grid reveal">
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="3" y="8" width="14" height="10" rx="2" stroke="#00d4ff" stroke-width="1.4"/>
+                <line x1="7" y1="8" x2="7" y2="3" stroke="#00d4ff" stroke-width="1.3" stroke-dasharray="2 2"/>
+                <line x1="13" y1="8" x2="13" y2="3" stroke="#00d4ff" stroke-width="1.3" stroke-dasharray="2 2"/>
+                <line x1="5" y1="3" x2="15" y2="3" stroke="#00d4ff" stroke-width="1.3"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Smart Scissor Lift</h3>
+            <ul class="proj-detail-card__list">
+              <li>Motorised vertical lift platform</li>
+              <li>Adjustable height based on user preference</li>
+              <li>High-torque linear actuator or lead screw</li>
+              <li>CoG balancing under full load extension</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="7" stroke="#00d4ff" stroke-width="1.4"/>
+                <path d="M10 6v4l3 2" stroke="#00d4ff" stroke-width="1.3" stroke-linecap="round"/>
+                <circle cx="10" cy="10" r="1.2" fill="#00d4ff" fill-opacity="0.5"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Multimodal Interaction</h3>
+            <ul class="proj-detail-card__list">
+              <li>Voice commands via NLP pipeline (follow, stop, go to…)</li>
+              <li>HMI touchscreen for grocery lists and reminders</li>
+              <li>Gesture control for directional nudges</li>
+              <li>Far-field microphone array with noise cancellation</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="2" y="6" width="7" height="9" rx="2" stroke="#00d4ff" stroke-width="1.3"/>
+                <rect x="11" y="6" width="7" height="9" rx="2" stroke="#fbbf24" stroke-width="1.3"/>
+                <path d="M9 10.5h2" stroke="#555" stroke-width="1" stroke-dasharray="2 1"/>
+                <text x="4" y="12" font-family="monospace" font-size="5" fill="#00d4ff">CAM</text>
+                <text x="13" y="12" font-family="monospace" font-size="5" fill="#fbbf24">UWB</text>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Dual-Layer Tracking</h3>
+            <ul class="proj-detail-card__list">
+              <li>RGB-D primary: person ID + 3D position</li>
+              <li>UWB failsafe: centimetre-level ranging</li>
+              <li>Seamless automatic switch on LoS loss</li>
+              <li>Re-acquisition logic to restore visual lock</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="8" stroke="#00d4ff" stroke-width="1.4"/>
+                <path d="M10 3v3M10 14v3M3 10h3M14 10h3" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
+                <circle cx="10" cy="10" r="2.5" stroke="#00d4ff" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Intelligent Obstacle Avoidance</h3>
+            <ul class="proj-detail-card__list">
+              <li>Real-time depth mapping from RGB-D camera</li>
+              <li>Dynamic obstacle detection and avoidance</li>
+              <li>Handles shoppers, shelves, narrow aisles</li>
+              <li>Integrated with navigation path planner</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- STATUS -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Current Status &amp; Next Steps</h2>
+        <p class="proj-section__sub reveal">Ongoing — in integration and hardware testing phase.</p>
+        <div class="proj-results reveal">
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#4ade80" stroke-width="1.2"/>
+              <path d="M6 10l3 3 5-5" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>RGB-D visual person tracking implemented — deep learning-based person identification with 3D position estimation working in controlled environments.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#4ade80" stroke-width="1.2"/>
+              <path d="M6 10l3 3 5-5" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>UWB ranging module integrated — centimetre-level tag-to-anchor distance measurement established for failover localization.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#fbbf24" stroke-width="1.2"/>
+              <line x1="10" y1="7" x2="10" y2="11" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="13.5" r="0.8" fill="#fbbf24"/>
+            </svg>
+            <p>Current challenge — balancing the center of gravity when the scissor lift is fully extended under a heavy load. Structural reinforcement under evaluation.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#444" stroke-width="1.2"/>
+              <line x1="10" y1="7" x2="10" y2="13" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <p>Next — optimising voice-to-command latency in the NLP pipeline and perfecting the UWB re-acquisition logic for real store environments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('reveal--visible'); obs.unobserve(e.target); }
+      }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

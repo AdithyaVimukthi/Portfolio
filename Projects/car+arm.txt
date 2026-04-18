@@ -1,0 +1,42 @@
+Project Overview: Autonomous Mobile Manipulator
+This project is an advanced, ongoing mechatronics R&D platform integrating an open-source 5-axis robotic arm (SO-101) with a holonomic mobile base. It serves as a practical testbed for mastering high-level robotics concepts, including higher Degrees of Freedom (DOF) arm control, SLAM, sensor fusion, and complex mobile kinematics.
+
+The ultimate goal is to bridge the gap between Natural Language Processing (NLP) and physical actuation, creating a system that can understand abstract user commands, perceive its environment, and execute complex fetch-and-carry tasks autonomously.
+
+The Main Target: "NLP to Action"
+
+The system is designed to process high-level text commands (e.g., "Bring me healthy food") and translate them into a sequence of autonomous physical actions. This requires the robot to:
+
+Reason: Interpret "healthy food" and map it to a specific object (e.g., an apple instead of a candy bar).
+
+Locate: Cross-reference the requested item with a spatial memory of the environment.
+
+Navigate: Path-plan to the object's location while avoiding dynamic obstacles.
+
+Manipulate: Calculate the inverse kinematics required to approach, grasp, and lift the item without crushing it.
+
+Deliver: Return to the user and safely hand over the object.
+
+Core Engineering Focus: What We Are Learning & Developing
+Because this is a learning-driven platform, development is segmented into several advanced robotics disciplines:
+
+Mobile Platform Kinematics: Developing the control matrix for the 4-wheel Mecanum chassis to achieve true holonomic motion (strafing, diagonal movement, and rotation in place) for precise positioning near target objects.
+
+Sensor Fusion & Semantic SLAM: Merging odometry data from the Mecanum wheels with point-cloud and RGB data from the Intel RealSense camera. This allows the robot to build a map that isn't just geometric, but semantic—meaning it knows both where things are and what they are.
+
+High-DOF Arm Control: Moving beyond basic joint-space control to implement robust Inverse Kinematics (IK) for the 5-axis SO-101 arm, ensuring smooth trajectory planning for the end-effector in 3D space.
+
+Computer Vision & Grasp Planning: Utilizing deep learning vision models (such as YOLO or RT-DETR) over the RGB-D feed to identify objects, determine their bounding boxes, and calculate the optimal approach angle and depth for the servo-driven gripper.
+
+Hardware Architecture & Stack
+The system uses a distributed computing architecture, offloading low-level motor control to microcontrollers while reserving the primary CPU for heavy computational tasks like vision and path planning.
+
+Subsystem	Hardware Component	Role & Functionality
+High-Level Compute	Raspberry Pi 4	The central "brain." Runs the ROS (Robot Operating System) master node, SLAM algorithms, vision inference, and the NLP-to-action logic.
+Perception Sensor	Intel RealSense	Primary RGB-D (Depth) camera. Provides 3D point clouds for obstacle avoidance, object recognition, and calculating grasp distances.
+Manipulator	SO-101 Arm Structure	Open-source 5-axis mechanical structure providing the necessary dexterity to reach and manipulate objects on varied surfaces.
+Arm Actuators	STS3215 Servos	High-torque serial bus servos providing precise angular feedback and control for the arm's joints.
+Arm Controller	Serial Servo Controller	Acts as an intermediary to handle the specific serial communication protocol required by the STS3215 servos, freeing up the Pi's processing power.
+Mobile Chassis	Aluminum Frame + Mecanum Wheels	Provides a rigid, omnidirectional base capable of intricate micro-adjustments when positioning the arm for a grasp.
+Base Motor Control	Arduino / ESP32	Handles the low-level PID control loop and kinematics math for the 4 Mecanum wheels, receiving velocity commands (Twist messages) from the Pi.
+Project Status: This is an ongoing development project. Current efforts are focused on establishing reliable communication between the Raspberry Pi and the microcontrollers, and tuning the holonomic kinematics of the Mecanum base to ensure accurate odometry before fully integrating the SLAM and vision pipelines.

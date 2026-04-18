@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autonomous Mobile Manipulator — Adithya Vimukthi</title>
+  <meta name="description" content="Autonomous mobile manipulator combining a Mecanum-wheeled platform with a 5-axis SO-101 arm — SLAM, NLP-to-action, ROS 2, and deep learning vision." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <style>
+    /* Self-contained layout fallbacks — work even if project.css is missing */
+    .proj-hero{padding-block:7.5rem 5rem;border-bottom:1px solid #222}
+    .proj-hero__meta{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+    .proj-hero__year{font-size:.75rem;font-weight:500;letter-spacing:.1em;color:#555}
+    .proj-hero__title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.25rem,6vw,4.5rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.7) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .proj-hero__lead{font-size:clamp(1rem,2vw,1.125rem);color:#a0a0a0;line-height:1.8;max-width:72ch;margin-bottom:1.5rem}
+    .proj-hero__tags{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+    .proj-hero__tags li{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#00d4ff;background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.2);border-radius:4px;padding:.25rem .75rem}
+    .proj-section__title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.75rem,3vw,2.25rem);font-weight:700;color:#f0f0f0;margin-bottom:1.5rem;letter-spacing:-.02em}
+    .proj-section__sub{font-size:.875rem;color:#555;margin-bottom:3rem;max-width:60ch}
+    .proj-grid{display:grid;grid-template-columns:1fr 260px;gap:clamp(2rem,5vw,5rem);align-items:start}
+    .proj-content p{font-size:1.125rem;color:#a0a0a0;line-height:1.8;margin-bottom:1.5rem;max-width:68ch}
+    .proj-sidebar{position:sticky;top:calc(70px + 2rem)}
+    .proj-stat-group{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+    .proj-stat{background:#1a1a1a;border:1px solid #222;border-radius:8px;padding:1rem;display:flex;flex-direction:column;gap:.25rem}
+    .proj-stat__val{font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:700;color:#00d4ff;line-height:1}
+    .proj-stat__key{font-size:.75rem;color:#555;letter-spacing:.04em}
+    .diagram-wrap{background:#111;border:1px solid #222;border-radius:12px;padding:2rem;overflow-x:auto}
+    .diagram{width:100%;height:auto;display:block}
+    .proj-details-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    .proj-detail-card{background:#111;border:1px solid #222;border-radius:12px;padding:2rem;transition:border-color .25s,transform .25s}
+    .proj-detail-card:hover{border-color:rgba(0,212,255,.3);transform:translateY(-3px)}
+    .proj-detail-card__icon{display:grid;place-items:center;width:40px;height:40px;background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.2);border-radius:8px;margin-bottom:1rem}
+    .proj-detail-card__title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:#f0f0f0;margin-bottom:1rem}
+    .proj-detail-card__list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+    .proj-detail-card__list li{font-size:.875rem;color:#a0a0a0;line-height:1.6;padding-left:1rem;position:relative}
+    .proj-detail-card__list li::before{content:'—';position:absolute;left:0;color:#00d4ff;font-size:.75rem;top:3px}
+    .proj-results{display:flex;flex-direction:column;gap:1rem;max-width:800px}
+    .proj-result{display:flex;align-items:flex-start;gap:1rem;background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:1.5rem}
+    .proj-result svg{flex-shrink:0;margin-top:2px}
+    .proj-result p{font-size:.875rem;color:#a0a0a0;line-height:1.8;max-width:none}
+    @media(max-width:768px){.proj-grid{grid-template-columns:1fr}.proj-sidebar{position:static}.proj-details-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo" aria-label="Back to portfolio">
+        <span class="nav__logo-mark">AV</span>
+        <span class="nav__logo-name">Adithya Vimukthi</span>
+      </a>
+      <a href="index.html#projects" class="btn btn--ghost" style="font-size:var(--fs-sm);padding:0.5rem 1.25rem;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Projects
+      </a>
+    </div>
+  </nav>
+
+  <main style="padding-top:var(--nav-height);">
+
+    <!-- HERO -->
+    <section class="proj-hero">
+      <div class="container">
+        <div class="proj-hero__meta reveal">
+          <span class="section__label">Mobile Robotics · Manipulation · Autonomous Systems</span>
+          <span class="proj-hero__year">2026</span>
+        </div>
+        <h1 class="proj-hero__title reveal">Autonomous Mobile<br />Manipulator</h1>
+        <p class="proj-hero__lead reveal">
+          An ongoing R&amp;D platform integrating a 5-axis SO-101 robotic arm onto a holonomic
+          Mecanum-wheeled base — bridging natural language commands with physical manipulation
+          through semantic SLAM, inverse kinematics, and deep learning vision on ROS 2.
+        </p>
+        <ul class="proj-hero__tags reveal" role="list">
+          <li>ROS 2</li><li>Python</li><li>RealSense D435</li><li>SLAM</li>
+          <li>YOLO</li><li>Raspberry Pi 4</li><li>Mecanum Drive</li><li>SO-101 Arm</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="proj-section section">
+      <div class="container proj-grid">
+        <div class="proj-content reveal">
+          <h2 class="proj-section__title">Project Overview</h2>
+          <p>
+            This platform is a learning-driven R&amp;D testbed for mastering advanced robotics
+            end-to-end — from holonomic kinematics and sensor fusion to high-DOF arm control
+            and language-conditioned manipulation. The ultimate goal is to process a high-level
+            text command (e.g., "Bring me the apple") and translate it into a complete sequence
+            of autonomous physical actions: reasoning, locating, navigating, grasping, and delivering.
+          </p>
+          <p>
+            The system uses a distributed computing architecture: a Raspberry Pi 4 runs the
+            ROS 2 master, SLAM pipeline, vision inference, and NLP logic — while an Arduino
+            handles low-level PID control of the Mecanum drive, and a dedicated serial controller
+            manages the STS3215 servo joints of the arm.
+          </p>
+          <p>
+            Current development focus is on establishing reliable inter-board communication and
+            tuning the Mecanum wheel odometry before fully integrating the SLAM and manipulation pipelines.
+          </p>
+        </div>
+        <aside class="proj-sidebar reveal">
+          <div class="proj-stat-group">
+            <div class="proj-stat"><span class="proj-stat__val">RPi 4</span><span class="proj-stat__key">Central Compute</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">5-DOF</span><span class="proj-stat__key">Arm Joints</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">4WD</span><span class="proj-stat__key">Mecanum Base</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">2026</span><span class="proj-stat__key">Year</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- NLP-TO-ACTION PIPELINE -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">NLP-to-Action Pipeline</h2>
+        <p class="proj-section__sub reveal">
+          Abstract language commands are translated into physical action through a chain of
+          reasoning, spatial lookup, path planning, and kinematic execution stages.
+        </p>
+        <div class="diagram-wrap reveal">
+          <svg viewBox="0 0 860 110" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="NLP to action pipeline" role="img">
+            <defs>
+              <marker id="aNLP" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#00d4ff" opacity="0.7"/>
+              </marker>
+            </defs>
+
+            <rect x="10" y="28" width="125" height="54" rx="6" fill="#111" stroke="#00d4ff" stroke-width="1.2"/>
+            <text x="72" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">NLP Command</text>
+            <text x="72" y="64" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">"Bring me the apple"</text>
+            <text x="72" y="92" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">Language Input</text>
+            <line x1="135" y1="55" x2="152" y2="55" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
+
+            <rect x="154" y="28" width="135" height="54" rx="6" fill="#111" stroke="#333"/>
+            <text x="221" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Semantic Reasoning</text>
+            <text x="221" y="64" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Map intent → object class</text>
+            <text x="221" y="92" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">LLM / Rule Engine</text>
+            <line x1="289" y1="55" x2="306" y2="55" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
+
+            <rect x="308" y="28" width="130" height="54" rx="6" fill="#111" stroke="#333"/>
+            <text x="373" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Semantic SLAM</text>
+            <text x="373" y="64" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Locate in spatial map</text>
+            <text x="373" y="92" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">RealSense + Odometry</text>
+            <line x1="438" y1="55" x2="455" y2="55" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
+
+            <rect x="457" y="28" width="125" height="54" rx="6" fill="#111" stroke="#333"/>
+            <text x="519" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Path Planning</text>
+            <text x="519" y="64" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Navigate + avoid obstacles</text>
+            <text x="519" y="92" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">ROS 2 Nav2</text>
+            <line x1="582" y1="55" x2="599" y2="55" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
+
+            <rect x="601" y="28" width="125" height="54" rx="6" fill="#111" stroke="#333"/>
+            <text x="663" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">IK + Grasp Plan</text>
+            <text x="663" y="64" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">End-effector trajectory</text>
+            <text x="663" y="92" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">STS3215 Servos</text>
+            <line x1="726" y1="55" x2="743" y2="55" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
+
+            <rect x="745" y="18" width="105" height="74" rx="6" fill="rgba(0,212,255,0.08)" stroke="#00d4ff" stroke-width="1.2"/>
+            <text x="797" y="46" font-family="Space Grotesk,sans-serif" font-size="10" fill="#00d4ff" text-anchor="middle" font-weight="700">EXECUTE</text>
+            <text x="797" y="62" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Grasp object</text>
+            <text x="797" y="76" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Deliver to user</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SYSTEM ARCHITECTURE -->
+    <section class="proj-section section">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Distributed System Architecture</h2>
+        <p class="proj-section__sub reveal">
+          Computation is partitioned across three controllers — the Raspberry Pi 4 handles
+          all high-level intelligence while dedicated microcontrollers manage time-critical
+          low-level control loops.
+        </p>
+        <div class="diagram-wrap reveal">
+          <svg viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Distributed system architecture" role="img">
+            <defs>
+              <marker id="aArch" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#00d4ff" opacity="0.6"/>
+              </marker>
+            </defs>
+
+            <!-- Top: Raspberry Pi 4 -->
+            <rect x="180" y="10" width="400" height="60" rx="8" fill="rgba(0,212,255,0.08)" stroke="#00d4ff" stroke-width="1.5"/>
+            <text x="380" y="36" font-family="Space Grotesk,sans-serif" font-size="12" fill="#f0f0f0" text-anchor="middle" font-weight="700">Raspberry Pi 4  —  Central Compute</text>
+            <text x="380" y="54" font-family="Inter,sans-serif" font-size="9" fill="#666" text-anchor="middle">ROS 2 Master · SLAM · Vision Inference · NLP Logic</text>
+
+            <!-- Left branch to RealSense -->
+            <line x1="260" y1="70" x2="145" y2="128" stroke="#00d4ff" stroke-opacity="0.45" stroke-width="1" marker-end="url(#aArch)"/>
+            <text x="176" y="106" font-family="Inter,sans-serif" font-size="8" fill="#444" text-anchor="middle" transform="rotate(-30 176 106)">USB 3.0</text>
+            <rect x="30" y="130" width="160" height="62" rx="6" fill="#1a1a1a" stroke="#333"/>
+            <text x="110" y="154" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Intel RealSense D435</text>
+            <text x="110" y="169" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">RGB-D · Point Cloud</text>
+            <text x="110" y="182" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">Perception · SLAM · Grasp</text>
+
+            <!-- Center branch to Servo Controller -->
+            <line x1="380" y1="70" x2="380" y2="126" stroke="#00d4ff" stroke-opacity="0.45" stroke-width="1" marker-end="url(#aArch)"/>
+            <text x="394" y="102" font-family="Inter,sans-serif" font-size="8" fill="#444">UART</text>
+            <rect x="275" y="128" width="210" height="62" rx="6" fill="#1a1a1a" stroke="#333"/>
+            <text x="380" y="152" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Serial Servo Controller</text>
+            <text x="380" y="167" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">STS3215 bus protocol</text>
+            <text x="380" y="180" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">Arm joint management</text>
+            <line x1="380" y1="190" x2="380" y2="212" stroke="#00d4ff" stroke-opacity="0.35" stroke-width="1" marker-end="url(#aArch)"/>
+            <rect x="295" y="214" width="170" height="46" rx="6" fill="#111" stroke="#222"/>
+            <text x="380" y="234" font-family="Space Grotesk,sans-serif" font-size="10" fill="#888" text-anchor="middle">SO-101 Arm  (5-DOF)</text>
+            <text x="380" y="250" font-family="Inter,sans-serif" font-size="8" fill="#444" text-anchor="middle">5 × STS3215 Servo Joints</text>
+
+            <!-- Right branch to Arduino -->
+            <line x1="500" y1="70" x2="614" y2="128" stroke="#00d4ff" stroke-opacity="0.45" stroke-width="1" marker-end="url(#aArch)"/>
+            <text x="576" y="106" font-family="Inter,sans-serif" font-size="8" fill="#444" text-anchor="middle" transform="rotate(30 576 106)">ROS Twist</text>
+            <rect x="565" y="130" width="165" height="62" rx="6" fill="#1a1a1a" stroke="#333"/>
+            <text x="648" y="154" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Arduino / ESP32</text>
+            <text x="648" y="169" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">PID · Holonomic kinematics</text>
+            <text x="648" y="182" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">Low-level drive control</text>
+            <line x1="648" y1="192" x2="648" y2="212" stroke="#00d4ff" stroke-opacity="0.35" stroke-width="1" marker-end="url(#aArch)"/>
+            <rect x="573" y="214" width="150" height="46" rx="6" fill="#111" stroke="#222"/>
+            <text x="648" y="234" font-family="Space Grotesk,sans-serif" font-size="10" fill="#888" text-anchor="middle">Mecanum Drive (4WD)</text>
+            <text x="648" y="250" font-family="Inter,sans-serif" font-size="8" fill="#444" text-anchor="middle">Holonomic · Omnidirectional</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENGINEERING FOCUS -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Core Engineering Focus</h2>
+        <p class="proj-section__sub reveal">Four advanced robotics disciplines developed and integrated on this platform.</p>
+        <div class="proj-details-grid reveal">
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="2" y="8" width="16" height="9" rx="2" stroke="#00d4ff" stroke-width="1.4"/>
+                <circle cx="6" cy="16.5" r="2" stroke="#00d4ff" stroke-width="1.2"/>
+                <circle cx="14" cy="16.5" r="2" stroke="#00d4ff" stroke-width="1.2"/>
+                <path d="M5 8V5a3 3 0 016 0v3" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Mobile Platform Kinematics</h3>
+            <ul class="proj-detail-card__list">
+              <li>4-wheel Mecanum control matrix</li>
+              <li>True holonomic motion (strafe, diagonal, rotate)</li>
+              <li>Wheel encoder odometry for dead-reckoning</li>
+              <li>PID velocity loop on Arduino</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="2" y="2" width="16" height="16" rx="3" stroke="#00d4ff" stroke-width="1.4"/>
+                <circle cx="10" cy="10" r="3" stroke="#00d4ff" stroke-width="1.2"/>
+                <path d="M10 2v3M10 15v3M2 10h3M15 10h3" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Sensor Fusion & Semantic SLAM</h3>
+            <ul class="proj-detail-card__list">
+              <li>RealSense point-cloud + wheel odometry fusion</li>
+              <li>Geometric and semantic map layers</li>
+              <li>Object-class annotations in map space</li>
+              <li>YOLO / RT-DETR for object identification</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="4" r="2.5" stroke="#00d4ff" stroke-width="1.4"/>
+                <line x1="10" y1="6.5" x2="10" y2="10" stroke="#00d4ff" stroke-width="1.4"/>
+                <line x1="10" y1="10" x2="5" y2="15" stroke="#00d4ff" stroke-width="1.4"/>
+                <line x1="10" y1="10" x2="15" y2="15" stroke="#00d4ff" stroke-width="1.4"/>
+                <circle cx="5" cy="16.5" r="1.5" fill="rgba(0,212,255,0.3)" stroke="#00d4ff" stroke-width="1"/>
+                <circle cx="15" cy="16.5" r="1.5" fill="rgba(0,212,255,0.3)" stroke="#00d4ff" stroke-width="1"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">High-DOF Arm Control</h3>
+            <ul class="proj-detail-card__list">
+              <li>Inverse kinematics for SO-101 5-axis arm</li>
+              <li>Smooth 3D end-effector trajectory planning</li>
+              <li>STS3215 servo bus communication</li>
+              <li>Joint-space to Cartesian-space mapping</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="3" y="3" width="14" height="10" rx="2" stroke="#00d4ff" stroke-width="1.4"/>
+                <circle cx="10" cy="8" r="2" stroke="#00d4ff" stroke-width="1.2"/>
+                <path d="M3 16h4l2-3 2 3h6" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Vision & Grasp Planning</h3>
+            <ul class="proj-detail-card__list">
+              <li>YOLO / RT-DETR over RGB-D feed</li>
+              <li>Bounding box to 3D depth projection</li>
+              <li>Grasp pose estimation from depth data</li>
+              <li>Servo-driven gripper control</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- STATUS -->
+    <section class="proj-section section">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Current Status</h2>
+        <p class="proj-section__sub reveal">Ongoing development — in communication and kinematics tuning phase.</p>
+        <div class="proj-results reveal">
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#4ade80" stroke-width="1.2"/>
+              <path d="M6 10l3 3 5-5" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Mecanum holonomic drive operational — all 4 wheels independently controlled via Arduino PID loops receiving ROS 2 Twist messages.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#4ade80" stroke-width="1.2"/>
+              <path d="M6 10l3 3 5-5" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>SO-101 arm joint control verified — STS3215 servos communicating via serial bus, forward kinematics confirmed across all 5 joints.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#fbbf24" stroke-width="1.2"/>
+              <line x1="10" y1="7" x2="10" y2="11" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="13.5" r="0.8" fill="#fbbf24"/>
+            </svg>
+            <p>In progress — tuning Mecanum odometry accuracy before integrating the RealSense SLAM and vision pipelines.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#444" stroke-width="1.2"/>
+              <line x1="10" y1="7" x2="10" y2="13" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <p>Planned — NLP-to-action pipeline: connecting language reasoning to SLAM object lookup and IK-based manipulation execution.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('reveal--visible'); obs.unobserve(e.target); }
+      }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

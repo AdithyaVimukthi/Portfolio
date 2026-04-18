@@ -1,0 +1,53 @@
+Project Description: The Advanced Follow-Me Assistant
+The Follow-Me Cart is an ongoing, multi-disciplinary mechatronics project. It is a smart utility robot designed for domestic and retail environments, specializing in heavy lifting, intuitive interaction, and robust user tracking through sensor fusion.
+
+What We Expect
+
+We expect a robot that is more than a passive follower; it is an interactive tool. The goal is to provide:
+
+Ergonomic Support: Automating the lifting of heavy baskets to a comfortable height for the user.
+
+Seamless Interaction: Allowing users to communicate via voice or gestures, making the robot feel like a natural extension of the household.
+
+High Reliability: Ensuring the robot never "loses" its owner, even in crowded or complex environments like a grocery store.
+
+What We Do
+
+The project currently focuses on the integration of complex subsystems:
+
+Kinematics & Actuation: Developing the control logic for the scissor lift mechanism to ensure stable vertical movement under load.
+
+Voice & Interface Design: Building a Natural Language Processing (NLP) pipeline for voice commands and an HMI (Human-Machine Interface) for list management and reminders.
+
+Advanced Navigation: Implementing a fail-over tracking system that switches to UWB (Ultra-Wideband) if the RGB-D camera loses visual line-of-sight.
+
+Core Features to Integrate
+Smart Scissor Lift: A motorized lifting platform that adjusts the basket height based on user preference or task requirements.
+
+Multimodal Interaction:
+
+Voice Command System: Hands-free control for commands like "Follow me," "Stop," or "Go to the kitchen."
+
+HMI Touchscreen: A hub for inputting grocery lists, setting reminders, and monitoring robot status (battery, load weight).
+
+Gesture Control: Simple hand signals for immediate stopping or directional nudges.
+
+Dual-Layer Tracking (UWB + RGB-D): If the user disappears behind an aisle (losing the "Visual" lock), the robot uses UWB trilateration to "find" the user's tag and navigate toward them until visual contact is re-established.
+
+Intelligent Obstacle Avoidance: Real-time depth mapping to navigate around shoppers, shelves, and unexpected hazards.
+
+Planned Hardware Stack
+Component	Role	Specification
+RGB-D Camera	Visual Tracking & Depth	Deep learning-based person identification and 3D obstacle mapping.
+UWB Tag & Anchors	"Fail-safe" Localization	Centimeter-level ranging to find the user when visual line-of-sight is broken.
+Scissor Lift Actuator	Vertical Motion	High-torque linear actuator or lead screw system integrated into the chassis.
+HMI Tablet/Screen	User Interface	Dedicated touchscreen for reminders and manual data input.
+Microphone Array	Voice Recognition	Far-field microphone setup with noise cancellation for clear command processing.
+Motion Controllers	Drive System	DamiaoMotors or high-torque DC motors using the CAN bus for synchronized movement.
+Project Status: Ongoing
+
+We are currently in the Integration and Testing phase.
+
+Current Challenge: Balancing the center of gravity when the scissor lift is fully extended with a heavy load.
+
+Next Steps: Optimizing the Voice-to-Command latency and perfecting the "re-acquisition" logic where the robot uses UWB data to turn the camera back toward the user after losing them in a store aisle.

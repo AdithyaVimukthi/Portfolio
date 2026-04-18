@@ -1,0 +1,66 @@
+AOI Defect Detection Algorithm Development (Shallow Dip & Deep Dip) – Ansell
+Project Overview
+As part of an Automated Optical Inspection (AOI) system at Ansell, I was responsible for developing computer vision algorithms to detect two critical manufacturing defects — shallow dip and deep dip — occurring during the latex dipping process of cloth gloves. These defects directly impact coating quality, product durability, and compliance with safety standards.
+Problem Context
+During the glove manufacturing process, fabric gloves are dipped into a latex bath. Variations in process conditions (e.g., dipping depth, viscosity, withdrawal speed) can lead to:
+Shallow Dip Defect
+→ Insufficient latex coating (thin or missing regions)
+Deep Dip Defect
+→ Excess coating beyond the acceptable boundary (over-dipping)
+The challenge was to accurately detect these defects from visual data under varying lighting and production conditions.
+My Contribution
+Designed and implemented defect detection algorithms specifically for shallow and deep dip classification
+Developed the initial solution using Halcon (industrial vision software)
+Converted and optimized the pipeline into Python for integration into the broader AOI system
+Integrated YOLO-based segmentation/detection to isolate the glove region before analysis
+Improved processing efficiency using parallel processing techniques for real-time feasibility
+Algorithm Pipeline
+The developed solution follows a hybrid approach combining deep learning (for segmentation) and classical computer vision (for defect quantification):
+1. Region of Interest Extraction (YOLO-based)
+Used a YOLO model to:
+Detect gloves in the frame
+Segment or localize the relevant inspection region
+Reduced background noise and improved robustness to environmental variation
+2. Pre-processing (Halcon → Python)
+Image normalization and contrast enhancement
+Noise reduction using smoothing filters
+Alignment/cropping of the glove region
+3. Defect Feature Extraction
+Shallow Dip Detection:
+Intensity-based analysis to detect low-coating regions
+Thresholding to identify insufficient latex coverage
+Region-based metrics:
+Area of under-coated regions
+Distribution across glove surface
+Deep Dip Detection:
+Boundary and contour analysis
+Detection of coating overflow beyond expected regions
+Measurement of:
+Excess coated area
+Deviation from standard dip boundary
+4. Decision Logic
+Rule-based classification using engineered thresholds
+Separate evaluation pipelines for:
+Shallow dip (under-coating detection)
+Deep dip (over-coating detection)
+Output: Pass / Fail classification with defect type labeling
+Parallel Processing Implementation
+Implemented parallelism to improve throughput:
+Concurrent image processing pipelines
+Separation of detection and analysis stages
+Reduced processing latency to meet real-time inspection requirements
+Tools & Technologies
+Halcon (initial algorithm development)
+Python (OpenCV, NumPy) for deployment
+YOLO (for object detection / segmentation)
+Parallel processing (multi-threading / multi-processing concepts)
+Key Engineering Challenges
+Differentiating subtle intensity variations for shallow defects
+Handling inconsistent lighting and material variations
+Translating Halcon-based logic into efficient Python code
+Balancing detection accuracy with real-time performance
+Results & Impact
+Achieved reliable detection of shallow and deep dip defects
+Improved inspection consistency compared to manual methods
+Enabled integration into a scalable AOI pipeline
+Contributed to enhancing product quality control in production
