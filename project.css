@@ -421,3 +421,6 @@
     max-width: 100%;
   }
 }
+
+/* Shared studio typography */
+.proj-hero__title { background: none; -webkit-text-fill-color: var(--text-primary); color: var(--text-primary); }
