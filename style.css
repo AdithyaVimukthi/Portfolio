@@ -1922,3 +1922,7 @@ p {
 .contact { background: radial-gradient(ellipse at 90% 0%,#b29af524,transparent 65%),var(--bg-surface); }
 .footer { background: #e5edfa; }
 ::selection { background: #d8c9ff; color: #152747; }
+
+/* Accessible feedback on light form surfaces. */
+.form-status--success { color: #24713b; }
+.form-status--error, .field-error { color: #b42338; }

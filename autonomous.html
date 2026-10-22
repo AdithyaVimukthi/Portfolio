@@ -12,40 +12,6 @@
 
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="project.css" />
-  <style>
-    /* Self-contained layout fallbacks — work even if project.css is missing */
-    .proj-hero{padding-block:7.5rem 5rem;border-bottom:1px solid #222}
-    .proj-hero__meta{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
-    .proj-hero__year{font-size:.75rem;font-weight:500;letter-spacing:.1em;color:#555}
-    .proj-hero__title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.25rem,6vw,4.5rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.7) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .proj-hero__lead{font-size:clamp(1rem,2vw,1.125rem);color:#a0a0a0;line-height:1.8;max-width:72ch;margin-bottom:1.5rem}
-    .proj-hero__tags{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
-    .proj-hero__tags li{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#00d4ff;background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.2);border-radius:4px;padding:.25rem .75rem}
-    .proj-section__title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.75rem,3vw,2.25rem);font-weight:700;color:#f0f0f0;margin-bottom:1.5rem;letter-spacing:-.02em}
-    .proj-section__sub{font-size:.875rem;color:#555;margin-bottom:3rem;max-width:60ch}
-    .proj-grid{display:grid;grid-template-columns:1fr 260px;gap:clamp(2rem,5vw,5rem);align-items:start}
-    .proj-content p{font-size:1.125rem;color:#a0a0a0;line-height:1.8;margin-bottom:1.5rem;max-width:68ch}
-    .proj-sidebar{position:sticky;top:calc(70px + 2rem)}
-    .proj-stat-group{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
-    .proj-stat{background:#1a1a1a;border:1px solid #222;border-radius:8px;padding:1rem;display:flex;flex-direction:column;gap:.25rem}
-    .proj-stat__val{font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:700;color:#00d4ff;line-height:1}
-    .proj-stat__key{font-size:.75rem;color:#555;letter-spacing:.04em}
-    .diagram-wrap{background:#111;border:1px solid #222;border-radius:12px;padding:2rem;overflow-x:auto}
-    .diagram{width:100%;height:auto;display:block}
-    .proj-details-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
-    .proj-detail-card{background:#111;border:1px solid #222;border-radius:12px;padding:2rem;transition:border-color .25s,transform .25s}
-    .proj-detail-card:hover{border-color:rgba(0,212,255,.3);transform:translateY(-3px)}
-    .proj-detail-card__icon{display:grid;place-items:center;width:40px;height:40px;background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.2);border-radius:8px;margin-bottom:1rem}
-    .proj-detail-card__title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:#f0f0f0;margin-bottom:1rem}
-    .proj-detail-card__list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-    .proj-detail-card__list li{font-size:.875rem;color:#a0a0a0;line-height:1.6;padding-left:1rem;position:relative}
-    .proj-detail-card__list li::before{content:'—';position:absolute;left:0;color:#00d4ff;font-size:.75rem;top:3px}
-    .proj-results{display:flex;flex-direction:column;gap:1rem;max-width:800px}
-    .proj-result{display:flex;align-items:flex-start;gap:1rem;background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:1.5rem}
-    .proj-result svg{flex-shrink:0;margin-top:2px}
-    .proj-result p{font-size:.875rem;color:#a0a0a0;line-height:1.8;max-width:none}
-    @media(max-width:768px){.proj-grid{grid-template-columns:1fr}.proj-sidebar{position:static}.proj-details-grid{grid-template-columns:1fr}}
-  </style>
 </head>
 <body>
 
@@ -133,44 +99,44 @@
           <svg viewBox="0 0 860 110" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="NLP to action pipeline" role="img">
             <defs>
               <marker id="aNLP" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
-                <path d="M0,0 L0,5 L7,2.5 z" fill="#00d4ff" opacity="0.7"/>
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#006d91" opacity="0.7"/>
               </marker>
             </defs>
 
-            <rect x="10" y="28" width="125" height="54" rx="6" fill="#111" stroke="#00d4ff" stroke-width="1.2"/>
-            <text x="72" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">NLP Command</text>
-            <text x="72" y="64" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">"Bring me the apple"</text>
-            <text x="72" y="92" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">Language Input</text>
-            <line x1="135" y1="55" x2="152" y2="55" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
+            <rect x="10" y="28" width="125" height="54" rx="6" fill="#ffffff" stroke="#006d91" stroke-width="1.2"/>
+            <text x="72" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">NLP Command</text>
+            <text x="72" y="64" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">"Bring me the apple"</text>
+            <text x="72" y="92" font-family="Inter,sans-serif" font-size="8" fill="#006d91" text-anchor="middle" opacity="0.6">Language Input</text>
+            <line x1="135" y1="55" x2="152" y2="55" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
 
-            <rect x="154" y="28" width="135" height="54" rx="6" fill="#111" stroke="#333"/>
-            <text x="221" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Semantic Reasoning</text>
-            <text x="221" y="64" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Map intent → object class</text>
-            <text x="221" y="92" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">LLM / Rule Engine</text>
-            <line x1="289" y1="55" x2="306" y2="55" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
+            <rect x="154" y="28" width="135" height="54" rx="6" fill="#ffffff" stroke="#9aacc6"/>
+            <text x="221" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Semantic Reasoning</text>
+            <text x="221" y="64" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Map intent → object class</text>
+            <text x="221" y="92" font-family="Inter,sans-serif" font-size="8" fill="#006d91" text-anchor="middle" opacity="0.6">LLM / Rule Engine</text>
+            <line x1="289" y1="55" x2="306" y2="55" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
 
-            <rect x="308" y="28" width="130" height="54" rx="6" fill="#111" stroke="#333"/>
-            <text x="373" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Semantic SLAM</text>
-            <text x="373" y="64" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Locate in spatial map</text>
-            <text x="373" y="92" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">RealSense + Odometry</text>
-            <line x1="438" y1="55" x2="455" y2="55" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
+            <rect x="308" y="28" width="130" height="54" rx="6" fill="#ffffff" stroke="#9aacc6"/>
+            <text x="373" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Semantic SLAM</text>
+            <text x="373" y="64" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Locate in spatial map</text>
+            <text x="373" y="92" font-family="Inter,sans-serif" font-size="8" fill="#006d91" text-anchor="middle" opacity="0.6">RealSense + Odometry</text>
+            <line x1="438" y1="55" x2="455" y2="55" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
 
-            <rect x="457" y="28" width="125" height="54" rx="6" fill="#111" stroke="#333"/>
-            <text x="519" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Path Planning</text>
-            <text x="519" y="64" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Navigate + avoid obstacles</text>
-            <text x="519" y="92" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">ROS 2 Nav2</text>
-            <line x1="582" y1="55" x2="599" y2="55" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
+            <rect x="457" y="28" width="125" height="54" rx="6" fill="#ffffff" stroke="#9aacc6"/>
+            <text x="519" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Path Planning</text>
+            <text x="519" y="64" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Navigate + avoid obstacles</text>
+            <text x="519" y="92" font-family="Inter,sans-serif" font-size="8" fill="#006d91" text-anchor="middle" opacity="0.6">ROS 2 Nav2</text>
+            <line x1="582" y1="55" x2="599" y2="55" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
 
-            <rect x="601" y="28" width="125" height="54" rx="6" fill="#111" stroke="#333"/>
-            <text x="663" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">IK + Grasp Plan</text>
-            <text x="663" y="64" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">End-effector trajectory</text>
-            <text x="663" y="92" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">STS3215 Servos</text>
-            <line x1="726" y1="55" x2="743" y2="55" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
+            <rect x="601" y="28" width="125" height="54" rx="6" fill="#ffffff" stroke="#9aacc6"/>
+            <text x="663" y="50" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">IK + Grasp Plan</text>
+            <text x="663" y="64" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">End-effector trajectory</text>
+            <text x="663" y="92" font-family="Inter,sans-serif" font-size="8" fill="#006d91" text-anchor="middle" opacity="0.6">STS3215 Servos</text>
+            <line x1="726" y1="55" x2="743" y2="55" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aNLP)"/>
 
-            <rect x="745" y="18" width="105" height="74" rx="6" fill="rgba(0,212,255,0.08)" stroke="#00d4ff" stroke-width="1.2"/>
-            <text x="797" y="46" font-family="Space Grotesk,sans-serif" font-size="10" fill="#00d4ff" text-anchor="middle" font-weight="700">EXECUTE</text>
-            <text x="797" y="62" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Grasp object</text>
-            <text x="797" y="76" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">Deliver to user</text>
+            <rect x="745" y="18" width="105" height="74" rx="6" fill="rgba(0,212,255,0.08)" stroke="#006d91" stroke-width="1.2"/>
+            <text x="797" y="46" font-family="Space Grotesk,sans-serif" font-size="10" fill="#006d91" text-anchor="middle" font-weight="700">EXECUTE</text>
+            <text x="797" y="62" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Grasp object</text>
+            <text x="797" y="76" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Deliver to user</text>
           </svg>
         </div>
       </div>
@@ -189,45 +155,45 @@
           <svg viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Distributed system architecture" role="img">
             <defs>
               <marker id="aArch" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
-                <path d="M0,0 L0,5 L7,2.5 z" fill="#00d4ff" opacity="0.6"/>
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#006d91" opacity="0.6"/>
               </marker>
             </defs>
 
             <!-- Top: Raspberry Pi 4 -->
-            <rect x="180" y="10" width="400" height="60" rx="8" fill="rgba(0,212,255,0.08)" stroke="#00d4ff" stroke-width="1.5"/>
-            <text x="380" y="36" font-family="Space Grotesk,sans-serif" font-size="12" fill="#f0f0f0" text-anchor="middle" font-weight="700">Raspberry Pi 4  —  Central Compute</text>
-            <text x="380" y="54" font-family="Inter,sans-serif" font-size="9" fill="#666" text-anchor="middle">ROS 2 Master · SLAM · Vision Inference · NLP Logic</text>
+            <rect x="180" y="10" width="400" height="60" rx="8" fill="rgba(0,212,255,0.08)" stroke="#006d91" stroke-width="1.5"/>
+            <text x="380" y="36" font-family="Space Grotesk,sans-serif" font-size="12" fill="#152747" text-anchor="middle" font-weight="700">Raspberry Pi 4  —  Central Compute</text>
+            <text x="380" y="54" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" text-anchor="middle">ROS 2 Master · SLAM · Vision Inference · NLP Logic</text>
 
             <!-- Left branch to RealSense -->
-            <line x1="260" y1="70" x2="145" y2="128" stroke="#00d4ff" stroke-opacity="0.45" stroke-width="1" marker-end="url(#aArch)"/>
+            <line x1="260" y1="70" x2="145" y2="128" stroke="#006d91" stroke-opacity="0.45" stroke-width="1" marker-end="url(#aArch)"/>
             <text x="176" y="106" font-family="Inter,sans-serif" font-size="8" fill="#444" text-anchor="middle" transform="rotate(-30 176 106)">USB 3.0</text>
-            <rect x="30" y="130" width="160" height="62" rx="6" fill="#1a1a1a" stroke="#333"/>
-            <text x="110" y="154" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Intel RealSense D435</text>
-            <text x="110" y="169" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">RGB-D · Point Cloud</text>
-            <text x="110" y="182" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">Perception · SLAM · Grasp</text>
+            <rect x="30" y="130" width="160" height="62" rx="6" fill="#eaf0fc" stroke="#9aacc6"/>
+            <text x="110" y="154" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Intel RealSense D435</text>
+            <text x="110" y="169" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">RGB-D · Point Cloud</text>
+            <text x="110" y="182" font-family="Inter,sans-serif" font-size="8" fill="#006d91" text-anchor="middle" opacity="0.6">Perception · SLAM · Grasp</text>
 
             <!-- Center branch to Servo Controller -->
-            <line x1="380" y1="70" x2="380" y2="126" stroke="#00d4ff" stroke-opacity="0.45" stroke-width="1" marker-end="url(#aArch)"/>
+            <line x1="380" y1="70" x2="380" y2="126" stroke="#006d91" stroke-opacity="0.45" stroke-width="1" marker-end="url(#aArch)"/>
             <text x="394" y="102" font-family="Inter,sans-serif" font-size="8" fill="#444">UART</text>
-            <rect x="275" y="128" width="210" height="62" rx="6" fill="#1a1a1a" stroke="#333"/>
-            <text x="380" y="152" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Serial Servo Controller</text>
-            <text x="380" y="167" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">STS3215 bus protocol</text>
-            <text x="380" y="180" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">Arm joint management</text>
-            <line x1="380" y1="190" x2="380" y2="212" stroke="#00d4ff" stroke-opacity="0.35" stroke-width="1" marker-end="url(#aArch)"/>
-            <rect x="295" y="214" width="170" height="46" rx="6" fill="#111" stroke="#222"/>
-            <text x="380" y="234" font-family="Space Grotesk,sans-serif" font-size="10" fill="#888" text-anchor="middle">SO-101 Arm  (5-DOF)</text>
+            <rect x="275" y="128" width="210" height="62" rx="6" fill="#eaf0fc" stroke="#9aacc6"/>
+            <text x="380" y="152" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Serial Servo Controller</text>
+            <text x="380" y="167" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">STS3215 bus protocol</text>
+            <text x="380" y="180" font-family="Inter,sans-serif" font-size="8" fill="#006d91" text-anchor="middle" opacity="0.6">Arm joint management</text>
+            <line x1="380" y1="190" x2="380" y2="212" stroke="#006d91" stroke-opacity="0.35" stroke-width="1" marker-end="url(#aArch)"/>
+            <rect x="295" y="214" width="170" height="46" rx="6" fill="#ffffff" stroke="#cdd9ed"/>
+            <text x="380" y="234" font-family="Space Grotesk,sans-serif" font-size="10" fill="#455b7a" text-anchor="middle">SO-101 Arm  (5-DOF)</text>
             <text x="380" y="250" font-family="Inter,sans-serif" font-size="8" fill="#444" text-anchor="middle">5 × STS3215 Servo Joints</text>
 
             <!-- Right branch to Arduino -->
-            <line x1="500" y1="70" x2="614" y2="128" stroke="#00d4ff" stroke-opacity="0.45" stroke-width="1" marker-end="url(#aArch)"/>
+            <line x1="500" y1="70" x2="614" y2="128" stroke="#006d91" stroke-opacity="0.45" stroke-width="1" marker-end="url(#aArch)"/>
             <text x="576" y="106" font-family="Inter,sans-serif" font-size="8" fill="#444" text-anchor="middle" transform="rotate(30 576 106)">ROS Twist</text>
-            <rect x="565" y="130" width="165" height="62" rx="6" fill="#1a1a1a" stroke="#333"/>
-            <text x="648" y="154" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">Arduino / ESP32</text>
-            <text x="648" y="169" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">PID · Holonomic kinematics</text>
-            <text x="648" y="182" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" text-anchor="middle" opacity="0.6">Low-level drive control</text>
-            <line x1="648" y1="192" x2="648" y2="212" stroke="#00d4ff" stroke-opacity="0.35" stroke-width="1" marker-end="url(#aArch)"/>
-            <rect x="573" y="214" width="150" height="46" rx="6" fill="#111" stroke="#222"/>
-            <text x="648" y="234" font-family="Space Grotesk,sans-serif" font-size="10" fill="#888" text-anchor="middle">Mecanum Drive (4WD)</text>
+            <rect x="565" y="130" width="165" height="62" rx="6" fill="#eaf0fc" stroke="#9aacc6"/>
+            <text x="648" y="154" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Arduino / ESP32</text>
+            <text x="648" y="169" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">PID · Holonomic kinematics</text>
+            <text x="648" y="182" font-family="Inter,sans-serif" font-size="8" fill="#006d91" text-anchor="middle" opacity="0.6">Low-level drive control</text>
+            <line x1="648" y1="192" x2="648" y2="212" stroke="#006d91" stroke-opacity="0.35" stroke-width="1" marker-end="url(#aArch)"/>
+            <rect x="573" y="214" width="150" height="46" rx="6" fill="#ffffff" stroke="#cdd9ed"/>
+            <text x="648" y="234" font-family="Space Grotesk,sans-serif" font-size="10" fill="#455b7a" text-anchor="middle">Mecanum Drive (4WD)</text>
             <text x="648" y="250" font-family="Inter,sans-serif" font-size="8" fill="#444" text-anchor="middle">Holonomic · Omnidirectional</text>
           </svg>
         </div>
@@ -244,10 +210,10 @@
           <div class="proj-detail-card">
             <div class="proj-detail-card__icon">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <rect x="2" y="8" width="16" height="9" rx="2" stroke="#00d4ff" stroke-width="1.4"/>
-                <circle cx="6" cy="16.5" r="2" stroke="#00d4ff" stroke-width="1.2"/>
-                <circle cx="14" cy="16.5" r="2" stroke="#00d4ff" stroke-width="1.2"/>
-                <path d="M5 8V5a3 3 0 016 0v3" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
+                <rect x="2" y="8" width="16" height="9" rx="2" stroke="#006d91" stroke-width="1.4"/>
+                <circle cx="6" cy="16.5" r="2" stroke="#006d91" stroke-width="1.2"/>
+                <circle cx="14" cy="16.5" r="2" stroke="#006d91" stroke-width="1.2"/>
+                <path d="M5 8V5a3 3 0 016 0v3" stroke="#006d91" stroke-width="1" stroke-opacity="0.5"/>
               </svg>
             </div>
             <h3 class="proj-detail-card__title">Mobile Platform Kinematics</h3>
@@ -262,9 +228,9 @@
           <div class="proj-detail-card">
             <div class="proj-detail-card__icon">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <rect x="2" y="2" width="16" height="16" rx="3" stroke="#00d4ff" stroke-width="1.4"/>
-                <circle cx="10" cy="10" r="3" stroke="#00d4ff" stroke-width="1.2"/>
-                <path d="M10 2v3M10 15v3M2 10h3M15 10h3" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
+                <rect x="2" y="2" width="16" height="16" rx="3" stroke="#006d91" stroke-width="1.4"/>
+                <circle cx="10" cy="10" r="3" stroke="#006d91" stroke-width="1.2"/>
+                <path d="M10 2v3M10 15v3M2 10h3M15 10h3" stroke="#006d91" stroke-width="1" stroke-opacity="0.5"/>
               </svg>
             </div>
             <h3 class="proj-detail-card__title">Sensor Fusion & Semantic SLAM</h3>
@@ -279,12 +245,12 @@
           <div class="proj-detail-card">
             <div class="proj-detail-card__icon">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <circle cx="10" cy="4" r="2.5" stroke="#00d4ff" stroke-width="1.4"/>
-                <line x1="10" y1="6.5" x2="10" y2="10" stroke="#00d4ff" stroke-width="1.4"/>
-                <line x1="10" y1="10" x2="5" y2="15" stroke="#00d4ff" stroke-width="1.4"/>
-                <line x1="10" y1="10" x2="15" y2="15" stroke="#00d4ff" stroke-width="1.4"/>
-                <circle cx="5" cy="16.5" r="1.5" fill="rgba(0,212,255,0.3)" stroke="#00d4ff" stroke-width="1"/>
-                <circle cx="15" cy="16.5" r="1.5" fill="rgba(0,212,255,0.3)" stroke="#00d4ff" stroke-width="1"/>
+                <circle cx="10" cy="4" r="2.5" stroke="#006d91" stroke-width="1.4"/>
+                <line x1="10" y1="6.5" x2="10" y2="10" stroke="#006d91" stroke-width="1.4"/>
+                <line x1="10" y1="10" x2="5" y2="15" stroke="#006d91" stroke-width="1.4"/>
+                <line x1="10" y1="10" x2="15" y2="15" stroke="#006d91" stroke-width="1.4"/>
+                <circle cx="5" cy="16.5" r="1.5" fill="rgba(0,212,255,0.3)" stroke="#006d91" stroke-width="1"/>
+                <circle cx="15" cy="16.5" r="1.5" fill="rgba(0,212,255,0.3)" stroke="#006d91" stroke-width="1"/>
               </svg>
             </div>
             <h3 class="proj-detail-card__title">High-DOF Arm Control</h3>
@@ -299,9 +265,9 @@
           <div class="proj-detail-card">
             <div class="proj-detail-card__icon">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <rect x="3" y="3" width="14" height="10" rx="2" stroke="#00d4ff" stroke-width="1.4"/>
-                <circle cx="10" cy="8" r="2" stroke="#00d4ff" stroke-width="1.2"/>
-                <path d="M3 16h4l2-3 2 3h6" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5" stroke-linejoin="round"/>
+                <rect x="3" y="3" width="14" height="10" rx="2" stroke="#006d91" stroke-width="1.4"/>
+                <circle cx="10" cy="8" r="2" stroke="#006d91" stroke-width="1.2"/>
+                <path d="M3 16h4l2-3 2 3h6" stroke="#006d91" stroke-width="1" stroke-opacity="0.5" stroke-linejoin="round"/>
               </svg>
             </div>
             <h3 class="proj-detail-card__title">Vision & Grasp Planning</h3>
@@ -325,23 +291,23 @@
         <div class="proj-results reveal">
           <div class="proj-result">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
-              <circle cx="10" cy="10" r="8" stroke="#4ade80" stroke-width="1.2"/>
-              <path d="M6 10l3 3 5-5" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="10" cy="10" r="8" stroke="#24713b" stroke-width="1.2"/>
+              <path d="M6 10l3 3 5-5" stroke="#24713b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <p>Mecanum holonomic drive operational — all 4 wheels independently controlled via Arduino PID loops receiving ROS 2 Twist messages.</p>
           </div>
           <div class="proj-result">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
-              <circle cx="10" cy="10" r="8" stroke="#4ade80" stroke-width="1.2"/>
-              <path d="M6 10l3 3 5-5" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="10" cy="10" r="8" stroke="#24713b" stroke-width="1.2"/>
+              <path d="M6 10l3 3 5-5" stroke="#24713b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <p>SO-101 arm joint control verified — STS3215 servos communicating via serial bus, forward kinematics confirmed across all 5 joints.</p>
           </div>
           <div class="proj-result">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
-              <circle cx="10" cy="10" r="8" stroke="#fbbf24" stroke-width="1.2"/>
-              <line x1="10" y1="7" x2="10" y2="11" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="10" cy="13.5" r="0.8" fill="#fbbf24"/>
+              <circle cx="10" cy="10" r="8" stroke="#875500" stroke-width="1.2"/>
+              <line x1="10" y1="7" x2="10" y2="11" stroke="#875500" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="13.5" r="0.8" fill="#875500"/>
             </svg>
             <p>In progress — tuning Mecanum odometry accuracy before integrating the RealSense SLAM and vision pipelines.</p>
           </div>

@@ -96,62 +96,62 @@
           <svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="System architecture diagram" role="img">
             <defs>
               <marker id="arrowD" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff" opacity="0.7"/>
+                <path d="M0,0 L0,6 L8,3 z" fill="#006d91" opacity="0.7"/>
               </marker>
             </defs>
 
             <!-- Layer 1: Sensing -->
-            <rect x="20" y="20" width="740" height="78" rx="8" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.4"/>
-            <text x="36" y="44" font-family="Space Grotesk,sans-serif" font-size="10" fill="#00d4ff" letter-spacing="2" font-weight="600" text-transform="uppercase">SENSING LAYER</text>
+            <rect x="20" y="20" width="740" height="78" rx="8" fill="#eaf0fc" stroke="#006d91" stroke-width="1" stroke-opacity="0.4"/>
+            <text x="36" y="44" font-family="Space Grotesk,sans-serif" font-size="10" fill="#006d91" letter-spacing="2" font-weight="600" text-transform="uppercase">SENSING LAYER</text>
 
-            <rect x="50"  y="52" width="160" height="34" rx="5" fill="#222" stroke="#333" stroke-width="1"/>
-            <text x="130" y="73" font-family="Inter,sans-serif" font-size="11" fill="#a0a0a0" text-anchor="middle">IR Sensor (Fabric Detect)</text>
+            <rect x="50"  y="52" width="160" height="34" rx="5" fill="#cdd9ed" stroke="#9aacc6" stroke-width="1"/>
+            <text x="130" y="73" font-family="Inter,sans-serif" font-size="11" fill="#455b7a" text-anchor="middle">IR Sensor (Fabric Detect)</text>
 
-            <rect x="230" y="52" width="160" height="34" rx="5" fill="#222" stroke="#333" stroke-width="1"/>
-            <text x="310" y="73" font-family="Inter,sans-serif" font-size="11" fill="#a0a0a0" text-anchor="middle">Limit Switch (End-Stop)</text>
+            <rect x="230" y="52" width="160" height="34" rx="5" fill="#cdd9ed" stroke="#9aacc6" stroke-width="1"/>
+            <text x="310" y="73" font-family="Inter,sans-serif" font-size="11" fill="#455b7a" text-anchor="middle">Limit Switch (End-Stop)</text>
 
-            <rect x="410" y="52" width="160" height="34" rx="5" fill="#222" stroke="#333" stroke-width="1"/>
-            <text x="490" y="73" font-family="Inter,sans-serif" font-size="11" fill="#a0a0a0" text-anchor="middle">Position / State Sensor</text>
+            <rect x="410" y="52" width="160" height="34" rx="5" fill="#cdd9ed" stroke="#9aacc6" stroke-width="1"/>
+            <text x="490" y="73" font-family="Inter,sans-serif" font-size="11" fill="#455b7a" text-anchor="middle">Position / State Sensor</text>
 
-            <rect x="590" y="52" width="150" height="34" rx="5" fill="#222" stroke="#333" stroke-width="1"/>
-            <text x="665" y="73" font-family="Inter,sans-serif" font-size="11" fill="#a0a0a0" text-anchor="middle">Fault / Safety Detect</text>
+            <rect x="590" y="52" width="150" height="34" rx="5" fill="#cdd9ed" stroke="#9aacc6" stroke-width="1"/>
+            <text x="665" y="73" font-family="Inter,sans-serif" font-size="11" fill="#455b7a" text-anchor="middle">Fault / Safety Detect</text>
 
             <!-- Arrow down -->
-            <line x1="390" y1="98" x2="390" y2="122" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.5" marker-end="url(#arrowD)"/>
-            <text x="398" y="114" font-family="Inter,sans-serif" font-size="9" fill="#555" >Sensor Inputs</text>
+            <line x1="390" y1="98" x2="390" y2="122" stroke="#006d91" stroke-width="1.2" stroke-opacity="0.5" marker-end="url(#arrowD)"/>
+            <text x="398" y="114" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" >Sensor Inputs</text>
 
             <!-- Layer 2: Control -->
-            <rect x="20" y="124" width="740" height="78" rx="8" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1.5" stroke-opacity="0.7"/>
-            <text x="36" y="148" font-family="Space Grotesk,sans-serif" font-size="10" fill="#00d4ff" letter-spacing="2" font-weight="600">CONTROL LAYER</text>
+            <rect x="20" y="124" width="740" height="78" rx="8" fill="#eaf0fc" stroke="#006d91" stroke-width="1.5" stroke-opacity="0.7"/>
+            <text x="36" y="148" font-family="Space Grotesk,sans-serif" font-size="10" fill="#006d91" letter-spacing="2" font-weight="600">CONTROL LAYER</text>
 
-            <rect x="80" y="156" width="200" height="34" rx="5" fill="#111" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
-            <text x="180" y="177" font-family="Inter,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="500">ESP32 — FSM Engine</text>
+            <rect x="80" y="156" width="200" height="34" rx="5" fill="#ffffff" stroke="#006d91" stroke-width="1" stroke-opacity="0.5"/>
+            <text x="180" y="177" font-family="Inter,sans-serif" font-size="11" fill="#152747" text-anchor="middle" font-weight="500">ESP32 — FSM Engine</text>
 
-            <rect x="310" y="156" width="170" height="34" rx="5" fill="#222" stroke="#333" stroke-width="1"/>
-            <text x="395" y="177" font-family="Inter,sans-serif" font-size="11" fill="#a0a0a0" text-anchor="middle">PWM Generator</text>
+            <rect x="310" y="156" width="170" height="34" rx="5" fill="#cdd9ed" stroke="#9aacc6" stroke-width="1"/>
+            <text x="395" y="177" font-family="Inter,sans-serif" font-size="11" fill="#455b7a" text-anchor="middle">PWM Generator</text>
 
-            <rect x="510" y="156" width="220" height="34" rx="5" fill="#222" stroke="#333" stroke-width="1"/>
-            <text x="620" y="177" font-family="Inter,sans-serif" font-size="11" fill="#a0a0a0" text-anchor="middle">Interrupt / Timer Handler</text>
+            <rect x="510" y="156" width="220" height="34" rx="5" fill="#cdd9ed" stroke="#9aacc6" stroke-width="1"/>
+            <text x="620" y="177" font-family="Inter,sans-serif" font-size="11" fill="#455b7a" text-anchor="middle">Interrupt / Timer Handler</text>
 
             <!-- Arrow down -->
-            <line x1="390" y1="202" x2="390" y2="226" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.5" marker-end="url(#arrowD)"/>
-            <text x="398" y="218" font-family="Inter,sans-serif" font-size="9" fill="#555">Control Signals</text>
+            <line x1="390" y1="202" x2="390" y2="226" stroke="#006d91" stroke-width="1.2" stroke-opacity="0.5" marker-end="url(#arrowD)"/>
+            <text x="398" y="218" font-family="Inter,sans-serif" font-size="9" fill="#576c8a">Control Signals</text>
 
             <!-- Layer 3: Actuation -->
-            <rect x="20" y="228" width="740" height="56" rx="8" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.4"/>
-            <text x="36" y="250" font-family="Space Grotesk,sans-serif" font-size="10" fill="#00d4ff" letter-spacing="2" font-weight="600">ACTUATION LAYER</text>
+            <rect x="20" y="228" width="740" height="56" rx="8" fill="#eaf0fc" stroke="#006d91" stroke-width="1" stroke-opacity="0.4"/>
+            <text x="36" y="250" font-family="Space Grotesk,sans-serif" font-size="10" fill="#006d91" letter-spacing="2" font-weight="600">ACTUATION LAYER</text>
 
-            <rect x="50"  y="256" width="170" height="22" rx="4" fill="#222" stroke="#333" stroke-width="1"/>
-            <text x="135" y="271" font-family="Inter,sans-serif" font-size="10" fill="#a0a0a0" text-anchor="middle">Motor Driver (DC/Servo)</text>
+            <rect x="50"  y="256" width="170" height="22" rx="4" fill="#cdd9ed" stroke="#9aacc6" stroke-width="1"/>
+            <text x="135" y="271" font-family="Inter,sans-serif" font-size="10" fill="#455b7a" text-anchor="middle">Motor Driver (DC/Servo)</text>
 
-            <rect x="240" y="256" width="140" height="22" rx="4" fill="#222" stroke="#333" stroke-width="1"/>
-            <text x="310" y="271" font-family="Inter,sans-serif" font-size="10" fill="#a0a0a0" text-anchor="middle">Relay Module</text>
+            <rect x="240" y="256" width="140" height="22" rx="4" fill="#cdd9ed" stroke="#9aacc6" stroke-width="1"/>
+            <text x="310" y="271" font-family="Inter,sans-serif" font-size="10" fill="#455b7a" text-anchor="middle">Relay Module</text>
 
-            <rect x="400" y="256" width="160" height="22" rx="4" fill="#222" stroke="#333" stroke-width="1"/>
-            <text x="480" y="271" font-family="Inter,sans-serif" font-size="10" fill="#a0a0a0" text-anchor="middle">Solenoid Actuator</text>
+            <rect x="400" y="256" width="160" height="22" rx="4" fill="#cdd9ed" stroke="#9aacc6" stroke-width="1"/>
+            <text x="480" y="271" font-family="Inter,sans-serif" font-size="10" fill="#455b7a" text-anchor="middle">Solenoid Actuator</text>
 
-            <rect x="580" y="256" width="170" height="22" rx="4" fill="#222" stroke="#333" stroke-width="1"/>
-            <text x="665" y="271" font-family="Inter,sans-serif" font-size="10" fill="#a0a0a0" text-anchor="middle">Pedal Mechanism</text>
+            <rect x="580" y="256" width="170" height="22" rx="4" fill="#cdd9ed" stroke="#9aacc6" stroke-width="1"/>
+            <text x="665" y="271" font-family="Inter,sans-serif" font-size="10" fill="#455b7a" text-anchor="middle">Pedal Mechanism</text>
           </svg>
         </div>
       </div>
@@ -170,62 +170,62 @@
           <svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Finite state machine diagram" role="img">
             <defs>
               <marker id="arrowR" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff" opacity="0.8"/>
+                <path d="M0,0 L0,6 L8,3 z" fill="#006d91" opacity="0.8"/>
               </marker>
               <marker id="arrowL" markerWidth="8" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse">
-                <path d="M0,0 L0,6 L8,3 z" fill="#555"/>
+                <path d="M0,0 L0,6 L8,3 z" fill="#576c8a"/>
               </marker>
             </defs>
 
             <!-- State boxes -->
             <!-- 1: IDLE -->
-            <rect x="10"  y="75" width="120" height="50" rx="25" fill="#111" stroke="#00d4ff" stroke-width="1.5"/>
-            <text x="70"  y="96"  font-family="Space Grotesk,sans-serif" font-size="11" fill="#00d4ff" text-anchor="middle" font-weight="600">IDLE</text>
-            <text x="70"  y="112" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">Waiting</text>
+            <rect x="10"  y="75" width="120" height="50" rx="25" fill="#ffffff" stroke="#006d91" stroke-width="1.5"/>
+            <text x="70"  y="96"  font-family="Space Grotesk,sans-serif" font-size="11" fill="#006d91" text-anchor="middle" font-weight="600">IDLE</text>
+            <text x="70"  y="112" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" text-anchor="middle">Waiting</text>
 
             <!-- 2: FABRIC DETECTION -->
-            <rect x="170" y="75" width="140" height="50" rx="8" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6"/>
-            <text x="240" y="96"  font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">FABRIC</text>
-            <text x="240" y="110" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">DETECTION</text>
-            <text x="240" y="123" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">IR reading</text>
+            <rect x="170" y="75" width="140" height="50" rx="8" fill="#eaf0fc" stroke="#006d91" stroke-width="1" stroke-opacity="0.6"/>
+            <text x="240" y="96"  font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">FABRIC</text>
+            <text x="240" y="110" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">DETECTION</text>
+            <text x="240" y="123" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" text-anchor="middle">IR reading</text>
 
             <!-- 3: STITCH INIT -->
-            <rect x="350" y="75" width="140" height="50" rx="8" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6"/>
-            <text x="420" y="96"  font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">STITCH</text>
-            <text x="420" y="110" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">INITIATION</text>
-            <text x="420" y="123" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">Ramp-up PWM</text>
+            <rect x="350" y="75" width="140" height="50" rx="8" fill="#eaf0fc" stroke="#006d91" stroke-width="1" stroke-opacity="0.6"/>
+            <text x="420" y="96"  font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">STITCH</text>
+            <text x="420" y="110" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">INITIATION</text>
+            <text x="420" y="123" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" text-anchor="middle">Ramp-up PWM</text>
 
             <!-- 4: CONTINUOUS OP -->
-            <rect x="530" y="75" width="140" height="50" rx="8" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6"/>
-            <text x="600" y="96"  font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">CONTINUOUS</text>
-            <text x="600" y="110" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">OPERATION</text>
-            <text x="600" y="123" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">Steady sewing</text>
+            <rect x="530" y="75" width="140" height="50" rx="8" fill="#eaf0fc" stroke="#006d91" stroke-width="1" stroke-opacity="0.6"/>
+            <text x="600" y="96"  font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">CONTINUOUS</text>
+            <text x="600" y="110" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">OPERATION</text>
+            <text x="600" y="123" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" text-anchor="middle">Steady sewing</text>
 
             <!-- 5: STOP/RESET -->
-            <rect x="710" y="75" width="130" height="50" rx="8" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6"/>
-            <text x="775" y="96"  font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">STOP /</text>
-            <text x="775" y="110" font-family="Space Grotesk,sans-serif" font-size="10" fill="#f0f0f0" text-anchor="middle" font-weight="600">RESET</text>
-            <text x="775" y="123" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">Deactivate</text>
+            <rect x="710" y="75" width="130" height="50" rx="8" fill="#eaf0fc" stroke="#006d91" stroke-width="1" stroke-opacity="0.6"/>
+            <text x="775" y="96"  font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">STOP /</text>
+            <text x="775" y="110" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">RESET</text>
+            <text x="775" y="123" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" text-anchor="middle">Deactivate</text>
 
             <!-- Forward arrows -->
-            <line x1="130" y1="100" x2="168" y2="100" stroke="#00d4ff" stroke-width="1.2" marker-end="url(#arrowR)"/>
-            <text x="149"  y="94" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">fabric in</text>
+            <line x1="130" y1="100" x2="168" y2="100" stroke="#006d91" stroke-width="1.2" marker-end="url(#arrowR)"/>
+            <text x="149"  y="94" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">fabric in</text>
 
-            <line x1="310" y1="100" x2="348" y2="100" stroke="#00d4ff" stroke-width="1.2" marker-end="url(#arrowR)"/>
-            <text x="329"  y="94" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">confirmed</text>
+            <line x1="310" y1="100" x2="348" y2="100" stroke="#006d91" stroke-width="1.2" marker-end="url(#arrowR)"/>
+            <text x="329"  y="94" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">confirmed</text>
 
-            <line x1="490" y1="100" x2="528" y2="100" stroke="#00d4ff" stroke-width="1.2" marker-end="url(#arrowR)"/>
-            <text x="509"  y="94" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">running</text>
+            <line x1="490" y1="100" x2="528" y2="100" stroke="#006d91" stroke-width="1.2" marker-end="url(#arrowR)"/>
+            <text x="509"  y="94" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">running</text>
 
-            <line x1="670" y1="100" x2="708" y2="100" stroke="#00d4ff" stroke-width="1.2" marker-end="url(#arrowR)"/>
-            <text x="689"  y="94" font-family="Inter,sans-serif" font-size="8" fill="#555" text-anchor="middle">end cond.</text>
+            <line x1="670" y1="100" x2="708" y2="100" stroke="#006d91" stroke-width="1.2" marker-end="url(#arrowR)"/>
+            <text x="689"  y="94" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">end cond.</text>
 
             <!-- Reset arc back to IDLE -->
             <path d="M 775 125 Q 775 170 430 170 Q 85 170 70 127" fill="none" stroke="#444" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowL)"/>
             <text x="430" y="183" font-family="Inter,sans-serif" font-size="9" fill="#444" text-anchor="middle">reset / fault → back to IDLE</text>
 
             <!-- Fault from FABRIC DETECTION back to IDLE -->
-            <path d="M 240 75 Q 240 30 70 30 Q 70 30 70 74" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrowL)"/>
+            <path d="M 240 75 Q 240 30 70 30 Q 70 30 70 74" fill="none" stroke="#9aacc6" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrowL)"/>
             <text x="155" y="24" font-family="Inter,sans-serif" font-size="8" fill="#444" text-anchor="middle">no fabric / fault</text>
           </svg>
         </div>
@@ -281,90 +281,90 @@
           <svg viewBox="0 0 340 660" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Control sequence flowchart" role="img">
             <defs>
               <marker id="arrowDown" markerWidth="8" markerHeight="6" refX="4" refY="6" orient="auto">
-                <path d="M0,0 L4,6 L8,0" fill="none" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.7"/>
+                <path d="M0,0 L4,6 L8,0" fill="none" stroke="#006d91" stroke-width="1.2" stroke-opacity="0.7"/>
               </marker>
               <marker id="arrowDownG" markerWidth="8" markerHeight="6" refX="4" refY="6" orient="auto">
-                <path d="M0,0 L4,6 L8,0" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+                <path d="M0,0 L4,6 L8,0" fill="none" stroke="#24713b" stroke-width="1.2"/>
               </marker>
               <marker id="arrowDownR" markerWidth="8" markerHeight="6" refX="4" refY="6" orient="auto">
-                <path d="M0,0 L4,6 L8,0" fill="none" stroke="#f87171" stroke-width="1.2"/>
+                <path d="M0,0 L4,6 L8,0" fill="none" stroke="#b42338" stroke-width="1.2"/>
               </marker>
             </defs>
 
             <!-- START -->
-            <rect x="95" y="10" width="150" height="38" rx="19" fill="#00d4ff" />
+            <rect x="95" y="10" width="150" height="38" rx="19" fill="#006d91" />
             <text x="170" y="34" font-family="Space Grotesk,sans-serif" font-size="13" fill="#000" text-anchor="middle" font-weight="700">START</text>
-            <line x1="170" y1="48" x2="170" y2="68" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
+            <line x1="170" y1="48" x2="170" y2="68" stroke="#006d91" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
 
             <!-- POWER ON / INIT -->
-            <rect x="70" y="70" width="200" height="40" rx="6" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
-            <text x="170" y="88" font-family="Space Grotesk,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="600">Power On — Initialise</text>
-            <text x="170" y="103" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">GPIO, PWM, Interrupts</text>
-            <line x1="170" y1="110" x2="170" y2="130" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
+            <rect x="70" y="70" width="200" height="40" rx="6" fill="#eaf0fc" stroke="#006d91" stroke-width="1" stroke-opacity="0.5"/>
+            <text x="170" y="88" font-family="Space Grotesk,sans-serif" font-size="11" fill="#152747" text-anchor="middle" font-weight="600">Power On — Initialise</text>
+            <text x="170" y="103" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" text-anchor="middle">GPIO, PWM, Interrupts</text>
+            <line x1="170" y1="110" x2="170" y2="130" stroke="#006d91" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
 
             <!-- DETECT FABRIC -->
-            <rect x="70" y="132" width="200" height="40" rx="6" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
-            <text x="170" y="150" font-family="Space Grotesk,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="600">Poll IR Sensor</text>
-            <text x="170" y="165" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">Debounced reading</text>
-            <line x1="170" y1="172" x2="170" y2="192" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
+            <rect x="70" y="132" width="200" height="40" rx="6" fill="#eaf0fc" stroke="#006d91" stroke-width="1" stroke-opacity="0.5"/>
+            <text x="170" y="150" font-family="Space Grotesk,sans-serif" font-size="11" fill="#152747" text-anchor="middle" font-weight="600">Poll IR Sensor</text>
+            <text x="170" y="165" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" text-anchor="middle">Debounced reading</text>
+            <line x1="170" y1="172" x2="170" y2="192" stroke="#006d91" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
 
             <!-- DECISION: Fabric present? -->
-            <polygon points="170,194 270,224 170,254 70,224" fill="#111" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.7"/>
-            <text x="170" y="220" font-family="Space Grotesk,sans-serif" font-size="10" fill="#00d4ff" text-anchor="middle" font-weight="600">Fabric</text>
-            <text x="170" y="234" font-family="Space Grotesk,sans-serif" font-size="10" fill="#00d4ff" text-anchor="middle" font-weight="600">Present?</text>
+            <polygon points="170,194 270,224 170,254 70,224" fill="#ffffff" stroke="#006d91" stroke-width="1.2" stroke-opacity="0.7"/>
+            <text x="170" y="220" font-family="Space Grotesk,sans-serif" font-size="10" fill="#006d91" text-anchor="middle" font-weight="600">Fabric</text>
+            <text x="170" y="234" font-family="Space Grotesk,sans-serif" font-size="10" fill="#006d91" text-anchor="middle" font-weight="600">Present?</text>
 
             <!-- NO branch — loop back -->
-            <line x1="70" y1="224" x2="30" y2="224" stroke="#f87171" stroke-width="1.1"/>
-            <line x1="30" y1="224" x2="30" y2="152" stroke="#f87171" stroke-width="1.1"/>
-            <line x1="30" y1="152" x2="69" y2="152" stroke="#f87171" stroke-width="1.1" marker-end="url(#arrowDownR)"/>
-            <text x="14" y="192" font-family="Inter,sans-serif" font-size="9" fill="#f87171" text-anchor="middle">NO</text>
+            <line x1="70" y1="224" x2="30" y2="224" stroke="#b42338" stroke-width="1.1"/>
+            <line x1="30" y1="224" x2="30" y2="152" stroke="#b42338" stroke-width="1.1"/>
+            <line x1="30" y1="152" x2="69" y2="152" stroke="#b42338" stroke-width="1.1" marker-end="url(#arrowDownR)"/>
+            <text x="14" y="192" font-family="Inter,sans-serif" font-size="9" fill="#b42338" text-anchor="middle">NO</text>
 
             <!-- YES -->
-            <line x1="170" y1="254" x2="170" y2="274" stroke="#4ade80" stroke-width="1.2" marker-end="url(#arrowDownG)"/>
-            <text x="180" y="268" font-family="Inter,sans-serif" font-size="9" fill="#4ade80">YES</text>
+            <line x1="170" y1="254" x2="170" y2="274" stroke="#24713b" stroke-width="1.2" marker-end="url(#arrowDownG)"/>
+            <text x="180" y="268" font-family="Inter,sans-serif" font-size="9" fill="#24713b">YES</text>
 
             <!-- ACTIVATE MOTOR -->
-            <rect x="70" y="276" width="200" height="40" rx="6" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
-            <text x="170" y="294" font-family="Space Grotesk,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="600">Activate Motor</text>
-            <text x="170" y="309" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">Ramp PWM — simulate pedal</text>
-            <line x1="170" y1="316" x2="170" y2="336" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
+            <rect x="70" y="276" width="200" height="40" rx="6" fill="#eaf0fc" stroke="#006d91" stroke-width="1" stroke-opacity="0.5"/>
+            <text x="170" y="294" font-family="Space Grotesk,sans-serif" font-size="11" fill="#152747" text-anchor="middle" font-weight="600">Activate Motor</text>
+            <text x="170" y="309" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" text-anchor="middle">Ramp PWM — simulate pedal</text>
+            <line x1="170" y1="316" x2="170" y2="336" stroke="#006d91" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
 
             <!-- MONITOR -->
-            <rect x="70" y="338" width="200" height="40" rx="6" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
-            <text x="170" y="356" font-family="Space Grotesk,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="600">Monitor Operation</text>
-            <text x="170" y="371" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">Speed, fabric, fault state</text>
-            <line x1="170" y1="378" x2="170" y2="398" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
+            <rect x="70" y="338" width="200" height="40" rx="6" fill="#eaf0fc" stroke="#006d91" stroke-width="1" stroke-opacity="0.5"/>
+            <text x="170" y="356" font-family="Space Grotesk,sans-serif" font-size="11" fill="#152747" text-anchor="middle" font-weight="600">Monitor Operation</text>
+            <text x="170" y="371" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" text-anchor="middle">Speed, fabric, fault state</text>
+            <line x1="170" y1="378" x2="170" y2="398" stroke="#006d91" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
 
             <!-- DECISION: End condition? -->
-            <polygon points="170,400 270,430 170,460 70,430" fill="#111" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.7"/>
-            <text x="170" y="426" font-family="Space Grotesk,sans-serif" font-size="10" fill="#00d4ff" text-anchor="middle" font-weight="600">End</text>
-            <text x="170" y="440" font-family="Space Grotesk,sans-serif" font-size="10" fill="#00d4ff" text-anchor="middle" font-weight="600">Condition?</text>
+            <polygon points="170,400 270,430 170,460 70,430" fill="#ffffff" stroke="#006d91" stroke-width="1.2" stroke-opacity="0.7"/>
+            <text x="170" y="426" font-family="Space Grotesk,sans-serif" font-size="10" fill="#006d91" text-anchor="middle" font-weight="600">End</text>
+            <text x="170" y="440" font-family="Space Grotesk,sans-serif" font-size="10" fill="#006d91" text-anchor="middle" font-weight="600">Condition?</text>
 
             <!-- NO — keep running -->
-            <line x1="270" y1="430" x2="310" y2="430" stroke="#f87171" stroke-width="1.1"/>
-            <line x1="310" y1="430" x2="310" y2="358" stroke="#f87171" stroke-width="1.1"/>
-            <line x1="310" y1="358" x2="271" y2="358" stroke="#f87171" stroke-width="1.1" marker-end="url(#arrowDownR)"/>
-            <text x="320" y="398" font-family="Inter,sans-serif" font-size="9" fill="#f87171" text-anchor="middle">NO</text>
+            <line x1="270" y1="430" x2="310" y2="430" stroke="#b42338" stroke-width="1.1"/>
+            <line x1="310" y1="430" x2="310" y2="358" stroke="#b42338" stroke-width="1.1"/>
+            <line x1="310" y1="358" x2="271" y2="358" stroke="#b42338" stroke-width="1.1" marker-end="url(#arrowDownR)"/>
+            <text x="320" y="398" font-family="Inter,sans-serif" font-size="9" fill="#b42338" text-anchor="middle">NO</text>
 
             <!-- YES -->
-            <line x1="170" y1="460" x2="170" y2="480" stroke="#4ade80" stroke-width="1.2" marker-end="url(#arrowDownG)"/>
-            <text x="180" y="474" font-family="Inter,sans-serif" font-size="9" fill="#4ade80">YES</text>
+            <line x1="170" y1="460" x2="170" y2="480" stroke="#24713b" stroke-width="1.2" marker-end="url(#arrowDownG)"/>
+            <text x="180" y="474" font-family="Inter,sans-serif" font-size="9" fill="#24713b">YES</text>
 
             <!-- STOP MOTOR -->
-            <rect x="70" y="482" width="200" height="40" rx="6" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
-            <text x="170" y="500" font-family="Space Grotesk,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="600">Stop Motor</text>
-            <text x="170" y="515" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">Decelerate PWM to zero</text>
-            <line x1="170" y1="522" x2="170" y2="542" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
+            <rect x="70" y="482" width="200" height="40" rx="6" fill="#eaf0fc" stroke="#006d91" stroke-width="1" stroke-opacity="0.5"/>
+            <text x="170" y="500" font-family="Space Grotesk,sans-serif" font-size="11" fill="#152747" text-anchor="middle" font-weight="600">Stop Motor</text>
+            <text x="170" y="515" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" text-anchor="middle">Decelerate PWM to zero</text>
+            <line x1="170" y1="522" x2="170" y2="542" stroke="#006d91" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
 
             <!-- RESET -->
-            <rect x="70" y="544" width="200" height="40" rx="6" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.5"/>
-            <text x="170" y="562" font-family="Space Grotesk,sans-serif" font-size="11" fill="#f0f0f0" text-anchor="middle" font-weight="600">Reset System</text>
-            <text x="170" y="577" font-family="Inter,sans-serif" font-size="9" fill="#555" text-anchor="middle">Clear flags — return to IDLE</text>
-            <line x1="170" y1="584" x2="170" y2="604" stroke="#00d4ff" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
+            <rect x="70" y="544" width="200" height="40" rx="6" fill="#eaf0fc" stroke="#006d91" stroke-width="1" stroke-opacity="0.5"/>
+            <text x="170" y="562" font-family="Space Grotesk,sans-serif" font-size="11" fill="#152747" text-anchor="middle" font-weight="600">Reset System</text>
+            <text x="170" y="577" font-family="Inter,sans-serif" font-size="9" fill="#576c8a" text-anchor="middle">Clear flags — return to IDLE</text>
+            <line x1="170" y1="584" x2="170" y2="604" stroke="#006d91" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrowDown)"/>
 
             <!-- END -->
-            <rect x="95" y="606" width="150" height="38" rx="19" fill="#1a1a1a" stroke="#00d4ff" stroke-width="1.5"/>
-            <text x="170" y="630" font-family="Space Grotesk,sans-serif" font-size="13" fill="#00d4ff" text-anchor="middle" font-weight="700">NEXT CYCLE</text>
+            <rect x="95" y="606" width="150" height="38" rx="19" fill="#eaf0fc" stroke="#006d91" stroke-width="1.5"/>
+            <text x="170" y="630" font-family="Space Grotesk,sans-serif" font-size="13" fill="#006d91" text-anchor="middle" font-weight="700">NEXT CYCLE</text>
           </svg>
         </div>
       </div>
@@ -462,31 +462,31 @@
         <div class="proj-results reveal">
           <div class="proj-result">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 13l4 4L19 7" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 13l4 4L19 7" stroke="#24713b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <p>Consistent and repeatable stitching cycles across varied fabric types</p>
           </div>
           <div class="proj-result">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 13l4 4L19 7" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 13l4 4L19 7" stroke="#24713b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <p>Reduced manual operator effort and fatigue in repetitive sewing tasks</p>
           </div>
           <div class="proj-result">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 13l4 4L19 7" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 13l4 4L19 7" stroke="#24713b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <p>Increased throughput by eliminating cycle-time variance between operators</p>
           </div>
           <div class="proj-result">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 13l4 4L19 7" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 13l4 4L19 7" stroke="#24713b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <p>Demonstrated scalable low-cost retrofitting approach for existing industrial machines</p>
           </div>
           <div class="proj-result">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 13l4 4L19 7" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 13l4 4L19 7" stroke="#24713b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <p>Non-invasive mechanical coupling preserved original machine reliability and serviceability</p>
           </div>

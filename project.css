@@ -32,9 +32,9 @@
   letter-spacing: -0.03em;
   color: var(--text-primary);
   margin-bottom: var(--space-xl);
-  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.7) 100%);
+  background: none;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: var(--text-primary);
   background-clip: text;
 }
 
@@ -305,10 +305,10 @@
   transition: border-color var(--transition-base);
 }
 
-.defect-card--shallow { border-left: 3px solid #f87171; }
-.defect-card--deep    { border-left: 3px solid #fbbf24; }
-.defect-card--shallow:hover { border-color: #f87171; }
-.defect-card--deep:hover    { border-color: #fbbf24; }
+.defect-card--shallow { border-left: 3px solid #b42338; }
+.defect-card--deep    { border-left: 3px solid #875500; }
+.defect-card--shallow:hover { border-color: #b42338; }
+.defect-card--deep:hover    { border-color: #875500; }
 
 .defect-card__header {
   display: flex;
@@ -344,8 +344,8 @@
   padding: 0.15rem 0.55rem;
   margin-left: auto;
 }
-.defect-card__badge--under { color: #f87171; background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); }
-.defect-card__badge--over  { color: #fbbf24; background: rgba(251,191,36,0.1);  border: 1px solid rgba(251,191,36,0.3); }
+.defect-card__badge--under { color: #b42338; background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); }
+.defect-card__badge--over  { color: #875500; background: rgba(251,191,36,0.1);  border: 1px solid rgba(251,191,36,0.3); }
 
 .defect-card > p {
   font-size: var(--fs-sm);
@@ -368,8 +368,8 @@
   padding-left: 1rem;
   position: relative;
 }
-.defect-card--shallow .defect-card__signals li::before { content: '·'; position: absolute; left: 0; color: #f87171; font-size: 1.2em; line-height: 1; }
-.defect-card--deep    .defect-card__signals li::before { content: '·'; position: absolute; left: 0; color: #fbbf24; font-size: 1.2em; line-height: 1; }
+.defect-card--shallow .defect-card__signals li::before { content: '·'; position: absolute; left: 0; color: #b42338; font-size: 1.2em; line-height: 1; }
+.defect-card--deep    .defect-card__signals li::before { content: '·'; position: absolute; left: 0; color: #875500; font-size: 1.2em; line-height: 1; }
 
 /* ---- Detection split panels ---- */
 .detect-split {
@@ -395,8 +395,8 @@
   border-radius: 50%;
   flex-shrink: 0;
 }
-.detect-panel__dot--shallow { background: #f87171; box-shadow: 0 0 8px rgba(248,113,113,0.5); }
-.detect-panel__dot--deep    { background: #fbbf24; box-shadow: 0 0 8px rgba(251,191,36,0.5); }
+.detect-panel__dot--shallow { background: #b42338; box-shadow: 0 0 8px rgba(248,113,113,0.5); }
+.detect-panel__dot--deep    { background: #875500; box-shadow: 0 0 8px rgba(251,191,36,0.5); }
 
 @media (max-width: 768px) {
   .defect-cards  { grid-template-columns: 1fr; }
@@ -424,3 +424,6 @@
 
 /* Shared studio typography */
 .proj-hero__title { background: none; -webkit-text-fill-color: var(--text-primary); color: var(--text-primary); }
+
+/* SVG annotations use full opacity to remain readable on pale surfaces. */
+.diagram text { opacity: 1; }
