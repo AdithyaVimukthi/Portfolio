@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Epidural Ninja — Adithya Vimukthi</title>
+  <meta name="description" content="Force-based bone and epidural space identification for robotic epidural needle insertion on the 7-DoF OpenArm, using in-line load cells and a Python CAN-FD control stack." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo" aria-label="Back to portfolio">
+        <span class="nav__logo-mark">AV</span>
+        <span class="nav__logo-name">Adithya Vimukthi</span>
+      </a>
+      <a href="index.html#projects" class="btn btn--ghost" style="font-size:var(--fs-sm);padding:0.5rem 1.25rem;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Projects
+      </a>
+    </div>
+  </nav>
+
+  <main style="padding-top:var(--nav-height);">
+
+    <!-- HERO -->
+    <section class="proj-hero">
+      <div class="container">
+        <div class="proj-hero__meta reveal">
+          <span class="section__label">Medical Robotics · Force Sensing · Control</span>
+          <span class="proj-hero__year">2026 · QUT</span>
+        </div>
+        <h1 class="proj-hero__title reveal">Epidural<br />Ninja</h1>
+        <p class="proj-hero__lead reveal">
+          Force-based bone and epidural space identification for robotic epidural needle insertion —
+          investigating whether a general-purpose robot arm can make the two judgements clinicians
+          make by feel, without any visual input.
+        </p>
+        <ul class="proj-hero__tags reveal" role="list">
+          <li>Medical Robotics</li><li>Force Sensing</li><li>Load Cells</li><li>Loss of Resistance</li>
+          <li>OpenArm</li><li>CAN-FD</li><li>Inverse Kinematics</li><li>Python</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="proj-section section">
+      <div class="container proj-grid">
+        <div class="proj-content reveal">
+          <h2 class="proj-section__title">Project Overview</h2>
+          <p>
+            Epidural anaesthesia requires a needle to cross the posterior spinal ligaments and stop
+            in a fat-filled space only a few millimetres wide, just before the dura. Clinicians do
+            this almost entirely by feel: bone is recognised as a hard stop, and the epidural space
+            as a sudden loss of resistance (LOR) on a syringe plunger.
+          </p>
+          <p>
+            This project investigates whether a general-purpose robot arm can make the same two
+            judgements without vision — identifying bone contact, and identifying when the needle
+            tip reaches the epidural space.
+          </p>
+          <p>
+            The work combined a Python control stack for the open-source 7-DoF OpenArm, two rounds
+            of sensing hardware for each objective, and a focused review of 20 full-text papers and
+            eight supplementary studies.
+          </p>
+        </div>
+        <aside class="proj-sidebar reveal">
+          <div class="proj-stat-group">
+            <div class="proj-stat"><span class="proj-stat__val">26/26</span><span class="proj-stat__key">Bone Insertions Separated</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">25/25</span><span class="proj-stat__key">LOR Trials Separated</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">100%</span><span class="proj-stat__key">Cross-Validated Accuracy</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">7-DoF</span><span class="proj-stat__key">OpenArm</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- LOAD PATH -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Sensing in the Load Path</h2>
+        <p class="proj-section__sub reveal">
+          Where the sensor sits decides whether the signal is usable. The arm's joint torques were
+          too far from the needle; load cells placed directly in the needle and plunger load paths
+          separated every trial.
+        </p>
+        <div class="diagram-wrap reveal">
+          <svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Force sensing chain from robot arm to needle tip" role="img">
+            <defs>
+              <marker id="aEN" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#006d91" opacity="0.7"/>
+              </marker>
+              <marker id="aENk" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#152747"/>
+              </marker>
+              <marker id="aENy" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#875500" opacity="0.8"/>
+              </marker>
+            </defs>
+
+            <text x="245" y="22" font-family="Inter,sans-serif" font-size="7" fill="#576c8a" text-anchor="middle" letter-spacing="0.08em">ROBOT &amp; SENSORS</text>
+            <text x="635" y="22" font-family="Inter,sans-serif" font-size="7" fill="#576c8a" text-anchor="middle" letter-spacing="0.08em">LUMBAR PHANTOM</text>
+
+            <!-- OpenArm -->
+            <rect x="10" y="40" width="130" height="80" rx="6" fill="#eaf0fc" stroke="#9aacc6"/>
+            <text x="75" y="66" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">OpenArm</text>
+            <text x="75" y="82" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">7-DoF · CAN-FD</text>
+            <text x="75" y="96" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Joint torques</text>
+            <rect x="20" y="132" width="110" height="22" rx="11" fill="#ffffff" stroke="#b42338" stroke-width="1.2"/>
+            <text x="75" y="147" font-family="Space Grotesk,sans-serif" font-size="9" fill="#b42338" text-anchor="middle" font-weight="700">✗ Not separable</text>
+
+            <line x1="140" y1="80" x2="168" y2="80" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aEN)"/>
+
+            <!-- Syringe holder -->
+            <rect x="170" y="40" width="140" height="80" rx="6" fill="#ffffff" stroke="#006d91" stroke-width="1.3"/>
+            <text x="240" y="66" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Syringe Holder</text>
+            <text x="240" y="82" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">1 kg bar load cell</text>
+            <text x="240" y="96" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">In the needle load path</text>
+            <rect x="185" y="132" width="110" height="22" rx="11" fill="#ffffff" stroke="#24713b" stroke-width="1.2"/>
+            <text x="240" y="147" font-family="Space Grotesk,sans-serif" font-size="9" fill="#24713b" text-anchor="middle" font-weight="700">✓ Bone · 26 / 26</text>
+
+            <line x1="310" y1="80" x2="338" y2="80" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aEN)"/>
+
+            <!-- Plunger -->
+            <rect x="340" y="40" width="140" height="80" rx="6" fill="#ffffff" stroke="#006d91" stroke-width="1.3"/>
+            <text x="410" y="66" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Syringe Plunger</text>
+            <text x="410" y="82" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">100 g load cell</text>
+            <text x="410" y="96" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Replaced a low-force FSR</text>
+            <rect x="355" y="132" width="110" height="22" rx="11" fill="#ffffff" stroke="#24713b" stroke-width="1.2"/>
+            <text x="410" y="147" font-family="Space Grotesk,sans-serif" font-size="9" fill="#24713b" text-anchor="middle" font-weight="700">✓ LOR · 25 / 25</text>
+
+            <!-- Needle -->
+            <line x1="480" y1="80" x2="517" y2="80" stroke="#152747" stroke-width="1.5" marker-end="url(#aENk)"/>
+            <text x="499" y="72" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">needle</text>
+            <path d="M499 80 V167 H517" fill="none" stroke="#875500" stroke-width="1" stroke-dasharray="3 3" stroke-opacity="0.8" marker-end="url(#aENy)"/>
+
+            <!-- Tissue layers -->
+            <rect x="520" y="30" width="90" height="100" fill="#eaf0fc" stroke="#9aacc6"/>
+            <text x="565" y="70" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Posterior</text>
+            <text x="565" y="83" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">ligaments</text>
+            <text x="565" y="100" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Resistance</text>
+
+            <rect x="610" y="30" width="70" height="100" fill="rgba(0,130,180,0.12)" stroke="#006d91"/>
+            <text x="645" y="70" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Epidural</text>
+            <text x="645" y="83" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">space</text>
+            <text x="645" y="100" font-family="Inter,sans-serif" font-size="8" fill="#006d91" text-anchor="middle">Target · LOR</text>
+
+            <rect x="680" y="30" width="70" height="100" fill="rgba(180,35,56,0.06)" stroke="#b42338" stroke-opacity="0.6"/>
+            <text x="715" y="76" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Dura</text>
+            <text x="715" y="100" font-family="Inter,sans-serif" font-size="8" fill="#b42338" text-anchor="middle">Stop before</text>
+
+            <!-- Bone -->
+            <rect x="520" y="145" width="230" height="45" rx="6" fill="rgba(135,85,0,0.07)" stroke="#875500" stroke-opacity="0.6"/>
+            <text x="635" y="164" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Bone · vertebra</text>
+            <text x="635" y="180" font-family="Inter,sans-serif" font-size="8" fill="#875500" text-anchor="middle">Felt as a hard stop</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="proj-section section">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Results</h2>
+        <p class="proj-section__sub reveal">Each objective took two sensing iterations to reach full separation.</p>
+
+        <div class="detect-split reveal">
+
+          <!-- Objective 1 -->
+          <div class="detect-panel">
+            <h3 class="detect-panel__title">
+              <span class="detect-panel__dot detect-panel__dot--deep"></span>
+              Objective 1 · Bone Detection
+            </h3>
+            <div class="proj-results">
+              <div class="proj-result">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <circle cx="10" cy="10" r="8" stroke="#b42338" stroke-width="1.2"/>
+                  <path d="M7 7l6 6M13 7l-6 6" stroke="#b42338" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <p><strong>Joint torques</strong> — the arm's own joint torques could not distinguish the printed vertebra from silicone. After contact, joint 2 varied only between −1.15 and −0.99 N·m, and the silicone run produced larger torque swings than the hard run on five of seven joints.</p>
+              </div>
+              <div class="proj-result">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <circle cx="10" cy="10" r="8" stroke="#24713b" stroke-width="1.2"/>
+                  <path d="M6 10l3 3 5-5" stroke="#24713b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <p><strong>1 kg bar load cell</strong> — a redesigned syringe holder put the load cell in the needle load path and separated the printed vertebra from silicone in all 26 insertions (peaks of 2.11 M vs 3.38 M counts; Welch p = 1.7 × 10⁻⁹).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Objective 2 -->
+          <div class="detect-panel">
+            <h3 class="detect-panel__title">
+              <span class="detect-panel__dot" style="background:#006d91;box-shadow:0 0 8px rgba(0,130,180,0.4);"></span>
+              Objective 2 · Epidural Space Detection
+            </h3>
+            <div class="proj-results">
+              <div class="proj-result">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <circle cx="10" cy="10" r="8" stroke="#b42338" stroke-width="1.2"/>
+                  <path d="M7 7l6 6M13 7l-6 6" stroke="#b42338" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <p><strong>Force-sensitive resistor</strong> — an FSR on the plunger was not sensitive enough at low force.</p>
+              </div>
+              <div class="proj-result">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <circle cx="10" cy="10" r="8" stroke="#24713b" stroke-width="1.2"/>
+                  <path d="M6 10l3 3 5-5" stroke="#24713b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <p><strong>100 g plunger load cell</strong> — separated a tip occluded by silicone from a tip in the epidural space tube in all 25 trials. The median plunger force over the second half of the stroke separated the classes by 4.68 M counts, with 100% cross-validated accuracy.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTROL STACK -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Control Stack</h2>
+        <p class="proj-section__sub reveal">A Python control stack written for the open-source 7-DoF OpenArm.</p>
+        <div class="proj-details-grid reveal">
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <line x1="2" y1="7" x2="18" y2="7" stroke="#006d91" stroke-width="1.3"/>
+                <line x1="2" y1="13" x2="18" y2="13" stroke="#006d91" stroke-width="1.3"/>
+                <rect x="4" y="3" width="4" height="4" rx="1" stroke="#006d91" stroke-width="1.1"/>
+                <rect x="12" y="13" width="4" height="4" rx="1" stroke="#006d91" stroke-width="1.1"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">CAN-FD Motor Interface</h3>
+            <ul class="proj-detail-card__list">
+              <li>Python interface to the arm's motors over CAN-FD</li>
+              <li>Joint torque readback used in the first bone-detection attempt</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="4" cy="16" r="1.8" stroke="#006d91" stroke-width="1.2"/>
+                <circle cx="9" cy="8" r="1.8" stroke="#006d91" stroke-width="1.2"/>
+                <path d="M5 14.5l3-5M10.5 7.5L16 5" stroke="#006d91" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="16" y1="5" x2="18" y2="10" stroke="#006d91" stroke-width="1" stroke-dasharray="1.5 1.5"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Inverse Kinematics</h3>
+            <ul class="proj-detail-card__list">
+              <li>IK for the 7-DoF arm</li>
+              <li>Tool-axis constraints to hold the needle orientation</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <line x1="10" y1="2" x2="10" y2="15" stroke="#006d91" stroke-width="1.4" stroke-linecap="round"/>
+                <path d="M7 12l3 4 3-4" stroke="#006d91" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="4" y1="18" x2="16" y2="18" stroke="#006d91" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Straight-Line Needle Descents</h3>
+            <ul class="proj-detail-card__list">
+              <li>Straight-line motion along the needle axis</li>
+              <li>Built on the constrained IK solver</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <polyline points="2,14 6,10 9,12 13,5 18,8" stroke="#006d91" stroke-width="1.4" fill="none" stroke-linejoin="round"/>
+                <line x1="2" y1="18" x2="18" y2="18" stroke="#006d91" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Logging</h3>
+            <ul class="proj-detail-card__list">
+              <li>Records joint and sensor data from each trial</li>
+              <li>Feeds the offline statistical analysis</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LITERATURE REVIEW -->
+    <section class="proj-section section">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Literature Review</h2>
+        <p class="proj-section__sub reveal">A focused review of 20 full-text papers and eight supplementary studies across five themes.</p>
+        <div class="fsm-states reveal">
+          <div class="fsm-state">
+            <span class="fsm-state__num">01</span>
+            <div>
+              <h4 class="fsm-state__name">Manual Procedure</h4>
+              <p>How clinicians perform the insertion and judge depth by feel.</p>
+            </div>
+          </div>
+          <div class="fsm-state">
+            <span class="fsm-state__num">02</span>
+            <div>
+              <h4 class="fsm-state__name">Sensing Methods</h4>
+              <p>Approaches for tracking needle progress through tissue.</p>
+            </div>
+          </div>
+          <div class="fsm-state">
+            <span class="fsm-state__num">03</span>
+            <div>
+              <h4 class="fsm-state__name">Non-Visual Bone Identification</h4>
+              <p>Recognising bone contact without imaging.</p>
+            </div>
+          </div>
+          <div class="fsm-state">
+            <span class="fsm-state__num">04</span>
+            <div>
+              <h4 class="fsm-state__name">Robots for Similar Procedures</h4>
+              <p>Robotic systems for related needle-insertion tasks.</p>
+            </div>
+          </div>
+          <div class="fsm-state">
+            <span class="fsm-state__num">05</span>
+            <div>
+              <h4 class="fsm-state__name">Evaluation Metrics</h4>
+              <p>How needle-insertion systems are measured and compared.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCLUSION -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Conclusion &amp; Next Steps</h2>
+        <p class="proj-section__sub reveal">Both judgements can be made from force alone — when the sensor sits directly in the relevant load path.</p>
+        <div class="proj-results reveal">
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#24713b" stroke-width="1.2"/>
+              <path d="M6 10l3 3 5-5" stroke="#24713b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Bone contact and the epidural space were both identified from force alone, with load cells placed directly in the needle and plunger load paths.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#b42338" stroke-width="1.2"/>
+              <path d="M7 7l6 6M13 7l-6 6" stroke="#b42338" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <p>Relying on the robot's own motor torques is not sufficient.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#875500" stroke-width="1.2"/>
+              <line x1="10" y1="7" x2="10" y2="11" stroke="#875500" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="13.5" r="0.8" fill="#875500"/>
+            </svg>
+            <p>Caveat — values are uncalibrated raw counts from a lumbar phantom.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#444" stroke-width="1.2"/>
+              <line x1="10" y1="7" x2="10" y2="13" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <p>Next — calibration, closed-loop testing on the arm, and layered anatomical phantoms.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACK -->
+    <section class="section" style="padding-block:var(--space-3xl);">
+      <div class="container" style="text-align:center;">
+        <a href="index.html#projects" class="btn btn--ghost">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to All Projects
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">&copy; 2026 Adithya Vimukthi.</p>
+        <a href="#" class="footer__back-top" aria-label="Back to top">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 13V3M3 8l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Back to top</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('reveal--visible'); obs.unobserve(e.target); }
+      }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

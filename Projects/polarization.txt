@@ -1,0 +1,19 @@
+Evaluating Polarization Image Fusion for Extreme Lighting Conditions
+
+QUT — semester-long research project
+
+Introduction. A semester-long evaluation of polarization imaging as an input to visual SLAM under harsh lighting, covering method, results and deliverables, as well as risk, ethics, sustainability and stakeholder input.
+
+Background.
+
+The Moon has no atmosphere, so surfaces are lit by direct sunlight with no scattered fill light. This produces hard shadows, saturated highlights on regolith, and large appearance changes as the Sun moves. Visual SLAM depends on repeatable image features, and these conditions remove them. Ingenuity's January 2024 navigation failure on Mars has been linked to wrongly detected terrain features, showing the cost of this weakness (Gonzalez et al., 2026).
+A division-of-focal-plane polarization camera places a 2 × 2 grid of linear polarizers (0°, 45°, 90°, 135°) over its pixels. From the four analyser images the Stokes parameters S0, S1 and S2 are computed. S0 is total intensity (the image a conventional monochrome camera would give). The degree (DoLP) and angle (AoLP) of linear polarization follow from S1 and S2. Because polarization depends on surface orientation and material, it may preserve structure where intensity has clipped.
+Most polarization navigation research uses skylight polarization as a compass (Li et al., 2022; Xia et al., 2022). That pattern is created by the atmosphere and does not exist on the Moon; only polarization from light reflected off the ground can be used there. The one prior study at QUT's Yandiwanba Lunar Testbed ran four VSLAM systems on polarization camera sequences and reported their limits under glare and perceptual aliasing (Gonzalez et al., 2026).
+
+Aim and research question. Determine whether combining polarization cues with intensity gives ORB-SLAM3 a more robust input than intensity alone, under saturation and harsh lighting.
+
+Limits of the study. Limited to recordings supplied to the project, monocular ORB-SLAM3, and image-level fusion performed before feature extraction. No SLAM internals were changed.
+
+Report structure. Data, pipeline and evaluation protocol → results in three stages → deliverables and challenges → risk, ethics, sustainability, standards and stakeholders → conclusion with recommendations.
+
+Keywords: Polarization imaging, Stokes parameters, DoLP/AoLP, image fusion, ORB-SLAM3, visual SLAM, lunar navigation

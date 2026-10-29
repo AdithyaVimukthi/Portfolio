@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polarization Image Fusion — Adithya Vimukthi</title>
+  <meta name="description" content="QUT research project evaluating whether fusing polarization cues (DoLP / AoLP) with intensity gives ORB-SLAM3 a more robust input under the saturated, harsh lighting of the lunar surface." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo" aria-label="Back to portfolio">
+        <span class="nav__logo-mark">AV</span>
+        <span class="nav__logo-name">Adithya Vimukthi</span>
+      </a>
+      <a href="index.html#projects" class="btn btn--ghost" style="font-size:var(--fs-sm);padding:0.5rem 1.25rem;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Projects
+      </a>
+    </div>
+  </nav>
+
+  <main style="padding-top:var(--nav-height);">
+
+    <!-- HERO -->
+    <section class="proj-hero">
+      <div class="container">
+        <div class="proj-hero__meta reveal">
+          <span class="section__label">Visual SLAM · Polarization Imaging · Space Robotics</span>
+          <span class="proj-hero__year">2026 · QUT Research Project</span>
+        </div>
+        <h1 class="proj-hero__title reveal">Polarization Image Fusion<br />for Extreme Lighting</h1>
+        <p class="proj-hero__lead reveal">
+          A semester-long evaluation of polarization imaging as an input to visual SLAM — testing
+          whether combining polarization cues with intensity gives ORB-SLAM3 a more robust input
+          than intensity alone, under the saturation and harsh lighting of the lunar surface.
+        </p>
+        <ul class="proj-hero__tags reveal" role="list">
+          <li>Polarization Imaging</li><li>Stokes Parameters</li><li>DoLP / AoLP</li><li>Image Fusion</li>
+          <li>ORB-SLAM3</li><li>Visual SLAM</li><li>Lunar Navigation</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="proj-section section">
+      <div class="container proj-grid">
+        <div class="proj-content reveal">
+          <h2 class="proj-section__title">Project Overview</h2>
+          <p>
+            The Moon has no atmosphere, so surfaces are lit by direct sunlight with no scattered
+            fill light. This produces hard shadows, saturated highlights on regolith, and large
+            appearance changes as the Sun moves. Visual SLAM depends on repeatable image features,
+            and these conditions remove them.
+          </p>
+          <p>
+            The cost of this weakness is real: Ingenuity's January 2024 navigation failure on Mars
+            has been linked to wrongly detected terrain features (Gonzalez et al., 2026).
+          </p>
+          <p>
+            Polarization depends on surface orientation and material, so it may preserve structure
+            where intensity has clipped. The one prior study at QUT's Yandiwanba Lunar Testbed ran
+            four VSLAM systems on polarization camera sequences and reported their limits under
+            glare and perceptual aliasing. This project asks a narrower question: does fusing
+            polarization cues with intensity, before feature extraction, give ORB-SLAM3 a better
+            input than intensity alone?
+          </p>
+          <p>
+            The project covers method, results and deliverables, as well as risk, ethics,
+            sustainability and stakeholder input.
+          </p>
+        </div>
+        <aside class="proj-sidebar reveal">
+          <div class="proj-stat-group">
+            <div class="proj-stat"><span class="proj-stat__val">4</span><span class="proj-stat__key">Polarizer Angles</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">S₀–S₂</span><span class="proj-stat__key">Stokes Parameters</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">Mono</span><span class="proj-stat__key">ORB-SLAM3</span></div>
+            <div class="proj-stat"><span class="proj-stat__val">2026</span><span class="proj-stat__key">Year</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- LIGHTING PROBLEM -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Why Lunar Lighting Breaks Visual SLAM</h2>
+        <p class="proj-section__sub reveal">Without an atmosphere, the conditions visual SLAM relies on disappear — and so does the skylight cue most polarization navigation uses.</p>
+        <div class="proj-details-grid reveal">
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="3.5" stroke="#006d91" stroke-width="1.4"/>
+                <path d="M10 2v2.5M10 15.5V18M2 10h2.5M15.5 10H18M4.3 4.3l1.8 1.8M13.9 13.9l1.8 1.8M4.3 15.7l1.8-1.8M13.9 6.1l1.8-1.8" stroke="#006d91" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">No Fill Light</h3>
+            <ul class="proj-detail-card__list">
+              <li>No atmosphere, so no scattered light</li>
+              <li>Surfaces lit by direct sunlight only</li>
+              <li>Hard shadows hide terrain structure</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M2 17l5-8 3-5h8" stroke="#006d91" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="2" y1="4" x2="18" y2="4" stroke="#006d91" stroke-width="1" stroke-dasharray="2 2" stroke-opacity="0.6"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Saturated Highlights</h3>
+            <ul class="proj-detail-card__list">
+              <li>Bright regolith clips the sensor</li>
+              <li>Intensity texture is lost where pixels saturate</li>
+              <li>Polarization may preserve that structure</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M2 16a8 8 0 0116 0" stroke="#006d91" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="2 2"/>
+                <circle cx="15" cy="9.5" r="2.2" stroke="#006d91" stroke-width="1.3"/>
+                <line x1="1" y1="16" x2="19" y2="16" stroke="#006d91" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">Moving Sun</h3>
+            <ul class="proj-detail-card__list">
+              <li>Large appearance changes as the Sun moves</li>
+              <li>Visual SLAM needs repeatable features</li>
+              <li>The same place can look entirely different</li>
+            </ul>
+          </div>
+
+          <div class="proj-detail-card">
+            <div class="proj-detail-card__icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="7.5" stroke="#006d91" stroke-width="1.4"/>
+                <path d="M10 5l2 5-2 5-2-5z" stroke="#006d91" stroke-width="1.1" stroke-linejoin="round"/>
+                <line x1="4" y1="16" x2="16" y2="4" stroke="#b42338" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="proj-detail-card__title">No Skylight Compass</h3>
+            <ul class="proj-detail-card__list">
+              <li>Most polarization navigation uses skylight as a compass</li>
+              <li>That pattern is created by the atmosphere</li>
+              <li>On the Moon, only ground-reflected polarization is usable</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- POLARIZATION CAMERA -->
+    <section class="proj-section section">
+      <div class="container">
+        <h2 class="proj-section__title reveal">From Pixels to Polarization</h2>
+        <p class="proj-section__sub reveal">
+          A division-of-focal-plane camera places a 2 × 2 grid of linear polarizers over its pixels.
+          The four analyser images give the Stokes parameters, and from them the degree and angle
+          of linear polarization.
+        </p>
+        <div class="diagram-wrap reveal">
+          <svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Polarizer superpixel to Stokes parameters and DoLP / AoLP" role="img">
+            <defs>
+              <marker id="aPS" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#006d91" opacity="0.7"/>
+              </marker>
+            </defs>
+
+            <!-- 2x2 superpixel -->
+            <rect x="30" y="30" width="60" height="60" fill="#ffffff" stroke="#9aacc6"/>
+            <rect x="90" y="30" width="60" height="60" fill="#ffffff" stroke="#9aacc6"/>
+            <rect x="30" y="90" width="60" height="60" fill="#ffffff" stroke="#9aacc6"/>
+            <rect x="90" y="90" width="60" height="60" fill="#ffffff" stroke="#9aacc6"/>
+            <line x1="60" y1="41" x2="60" y2="69" stroke="#006d91" stroke-width="2" stroke-linecap="round"/>
+            <line x1="109" y1="66" x2="131" y2="44" stroke="#006d91" stroke-width="2" stroke-linecap="round"/>
+            <line x1="49" y1="104" x2="71" y2="126" stroke="#006d91" stroke-width="2" stroke-linecap="round"/>
+            <line x1="104" y1="115" x2="136" y2="115" stroke="#006d91" stroke-width="2" stroke-linecap="round"/>
+            <text x="60" y="83" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">90°</text>
+            <text x="120" y="83" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">45°</text>
+            <text x="60" y="143" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">135°</text>
+            <text x="120" y="143" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">0°</text>
+            <text x="90" y="172" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">2 × 2 Polarizer Grid</text>
+            <text x="90" y="186" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Division-of-focal-plane sensor</text>
+
+            <line x1="158" y1="92" x2="198" y2="92" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aPS)"/>
+
+            <!-- Analyser images -->
+            <rect x="200" y="35" width="130" height="115" rx="6" fill="#eaf0fc" stroke="#9aacc6"/>
+            <text x="265" y="58" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Analyser Images</text>
+            <text x="265" y="82" font-family="Inter,sans-serif" font-size="9" fill="#152747" text-anchor="middle">I₀ · 0°</text>
+            <text x="265" y="98" font-family="Inter,sans-serif" font-size="9" fill="#152747" text-anchor="middle">I₄₅ · 45°</text>
+            <text x="265" y="114" font-family="Inter,sans-serif" font-size="9" fill="#152747" text-anchor="middle">I₉₀ · 90°</text>
+            <text x="265" y="130" font-family="Inter,sans-serif" font-size="9" fill="#152747" text-anchor="middle">I₁₃₅ · 135°</text>
+
+            <line x1="330" y1="92" x2="368" y2="92" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aPS)"/>
+
+            <!-- Stokes -->
+            <rect x="370" y="35" width="190" height="115" rx="6" fill="#eaf0fc" stroke="#9aacc6"/>
+            <text x="465" y="58" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Stokes Parameters</text>
+            <text x="465" y="84" font-family="Inter,sans-serif" font-size="9" fill="#152747" text-anchor="middle">S₀ = ½ (I₀ + I₄₅ + I₉₀ + I₁₃₅)</text>
+            <text x="465" y="106" font-family="Inter,sans-serif" font-size="9" fill="#152747" text-anchor="middle">S₁ = I₀ − I₉₀</text>
+            <text x="465" y="128" font-family="Inter,sans-serif" font-size="9" fill="#152747" text-anchor="middle">S₂ = I₄₅ − I₁₃₅</text>
+            <text x="465" y="172" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">S₀ is total intensity — the image a conventional monochrome camera gives</text>
+
+            <line x1="560" y1="92" x2="598" y2="92" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aPS)"/>
+
+            <!-- DoLP / AoLP -->
+            <rect x="600" y="35" width="150" height="115" rx="6" fill="#ffffff" stroke="#006d91" stroke-width="1.3"/>
+            <text x="675" y="58" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Polarization Cues</text>
+            <text x="675" y="84" font-family="Inter,sans-serif" font-size="9" fill="#006d91" text-anchor="middle">DoLP = √(S₁² + S₂²) / S₀</text>
+            <text x="675" y="98" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Degree of linear polarization</text>
+            <text x="675" y="122" font-family="Inter,sans-serif" font-size="9" fill="#006d91" text-anchor="middle">AoLP = ½ · atan2(S₂, S₁)</text>
+            <text x="675" y="136" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Angle of linear polarization</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUSION PIPELINE -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Fusion Pipeline</h2>
+        <p class="proj-section__sub reveal">
+          Fusion happens at the image level, before feature extraction. ORB-SLAM3 itself is left
+          unchanged and compared against an intensity-only (S₀) baseline.
+        </p>
+        <div class="diagram-wrap reveal">
+          <svg viewBox="0 0 760 180" xmlns="http://www.w3.org/2000/svg" class="diagram" aria-label="Polarization fusion pipeline into ORB-SLAM3" role="img">
+            <defs>
+              <marker id="aPF" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#006d91" opacity="0.7"/>
+              </marker>
+              <marker id="aPFm" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#576c8a" opacity="0.8"/>
+              </marker>
+            </defs>
+
+            <!-- Camera -->
+            <rect x="10" y="30" width="128" height="80" rx="6" fill="#eaf0fc" stroke="#9aacc6"/>
+            <text x="74" y="60" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Polarization Camera</text>
+            <text x="74" y="77" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Division-of-focal-plane</text>
+            <text x="74" y="91" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Supplied recordings</text>
+
+            <line x1="138" y1="70" x2="163" y2="70" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aPF)"/>
+
+            <!-- Stokes -->
+            <rect x="165" y="30" width="128" height="80" rx="6" fill="#eaf0fc" stroke="#9aacc6"/>
+            <text x="229" y="60" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Stokes Computation</text>
+            <text x="229" y="77" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">S₀ · S₁ · S₂</text>
+            <text x="229" y="91" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">→ DoLP · AoLP</text>
+
+            <line x1="293" y1="70" x2="318" y2="70" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aPF)"/>
+
+            <!-- Fusion -->
+            <rect x="320" y="30" width="128" height="80" rx="6" fill="#ffffff" stroke="#006d91" stroke-width="1.3"/>
+            <rect x="330" y="21" width="62" height="14" rx="3" fill="rgba(0,212,255,0.15)" stroke="rgba(0,212,255,0.4)" stroke-width="0.8"/>
+            <text x="361" y="31" font-family="Inter,sans-serif" font-size="7" fill="#006d91" text-anchor="middle" letter-spacing="0.06em">THIS STUDY</text>
+            <text x="384" y="60" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">Image-Level Fusion</text>
+            <text x="384" y="77" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Intensity + polarization</text>
+            <text x="384" y="91" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Before feature extraction</text>
+
+            <line x1="448" y1="70" x2="473" y2="70" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aPF)"/>
+
+            <!-- ORB-SLAM3 -->
+            <rect x="475" y="30" width="128" height="80" rx="6" fill="#eaf0fc" stroke="#9aacc6"/>
+            <text x="539" y="60" font-family="Space Grotesk,sans-serif" font-size="10" fill="#152747" text-anchor="middle" font-weight="600">ORB-SLAM3</text>
+            <text x="539" y="77" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Monocular</text>
+            <text x="539" y="91" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Internals unchanged</text>
+
+            <line x1="603" y1="70" x2="628" y2="70" stroke="#006d91" stroke-width="1" stroke-opacity="0.6" marker-end="url(#aPF)"/>
+
+            <!-- Evaluation -->
+            <rect x="630" y="30" width="120" height="80" rx="6" fill="rgba(74,222,128,0.06)" stroke="rgba(36,113,59,0.45)" stroke-width="1.2"/>
+            <text x="690" y="60" font-family="Space Grotesk,sans-serif" font-size="10" fill="#24713b" text-anchor="middle" font-weight="700">EVALUATION</text>
+            <text x="690" y="77" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Fused input vs</text>
+            <text x="690" y="91" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">intensity alone</text>
+
+            <!-- Baseline path -->
+            <path d="M229 110 V145 H539 V113" fill="none" stroke="#576c8a" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#aPFm)"/>
+            <text x="384" y="163" font-family="Inter,sans-serif" font-size="8" fill="#576c8a" text-anchor="middle">Baseline — S₀ intensity only</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCOPE -->
+    <section class="proj-section section">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Study Scope</h2>
+        <p class="proj-section__sub reveal">A deliberately controlled comparison — only the input image changes.</p>
+        <div class="proj-results reveal">
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#006d91" stroke-width="1.2"/>
+              <line x1="10" y1="9" x2="10" y2="14" stroke="#006d91" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="6.5" r="0.8" fill="#006d91"/>
+            </svg>
+            <p><strong>Data</strong> — limited to the polarization recordings supplied to the project.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#006d91" stroke-width="1.2"/>
+              <line x1="10" y1="9" x2="10" y2="14" stroke="#006d91" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="6.5" r="0.8" fill="#006d91"/>
+            </svg>
+            <p><strong>SLAM system</strong> — monocular ORB-SLAM3.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#006d91" stroke-width="1.2"/>
+              <line x1="10" y1="9" x2="10" y2="14" stroke="#006d91" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="6.5" r="0.8" fill="#006d91"/>
+            </svg>
+            <p><strong>Fusion</strong> — performed at the image level, before feature extraction.</p>
+          </div>
+          <div class="proj-result">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="#006d91" stroke-width="1.2"/>
+              <line x1="10" y1="9" x2="10" y2="14" stroke="#006d91" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="6.5" r="0.8" fill="#006d91"/>
+            </svg>
+            <p><strong>SLAM internals</strong> — not modified; the comparison isolates the effect of the input image.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPORT STRUCTURE -->
+    <section class="proj-section section section--alt">
+      <div class="container">
+        <h2 class="proj-section__title reveal">Report Structure</h2>
+        <p class="proj-section__sub reveal">
+          Beyond method and results, the report covers deliverables, risk, ethics, sustainability,
+          standards and stakeholder input.
+        </p>
+        <div class="fsm-states reveal">
+          <div class="fsm-state">
+            <span class="fsm-state__num">01</span>
+            <div>
+              <h4 class="fsm-state__name">Data, Pipeline &amp; Protocol</h4>
+              <p>The supplied recordings, the fusion pipeline and the evaluation protocol.</p>
+            </div>
+          </div>
+          <div class="fsm-state">
+            <span class="fsm-state__num">02</span>
+            <div>
+              <h4 class="fsm-state__name">Results</h4>
+              <p>Findings reported in three stages.</p>
+            </div>
+          </div>
+          <div class="fsm-state">
+            <span class="fsm-state__num">03</span>
+            <div>
+              <h4 class="fsm-state__name">Deliverables &amp; Challenges</h4>
+              <p>What the semester produced and the obstacles along the way.</p>
+            </div>
+          </div>
+          <div class="fsm-state">
+            <span class="fsm-state__num">04</span>
+            <div>
+              <h4 class="fsm-state__name">Professional Context</h4>
+              <p>Risk, ethics, sustainability, standards and stakeholders.</p>
+            </div>
+          </div>
+          <div class="fsm-state">
+            <span class="fsm-state__num">05</span>
+            <div>
+              <h4 class="fsm-state__name">Conclusion</h4>
+              <p>Conclusions with recommendations for future work.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACK -->
+    <section class="section" style="padding-block:var(--space-3xl);">
+      <div class="container" style="text-align:center;">
+        <a href="index.html#projects" class="btn btn--ghost">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to All Projects
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">&copy; 2026 Adithya Vimukthi.</p>
+        <a href="#" class="footer__back-top" aria-label="Back to top">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 13V3M3 8l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Back to top</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('reveal--visible'); obs.unobserve(e.target); }
+      }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

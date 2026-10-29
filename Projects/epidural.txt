@@ -1,0 +1,29 @@
+Epidural Ninja — Force-Based Bone and Epidural Space Identification for Robotic Epidural Needle Insertion
+
+QUT — robotics / medical device project
+
+Problem. Epidural anaesthesia requires a needle to cross the posterior spinal ligaments and stop in a fat-filled space only a few millimetres wide, just before the dura. Clinicians do this almost entirely by feel: bone is recognised as a hard stop, and the epidural space as a sudden loss of resistance (LOR) on a syringe plunger. This project investigates whether a general-purpose robot arm can make the same two judgements without any visual input.
+
+Objectives.
+
+Identify bone contact without vision.
+Identify when the needle tip reaches the epidural space.
+
+Work done.
+
+Wrote a Python control stack for the open-source 7-DoF OpenArm (CAN-FD motor interface, inverse kinematics with tool-axis constraints, straight-line needle descents, and logging).
+Conducted a focused review of 20 full-text papers and eight supplementary studies covering the manual procedure, sensing methods, non-visual bone identification, robots for similar procedures, and evaluation metrics.
+
+Results — Objective 1 (bone detection).
+
+The arm's own joint torques could not distinguish the printed vertebra from silicone: after contact, joint 2 varied only between −1.15 and −0.99 N·m, and the silicone run produced larger torque swings than the hard run on five of seven joints.
+A redesigned syringe holder with a 1 kg bar load cell in the needle load path separated the printed vertebra from silicone in all 26 insertions (peaks of 2.11 M counts vs 3.38 M counts; Welch p = 1.7 × 10⁻⁹).
+
+Results — Objective 2 (epidural space detection).
+
+A force-sensitive resistor on the plunger was not sensitive enough at low force.
+A 100 g plunger load cell separated a tip occluded by silicone from a tip in the epidural space tube in all 25 trials. The median plunger force over the second half of the stroke separated the classes by 4.68 M counts, with 100% cross-validated accuracy.
+
+Conclusion. Both judgements can be made from force alone when the sensor sits directly in the relevant load path; relying on the robot's motor torques is not sufficient. Values are uncalibrated raw counts from a lumbar phantom. Next steps: calibration, closed-loop testing on the arm, and layered anatomical phantoms.
+
+Keywords: Medical robotics, force sensing, load cells, loss of resistance, OpenArm, CAN-FD, inverse kinematics, Python
